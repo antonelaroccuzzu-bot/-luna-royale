@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>LUNA ROYALE | Luxury Watches</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #070707;
+      color: #fff;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    header {
+      height: 75px;
+      padding: 0 7%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #070707;
+      border-bottom: 1px solid #242424;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+      letter-spacing: 5px;
+    }
+
+    .logo span {
+      color: #c9a227;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      margin-left: 25px;
+      font-size: 14px;
+    }
+
+    nav a:hover {
+      color: #c9a227;
+    }
+
+    .hero {
+      min-height: 88vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 30px;
+
+      background:
+        linear-gradient(rgba(0,0,0,.55), rgba(0,0,0,.85)),
+        url("https://images.unsplash.com/photo-1523170335258-f5ed11844a49?auto=format&fit=crop&w=1800&q=90");
+
+      background-size: cover;
+      background-position: center;
+    }
+
+    .hero-content {
+      max-width: 800px;
+    }
+
+    .hero small {
+      color: #c9a227;
+      letter-spacing: 5px;
+      font-size: 13px;
+    }
+
+    .hero h1 {
+      font-size: 65px;
+      letter-spacing: 9px;
+      margin: 20px 0;
+    }
+
+    .hero p {
+      color: #ddd;
+      font-size: 18px;
+      line-height: 1.7;
+      margin-bottom: 35px;
+    }
+
+    .gold-btn {
+      display: inline-block;
+      background: #c9a227;
+      color: #050505;
+      padding: 16px 32px;
+      text-decoration: none;
+      font-weight: bold;
+      letter-spacing: 1px;
+      border-radius: 2px;
+    }
+
+    .gold-btn:hover {
+      background: #e0c15c;
+    }
+
+    section {
+      padding: 80px 7%;
+    }
+
+    .title {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .title small {
+      color: #c9a227;
+      letter-spacing: 4px;
+    }
+
+    .title h2 {
+      font-size: 38px;
+      margin-top: 12px;
+    }
+
+    .title p {
+      color: #999;
+      margin-top: 12px;
+    }
+
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 25px;
+    }
+
+    .product {
+      background: #101010;
+      border: 1px solid #252525;
+      overflow: hidden;
+      transition: .3s;
+    }
+
+    .product:hover {
+      transform: translateY(-7px);
+      border-color: #c9a227;
+    }
+
+    .product img {
+      width: 100%;
+      height: 330px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .product-info {
+      padding: 22px;
+    }
+
+    .product-info h3 {
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+
+    .product-info p {
+      color: #888;
+      font-size: 14px;
+      margin-bottom: 15px;
+    }
+
+    .price {
+      color: #c9a227;
+      font-size: 20px;
+      font-weight: bold;
+      margin-bottom: 18px;
+    }
+
+    .buy {
+      width: 100%;
+      padding: 13px;
+      border: 1px solid #c9a227;
+      background: transparent;
+      color: #fff;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .buy:hover {
+      background: #c9a227;
+      color: #000;
+    }
+
+    .story {
+      background: #0e0e0e;
+      text-align: center;
+    }
+
+    .story-text {
+      max-width: 800px;
+      margin: auto;
+      color: #aaa;
+      line-height: 2;
+      font-size: 16px;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      margin-top: 50px;
+    }
+
+    .feature {
+      text-align: center;
+      padding: 30px 20px;
+      border: 1px solid #252525;
+      background: #0b0b0b;
+    }
+
+    .feature h3 {
+      color: #c9a227;
+      margin-bottom: 10px;
+    }
+
+    .feature p {
+      color: #888;
+      line-height: 1.6;
+      font-size: 14px;
+    }
+
+    footer {
+      padding: 45px 7%;
+      background: #030303;
+      text-align: center;
+      border-top: 1px solid #222;
+    }
+
+    footer .footer-logo {
+      font-size: 22px;
+      letter-spacing: 5px;
+      margin-bottom: 15px;
+    }
+
+    footer p {
+      color: #666;
+      font-size: 13px;
+      margin: 7px;
+    }
+
+    .whatsapp {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      background: #25D366;
+      color: white;
+      padding: 14px 20px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: bold;
+      z-index: 2000;
+    }
+
+    @media (max-width: 700px) {
+
+      nav {
+        display: none;
+      }
+
+      .hero h1 {
+        font-size: 40px;
+        letter-spacing: 6px;
+      }
+
+      .hero p {
+        font-size: 15px;
+      }
+
+      section {
+        padding: 60px 5%;
+      }
+
+      .title h2 {
+        font-size: 30px;
+      }
+
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+
+  <div class="logo">
+    LUNA <span>ROYALE</span>
+  </div>
+
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#collection">Collection</a>
+    <a href="#story">Our Story</a>
+  </nav>
+
+</header>
+
+
+<section class="hero" id="home">
+
+  <div class="hero-content">
+
+    <small>LUXURY TIMEPIECES</small>
+
+    <h1>LUNA ROYALE</h1>
+
+    <p>
+      Luxury that speaks before you do.
+      Discover timeless watches designed for
+      men and women who value elegance,
+      confidence and exceptional style.
+    </p>
+
+    <a href="#collection" class="gold-btn">
+      EXPLORE COLLECTION
+    </a>
+
+  </div>
+
+</section>
+
+
+<section id="collection">
+
+  <div class="title">
+
+    <small>THE COLLECTION</small>
+
+    <h2>Signature Timepieces</h2>
+
+    <p>
+      Discover our carefully selected collection.
+    </p>
+
+  </div>
+
+
+  <div class="products">
+
+
+    <div class="product">
+
+      <img
+        src="https://images.unsplash.com/photo-1524805444758-089113d48a6d?auto=format&fit=crop&w=900&q=90"
+        alt="Luxury watch">
+
+      <div class="product-info">
+
+        <h3>Royal Gold</h3>
+
+        <p>Elegant gold timepiece.</p>
+
+        <div class="price">₦850,000</div>
+
+        <button class="buy"
+          onclick="order('Royal Gold')">
+          INQUIRE NOW
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <div class="product">
+
+      <img
+        src="https://images.unsplash.com/photo-1533139502658-0198f920d8e8?auto=format&fit=crop&w=900&q=90"
+        alt="Luxury watch">
+
+      <div class="product-info">
+
+        <h3>Black Royale</h3>
+
+        <p>Bold black luxury design.</p>
+
+        <div class="price">₦620,000</div>
+
+        <button class="buy"
+          onclick="order('Black Royale')">
+          INQUIRE NOW
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <div class="product">
+
+      <img
+        src="https://images.unsplash.com/photo-1523170335258-f5ed11844a49?auto=format&fit=crop&w=900&q=90"
+        alt="Luxury watch">
+
+      <div class="product-info">
+
+        <h3>Classic Silver</h3>
+
+        <p>Clean and timeless finish.</p>
+
+        <div class="price">₦490,000</div>
+
+        <button class="buy"
+          onclick="order('Classic Silver')">
+          INQUIRE NOW
+        </button>
+
+      </div>
+
+    </div>
+
+
+    <div class="product">
+
+      <img
+        src="https://images.unsplash.com/photo-1508057198894-247b23fe5ade?auto=format&fit=crop&w=900&q=90"
+        alt="Luxury watch">
+
+      <div class="product-info">
+
+        <h3>Executive</h3>
+
+        <p>Designed for a powerful presence.</p>
+
+        <div class="price">₦1,200,000</div>
+
+        <button class="buy"
+          onclick="order('Executive')">
+          INQUIRE NOW
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<section class="story" id="story">
+
+  <div class="title">
+
+    <small>THE LUNA ROYALE STANDARD</small>
+
+    <h2>Made to Be Remembered</h2>
+
+  </div>
+
+  <p class="story-text">
+
+    Luna Royale represents timeless style and modern luxury.
+    Our collection is created for men and women who want
+    their timepiece to become part of their identity.
+
+    From sophisticated evenings to everyday moments,
+    Luna Royale is designed to make every second count.
+
+  </p>
+
+
+  <div class="features">
+
+    <div class="feature">
+
+      <h3>Luxury Design</h3>
+
+      <p>
+        Elegant designs created to make a statement.
+      </p>
+
+    </div>
+
+
+    <div class="feature">
+
+      <h3>Timeless Style</h3>
+
+      <p>
+        Classic pieces designed to remain stylish.
+      </p>
+
+    </div>
+
+
+    <div class="feature">
+
+      <h3>For Everyone</h3>
+
+      <p>
+        Collections created for both men and women.
+      </p>
+
+    </div>
+
+
+    <div class="feature">
+
+      <h3>Customer Care</h3>
+
+      <p>
+        Personal assistance from selection to purchase.
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<footer>
+
+  <div class="footer-logo">
+    LUNA ROYALE
+  </div>
+
+  <p>
+    Luxury Timepieces for Men & Women
+  </p>
+
+  <p>
+    WhatsApp: +234 703 937 0661
+  </p>
+
+  <p>
+    © 2026 Luna Royale. All Rights Reserved.
+  </p>
+
+</footer>
+
+
+<a
+  class="whatsapp"
+  href="https://wa.me/2347039370661"
+  target="_blank">
+  WhatsApp
+</a>
+
+
+<script>
+
+function order(watch) {
+
+  const message =
+    "Hello Luna Royale, I am interested in the " +
+    watch +
+    " watch.";
+
+  const phone = "2347039370661";
+
+  const url =
+    "https://wa.me/" +
+    phone +
+    "?text=" +
+    encodeURIComponent(message);
+
+  window.open(url, "_blank");
+
+}
+
+</script>
+
+</body>
+</html>
