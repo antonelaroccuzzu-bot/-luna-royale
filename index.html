@@ -15,16 +15,16 @@
 
 body{
     font-family:Arial, Helvetica, sans-serif;
-    background:#050505;
-    color:#fff;
+    background:#030712;
+    color:#ffffff;
 }
 
 header{
     position:sticky;
     top:0;
     z-index:1000;
-    background:#050505;
-    border-bottom:1px solid #2b2110;
+    background:#030712;
+    border-bottom:1px solid #123b70;
     padding:18px 6%;
     display:flex;
     justify-content:space-between;
@@ -35,12 +35,12 @@ header{
     font-size:24px;
     font-weight:bold;
     letter-spacing:3px;
-    color:#d4af37;
+    color:#2196f3;
 }
 
 .cart-btn{
-    background:#d4af37;
-    color:#000;
+    background:#2196f3;
+    color:#fff;
     border:none;
     padding:12px 18px;
     border-radius:5px;
@@ -55,17 +55,22 @@ header{
     justify-content:center;
     text-align:center;
     padding:60px 20px;
+
     background:
-    linear-gradient(rgba(0,0,0,.65),rgba(0,0,0,.85)),
+    linear-gradient(
+        rgba(0,0,0,.65),
+        rgba(0,0,0,.9)
+    ),
     url("https://images.unsplash.com/photo-1524805444758-089113d48a6d?auto=format&fit=crop&w=1600&q=80");
+
     background-size:cover;
     background-position:center;
 }
 
 .hero h1{
-    font-size:clamp(45px,9vw,90px);
+    font-size:clamp(42px,9vw,90px);
     letter-spacing:8px;
-    color:#d4af37;
+    color:#2196f3;
 }
 
 .hero p{
@@ -73,12 +78,14 @@ header{
     max-width:600px;
     font-size:18px;
     color:#ddd;
+    line-height:1.7;
 }
 
 .hero button{
     margin-top:20px;
     padding:15px 30px;
-    background:#d4af37;
+    background:#2196f3;
+    color:#fff;
     border:none;
     font-weight:bold;
     cursor:pointer;
@@ -95,21 +102,33 @@ header{
 }
 
 .section-title h2{
-    color:#d4af37;
+    color:#2196f3;
     font-size:35px;
+}
+
+.section-title p{
+    margin-top:10px;
+    color:#aaa;
 }
 
 .products{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+    grid-template-columns:
+    repeat(auto-fit,minmax(230px,1fr));
     gap:25px;
 }
 
 .product{
-    background:#101010;
-    border:1px solid #292929;
+    background:#080f1c;
+    border:1px solid #123b70;
     border-radius:10px;
     overflow:hidden;
+    transition:.3s;
+}
+
+.product:hover{
+    transform:translateY(-5px);
+    border-color:#2196f3;
 }
 
 .product img{
@@ -128,7 +147,7 @@ header{
 }
 
 .price{
-    color:#d4af37;
+    color:#2196f3;
     font-size:21px;
     font-weight:bold;
     margin-bottom:15px;
@@ -138,8 +157,8 @@ header{
     width:100%;
     padding:13px;
     border:none;
-    background:#d4af37;
-    color:#000;
+    background:#2196f3;
+    color:#fff;
     font-weight:bold;
     border-radius:4px;
     cursor:pointer;
@@ -155,33 +174,41 @@ header{
 
 .features{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+    grid-template-columns:
+    repeat(auto-fit,minmax(200px,1fr));
     gap:20px;
 }
 
 .feature{
-    background:#101010;
+    background:#080f1c;
     padding:30px;
     text-align:center;
-    border:1px solid #292929;
+    border:1px solid #123b70;
     border-radius:10px;
 }
 
 .feature h3{
-    color:#d4af37;
+    color:#2196f3;
     margin-bottom:10px;
+}
+
+.feature p{
+    color:#bbb;
+    line-height:1.6;
 }
 
 footer{
     text-align:center;
     padding:40px 20px;
-    border-top:1px solid #222;
+    border-top:1px solid #123b70;
     color:#aaa;
+    line-height:2;
 }
 
 footer strong{
-    color:#d4af37;
+    color:#2196f3;
 }
+
 
 /* CART */
 
@@ -191,12 +218,12 @@ footer strong{
     right:-420px;
     width:min(420px,100%);
     height:100%;
-    background:#0b0b0b;
+    background:#050b15;
     z-index:2000;
     padding:25px;
     transition:.3s;
     overflow-y:auto;
-    border-left:1px solid #333;
+    border-left:1px solid #123b70;
 }
 
 .cart.open{
@@ -208,6 +235,10 @@ footer strong{
     justify-content:space-between;
     align-items:center;
     margin-bottom:25px;
+}
+
+.cart-header h2{
+    color:#2196f3;
 }
 
 .close{
@@ -222,7 +253,7 @@ footer strong{
     display:flex;
     gap:12px;
     margin-bottom:18px;
-    border-bottom:1px solid #222;
+    border-bottom:1px solid #172235;
     padding-bottom:15px;
 }
 
@@ -248,6 +279,8 @@ footer strong{
     height:25px;
     border:none;
     cursor:pointer;
+    background:#2196f3;
+    color:#fff;
 }
 
 .remove{
@@ -260,11 +293,11 @@ footer strong{
 }
 
 .total{
-    border-top:1px solid #333;
+    border-top:1px solid #123b70;
     margin-top:20px;
     padding-top:20px;
     font-size:23px;
-    color:#d4af37;
+    color:#2196f3;
     font-weight:bold;
 }
 
@@ -272,11 +305,19 @@ footer strong{
     width:100%;
     padding:15px;
     margin-top:20px;
-    background:#d4af37;
+    background:#2196f3;
+    color:#fff;
     border:none;
     font-weight:bold;
     cursor:pointer;
 }
+
+.empty{
+    text-align:center;
+    color:#999;
+    padding:30px 0;
+}
+
 
 /* CHECKOUT */
 
@@ -284,7 +325,7 @@ footer strong{
     display:none;
     position:fixed;
     inset:0;
-    background:rgba(0,0,0,.85);
+    background:rgba(0,0,0,.88);
     z-index:3000;
     align-items:center;
     justify-content:center;
@@ -296,17 +337,17 @@ footer strong{
 }
 
 .modal-box{
-    background:#101010;
+    background:#080f1c;
     width:min(500px,100%);
     max-height:90vh;
     overflow-y:auto;
     padding:30px;
-    border:1px solid #333;
+    border:1px solid #123b70;
     border-radius:10px;
 }
 
 .modal-box h2{
-    color:#d4af37;
+    color:#2196f3;
     margin-bottom:20px;
 }
 
@@ -315,9 +356,9 @@ footer strong{
     width:100%;
     padding:13px;
     margin-bottom:14px;
-    background:#050505;
+    background:#030712;
     color:#fff;
-    border:1px solid #333;
+    border:1px solid #23456f;
     border-radius:4px;
 }
 
@@ -327,15 +368,16 @@ footer strong{
 }
 
 .payment-box{
-    background:#171717;
+    background:#0c1728;
     padding:18px;
     margin:15px 0;
     border-radius:7px;
-    line-height:1.8;
+    line-height:1.9;
+    border:1px solid #123b70;
 }
 
 .payment-box strong{
-    color:#d4af37;
+    color:#2196f3;
 }
 
 .whatsapp{
@@ -354,17 +396,14 @@ footer strong{
     width:100%;
     padding:13px;
     margin-top:10px;
-    background:#333;
+    background:#222;
     color:white;
     border:none;
     cursor:pointer;
 }
 
-.empty{
-    text-align:center;
-    color:#999;
-    padding:30px 0;
-}
+
+/* MOBILE */
 
 @media(max-width:600px){
 
@@ -373,7 +412,7 @@ footer strong{
     }
 
     .logo{
-        font-size:18px;
+        font-size:17px;
         letter-spacing:2px;
     }
 
@@ -383,6 +422,10 @@ footer strong{
 
     .hero{
         min-height:65vh;
+    }
+
+    .hero h1{
+        letter-spacing:4px;
     }
 
     .section{
@@ -396,11 +439,15 @@ footer strong{
 </style>
 </head>
 
+
 <body>
+
 
 <header>
 
-<div class="logo">GRANDSON ROYALE</div>
+<div class="logo">
+GRANDSON ROYALE
+</div>
 
 <button class="cart-btn" onclick="openCart()">
 🛒 CART (<span id="cartCount">0</span>)
@@ -443,6 +490,8 @@ SHOP COLLECTION
 <div class="products">
 
 
+<!-- WATCH 1 -->
+
 <div class="product">
 
 <img src="https://images.unsplash.com/photo-1523170335258-f5ed11844a49?auto=format&fit=crop&w=800&q=80">
@@ -451,15 +500,23 @@ SHOP COLLECTION
 
 <h3>Royal Gold</h3>
 
-<div class="price">₦850,000</div>
+<div class="price">
+₦850,000
+</div>
 
-<button onclick="addToCart('Royal Gold',850000,'https://images.unsplash.com/photo-1523170335258-f5ed11844a49?auto=format&fit=crop&w=800&q=80')">
+<button onclick="addToCart(
+'Royal Gold',
+850000,
+'https://images.unsplash.com/photo-1523170335258-f5ed11844a49?auto=format&fit=crop&w=800&q=80'
+)">
 ADD TO CART
 </button>
 
 </div>
 </div>
 
+
+<!-- WATCH 2 -->
 
 <div class="product">
 
@@ -469,15 +526,23 @@ ADD TO CART
 
 <h3>Black Royale</h3>
 
-<div class="price">₦620,000</div>
+<div class="price">
+₦620,000
+</div>
 
-<button onclick="addToCart('Black Royale',620000,'https://images.unsplash.com/photo-1524805444758-089113d48a6d?auto=format&fit=crop&w=800&q=80')">
+<button onclick="addToCart(
+'Black Royale',
+620000,
+'https://images.unsplash.com/photo-1524805444758-089113d48a6d?auto=format&fit=crop&w=800&q=80'
+)">
 ADD TO CART
 </button>
 
 </div>
 </div>
 
+
+<!-- WATCH 3 -->
 
 <div class="product">
 
@@ -487,15 +552,23 @@ ADD TO CART
 
 <h3>Classic Silver</h3>
 
-<div class="price">₦490,000</div>
+<div class="price">
+₦490,000
+</div>
 
-<button onclick="addToCart('Classic Silver',490000,'https://images.unsplash.com/photo-1539874754764-5a96559165b0?auto=format&fit=crop&w=800&q=80')">
+<button onclick="addToCart(
+'Classic Silver',
+490000,
+'https://images.unsplash.com/photo-1539874754764-5a96559165b0?auto=format&fit=crop&w=800&q=80'
+)">
 ADD TO CART
 </button>
 
 </div>
 </div>
 
+
+<!-- WATCH 4 -->
 
 <div class="product">
 
@@ -505,9 +578,15 @@ ADD TO CART
 
 <h3>Executive</h3>
 
-<div class="price">₦1,200,000</div>
+<div class="price">
+₦1,200,000
+</div>
 
-<button onclick="addToCart('Executive',1200000,'https://images.unsplash.com/photo-1522312346375-d1a52e2b99b3?auto=format&fit=crop&w=800&q=80')">
+<button onclick="addToCart(
+'Executive',
+1200000,
+'https://images.unsplash.com/photo-1522312346375-d1a52e2b99b3?auto=format&fit=crop&w=800&q=80'
+)">
 ADD TO CART
 </button>
 
@@ -516,6 +595,7 @@ ADD TO CART
 
 
 </div>
+
 </section>
 
 
@@ -548,39 +628,53 @@ online ordering and delivery.
 
 </div>
 
+
 <div class="features">
+
 
 <div class="feature">
 
 <h3>Luxury Design</h3>
 
-<p>Elegant designs created to make a statement.</p>
+<p>
+Elegant designs created to make a statement.
+</p>
 
 </div>
+
 
 <div class="feature">
 
 <h3>Premium Style</h3>
 
-<p>Timepieces designed for everyday confidence.</p>
+<p>
+Timepieces designed for everyday confidence.
+</p>
 
 </div>
+
 
 <div class="feature">
 
 <h3>Men & Women</h3>
 
-<p>Collections suitable for every style.</p>
+<p>
+Collections suitable for every style.
+</p>
 
 </div>
+
 
 <div class="feature">
 
 <h3>Customer Care</h3>
 
-<p>We are available to help with your order.</p>
+<p>
+We are available to help with your order.
+</p>
 
 </div>
+
 
 </div>
 
@@ -593,11 +687,21 @@ online ordering and delivery.
 <strong>GRANDSON ROYALE</strong>
 </p>
 
-<p>Luxury That Speaks Before You Do.</p>
+<p>
+Luxury That Speaks Before You Do.
+</p>
 
-<p>WhatsApp: +234 810 852 1685</p>
+<p>
+WhatsApp: +234 810 852 1685
+</p>
 
-<p>© 2026 Grandson Royale. All Rights Reserved.</p>
+<p>
+Calls: 08057941379
+</p>
+
+<p>
+© 2026 Grandson Royale. All Rights Reserved.
+</p>
 
 </footer>
 
@@ -610,7 +714,9 @@ online ordering and delivery.
 
 <h2>Your Cart</h2>
 
-<button class="close" onclick="closeCart()">×</button>
+<button class="close" onclick="closeCart()">
+×
+</button>
 
 </div>
 
@@ -635,15 +741,36 @@ CHECKOUT
 
 <div class="modal-box">
 
-<h2>GRANDSON ROYALE CHECKOUT</h2>
+<h2>
+GRANDSON ROYALE CHECKOUT
+</h2>
 
-<input id="customerName" type="text" placeholder="Full Name">
 
-<input id="customerPhone" type="tel" placeholder="Phone Number">
+<input
+id="customerName"
+type="text"
+placeholder="Full Name"
+>
 
-<input id="customerEmail" type="email" placeholder="Email Address">
 
-<textarea id="customerAddress" placeholder="Delivery Address"></textarea>
+<input
+id="customerPhone"
+type="tel"
+placeholder="Phone Number"
+>
+
+
+<input
+id="customerEmail"
+type="email"
+placeholder="Email Address"
+>
+
+
+<textarea
+id="customerAddress"
+placeholder="Delivery Address"
+></textarea>
 
 
 <div class="payment-box">
@@ -678,7 +805,7 @@ Calls:
 </div>
 
 
-<p style="color:#aaa;font-size:14px;">
+<p style="color:#aaa;font-size:14px;line-height:1.6;">
 
 Transfer the exact order amount to the OPay account above.
 
@@ -688,17 +815,24 @@ your order details for confirmation.
 </p>
 
 
-<a id="whatsappOrder"
+<a
+id="whatsappOrder"
 class="whatsapp"
-target="_blank">
+target="_blank"
+>
 
 📱 I HAVE MADE PAYMENT
 
 </a>
 
 
-<button class="cancel" onclick="closeCheckout()">
+<button
+class="cancel"
+onclick="closeCheckout()"
+>
+
 CANCEL
+
 </button>
 
 </div>
@@ -713,7 +847,8 @@ let cart = [];
 
 function addToCart(name,price,image){
 
-    const existing = cart.find(item => item.name === name);
+    const existing =
+    cart.find(item => item.name === name);
 
     if(existing){
 
@@ -744,7 +879,8 @@ function updateCart(){
 
     const count =
     cart.reduce(
-        (sum,item)=>sum + item.quantity,
+        (sum,item) =>
+        sum + item.quantity,
         0
     );
 
@@ -784,19 +920,25 @@ function updateCart(){
 
         <h4>${item.name}</h4>
 
-        <div style="color:#d4af37">
+        <div style="color:#2196f3">
+
         ₦${item.price.toLocaleString()}
+
         </div>
 
         <div class="qty">
 
-        <button onclick="changeQty(${index},-1)">
+        <button
+        onclick="changeQty(${index},-1)">
         −
         </button>
 
-        <span>${item.quantity}</span>
+        <span>
+        ${item.quantity}
+        </span>
 
-        <button onclick="changeQty(${index},1)">
+        <button
+        onclick="changeQty(${index},1)">
         +
         </button>
 
@@ -809,8 +951,8 @@ function updateCart(){
         </button>
 
         </div>
-
         `;
+
 
         container.appendChild(div);
 
@@ -819,7 +961,7 @@ function updateCart(){
 
     const total =
     cart.reduce(
-        (sum,item)=>
+        (sum,item) =>
         sum + item.price * item.quantity,
         0
     );
@@ -860,7 +1002,8 @@ function removeItem(index){
 
 function openCart(){
 
-    document.getElementById("cart")
+    document
+    .getElementById("cart")
     .classList.add("open");
 
 }
@@ -868,7 +1011,8 @@ function openCart(){
 
 function closeCart(){
 
-    document.getElementById("cart")
+    document
+    .getElementById("cart")
     .classList.remove("open");
 
 }
@@ -885,7 +1029,8 @@ function openCheckout(){
     }
 
 
-    document.getElementById("checkoutModal")
+    document
+    .getElementById("checkoutModal")
     .classList.add("show");
 
 
@@ -896,7 +1041,8 @@ function openCheckout(){
 
 function closeCheckout(){
 
-    document.getElementById("checkoutModal")
+    document
+    .getElementById("checkoutModal")
     .classList.remove("show");
 
 }
@@ -922,16 +1068,27 @@ function updateWhatsApp(){
 
 
     message +=
-    "Customer: " + name + "%0A";
+    "Customer: " +
+    name +
+    "%0A";
+
 
     message +=
-    "Phone: " + phone + "%0A";
+    "Phone: " +
+    phone +
+    "%0A";
+
 
     message +=
-    "Email: " + email + "%0A";
+    "Email: " +
+    email +
+    "%0A";
+
 
     message +=
-    "Address: " + address + "%0A%0A";
+    "Address: " +
+    address +
+    "%0A%0A";
 
 
     message +=
@@ -945,8 +1102,10 @@ function updateWhatsApp(){
         " x" +
         item.quantity +
         " = ₦" +
-        (item.price * item.quantity)
-        .toLocaleString() +
+        (
+            item.price *
+            item.quantity
+        ).toLocaleString() +
         "%0A";
 
     });
@@ -954,8 +1113,10 @@ function updateWhatsApp(){
 
     const total =
     cart.reduce(
-        (sum,item)=>
-        sum + item.price * item.quantity,
+        (sum,item) =>
+        sum +
+        item.price *
+        item.quantity,
         0
     );
 
@@ -973,7 +1134,8 @@ function updateWhatsApp(){
     "2348108521685";
 
 
-    document.getElementById("whatsappOrder")
+    document
+    .getElementById("whatsappOrder")
     .href =
     "https://wa.me/" +
     phoneNumber +
@@ -984,13 +1146,14 @@ function updateWhatsApp(){
 
 
 [
-"customerName",
-"customerPhone",
-"customerEmail",
-"customerAddress"
+    "customerName",
+    "customerPhone",
+    "customerEmail",
+    "customerAddress"
 ].forEach(id=>{
 
-    document.getElementById(id)
+    document
+    .getElementById(id)
     .addEventListener(
         "input",
         updateWhatsApp
