@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>LUNA ROYALE | Luxury Watches</title>
+<title>GRANDSON ROYALE | Luxury Watches</title>
 
 <style>
 *{
@@ -240,6 +240,7 @@ footer strong{
     display:flex;
     gap:10px;
     align-items:center;
+    margin-top:8px;
 }
 
 .qty button{
@@ -399,7 +400,7 @@ footer strong{
 
 <header>
 
-<div class="logo">LUNA ROYALE</div>
+<div class="logo">GRANDSON ROYALE</div>
 
 <button class="cart-btn" onclick="openCart()">
 🛒 CART (<span id="cartCount">0</span>)
@@ -412,7 +413,7 @@ footer strong{
 
 <div>
 
-<h1>LUNA ROYALE</h1>
+<h1>GRANDSON ROYALE</h1>
 
 <p>
 Luxury timepieces designed for people who appreciate
@@ -522,14 +523,14 @@ ADD TO CART
 
 <div class="section-title">
 
-<h2>ABOUT LUNA ROYALE</h2>
+<h2>ABOUT GRANDSON ROYALE</h2>
 
 </div>
 
 <div class="about">
 
 <p>
-LUNA ROYALE is an online luxury watch store offering
+GRANDSON ROYALE is an online luxury watch store offering
 premium and stylish watches for men and women, with
 online ordering and delivery.
 </p>
@@ -543,7 +544,7 @@ online ordering and delivery.
 
 <div class="section-title">
 
-<h2>WHY LUNA ROYALE?</h2>
+<h2>WHY GRANDSON ROYALE?</h2>
 
 </div>
 
@@ -589,14 +590,14 @@ online ordering and delivery.
 <footer>
 
 <p>
-<strong>LUNA ROYALE</strong>
+<strong>GRANDSON ROYALE</strong>
 </p>
 
 <p>Luxury That Speaks Before You Do.</p>
 
 <p>WhatsApp: +234 810 852 1685</p>
 
-<p>© 2026 Luna Royale. All Rights Reserved.</p>
+<p>© 2026 Grandson Royale. All Rights Reserved.</p>
 
 </footer>
 
@@ -628,13 +629,13 @@ CHECKOUT
 </div>
 
 
-<!-- CHECKOUT MODAL -->
+<!-- CHECKOUT -->
 
 <div class="modal" id="checkoutModal">
 
 <div class="modal-box">
 
-<h2>Checkout</h2>
+<h2>GRANDSON ROYALE CHECKOUT</h2>
 
 <input id="customerName" type="text" placeholder="Full Name">
 
@@ -678,16 +679,21 @@ Calls:
 
 
 <p style="color:#aaa;font-size:14px;">
+
 Transfer the exact order amount to the OPay account above.
+
 After payment, click the WhatsApp button below to send
 your order details for confirmation.
+
 </p>
 
 
 <a id="whatsappOrder"
 class="whatsapp"
 target="_blank">
+
 📱 I HAVE MADE PAYMENT
+
 </a>
 
 
@@ -727,18 +733,23 @@ function addToCart(name,price,image){
     updateCart();
 
     openCart();
+
 }
 
 
 function updateCart(){
 
-    const container = document.getElementById("cartItems");
+    const container =
+    document.getElementById("cartItems");
 
-    const count = cart.reduce(
-        (sum,item)=>sum + item.quantity,0
+    const count =
+    cart.reduce(
+        (sum,item)=>sum + item.quantity,
+        0
     );
 
-    document.getElementById("cartCount").textContent = count;
+    document.getElementById("cartCount")
+    .textContent = count;
 
 
     if(cart.length === 0){
@@ -746,9 +757,11 @@ function updateCart(){
         container.innerHTML =
         '<div class="empty">Your cart is empty.</div>';
 
-        document.getElementById("cartTotal").textContent = "0";
+        document.getElementById("cartTotal")
+        .textContent = "0";
 
         return;
+
     }
 
 
@@ -757,7 +770,8 @@ function updateCart(){
 
     cart.forEach((item,index)=>{
 
-        const div = document.createElement("div");
+        const div =
+        document.createElement("div");
 
         div.className = "cart-item";
 
@@ -776,11 +790,15 @@ function updateCart(){
 
         <div class="qty">
 
-        <button onclick="changeQty(${index},-1)">−</button>
+        <button onclick="changeQty(${index},-1)">
+        −
+        </button>
 
         <span>${item.quantity}</span>
 
-        <button onclick="changeQty(${index},1)">+</button>
+        <button onclick="changeQty(${index},1)">
+        +
+        </button>
 
         </div>
 
@@ -799,13 +817,17 @@ function updateCart(){
     });
 
 
-    const total = cart.reduce(
-        (sum,item)=>sum + item.price * item.quantity,0
+    const total =
+    cart.reduce(
+        (sum,item)=>
+        sum + item.price * item.quantity,
+        0
     );
 
 
     document.getElementById("cartTotal")
-    .textContent = total.toLocaleString();
+    .textContent =
+    total.toLocaleString();
 
 }
 
@@ -862,8 +884,10 @@ function openCheckout(){
 
     }
 
+
     document.getElementById("checkoutModal")
     .classList.add("show");
+
 
     updateWhatsApp();
 
@@ -894,7 +918,7 @@ function updateWhatsApp(){
 
 
     let message =
-    "LUNA ROYALE ORDER%0A%0A";
+    "GRANDSON ROYALE ORDER%0A%0A";
 
 
     message +=
@@ -910,7 +934,8 @@ function updateWhatsApp(){
     "Address: " + address + "%0A%0A";
 
 
-    message += "ORDER:%0A";
+    message +=
+    "ORDER:%0A";
 
 
     cart.forEach(item=>{
@@ -929,8 +954,9 @@ function updateWhatsApp(){
 
     const total =
     cart.reduce(
-        (sum,item)=>sum +
-        item.price * item.quantity,0
+        (sum,item)=>
+        sum + item.price * item.quantity,
+        0
     );
 
 
@@ -965,7 +991,10 @@ function updateWhatsApp(){
 ].forEach(id=>{
 
     document.getElementById(id)
-    .addEventListener("input",updateWhatsApp);
+    .addEventListener(
+        "input",
+        updateWhatsApp
+    );
 
 });
 
