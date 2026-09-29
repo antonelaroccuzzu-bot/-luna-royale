@@ -4,488 +4,749 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>GRANDSON ROYALE | Luxury Watches</title>
+<title>GRANDSON ROYALE</title>
 
-<!-- SUPABASE -->
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
-<!-- APP / PWA -->
-<link rel="manifest" href="./manifest.json">
-<meta name="theme-color" content="#2196f3">
-<meta name="mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#0b0b0b">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="GRANDSON ROYALE">
 
 <style>
+
 *{
+    box-sizing:border-box;
     margin:0;
     padding:0;
-    box-sizing:border-box;
 }
 
 body{
     font-family:Arial, Helvetica, sans-serif;
-    background:#030712;
-    color:#ffffff;
+    background:#080808;
+    color:#fff;
+    min-height:100vh;
 }
+
+button,
+input,
+textarea,
+select{
+    font:inherit;
+}
+
+button{
+    cursor:pointer;
+}
+
+a{
+    color:inherit;
+    text-decoration:none;
+}
+
+/* HEADER */
 
 header{
     position:sticky;
     top:0;
     z-index:1000;
-    background:#030712;
-    border-bottom:1px solid #123b70;
-    padding:18px 6%;
+    background:rgba(8,8,8,.96);
+    border-bottom:1px solid #222;
+    backdrop-filter:blur(10px);
+}
+
+.header-inner{
+    max-width:1200px;
+    margin:auto;
+    padding:18px 20px;
     display:flex;
-    justify-content:space-between;
     align-items:center;
-    gap:10px;
+    justify-content:space-between;
+    gap:15px;
 }
 
 .logo{
-    font-size:24px;
-    font-weight:bold;
+    font-size:20px;
+    font-weight:800;
     letter-spacing:3px;
-    color:#2196f3;
+    color:#d7b56d;
 }
 
 .header-actions{
     display:flex;
     gap:8px;
-    align-items:center;
 }
 
-.cart-btn,
-.account-btn{
-    background:#2196f3;
+.header-btn{
+    border:1px solid #444;
+    background:#111;
     color:#fff;
-    border:none;
-    padding:12px 18px;
-    border-radius:5px;
-    font-weight:bold;
-    cursor:pointer;
+    padding:10px 14px;
+    border-radius:8px;
+    font-weight:600;
 }
 
-.account-btn{
-    background:#0c1728;
-    border:1px solid #123b70;
+.header-btn:hover{
+    border-color:#d7b56d;
+    color:#d7b56d;
 }
+
+/* HERO */
 
 .hero{
-    min-height:75vh;
-    display:flex;
-    align-items:center;
-    justify-content:center;
+    max-width:1200px;
+    margin:auto;
+    padding:80px 20px 65px;
     text-align:center;
-    padding:60px 20px;
+}
 
-    background:
-    linear-gradient(
-        rgba(0,0,0,.65),
-        rgba(0,0,0,.9)
-    ),
-    url("https://images.unsplash.com/photo-1524805444758-089113d48a6d?auto=format&fit=crop&w=1600&q=80");
-
-    background-size:cover;
-    background-position:center;
+.hero small{
+    color:#d7b56d;
+    letter-spacing:4px;
+    font-weight:700;
 }
 
 .hero h1{
-    font-size:clamp(42px,9vw,90px);
-    letter-spacing:8px;
-    color:#2196f3;
+    font-size:clamp(42px,8vw,78px);
+    line-height:1;
+    margin:18px 0;
+    letter-spacing:3px;
 }
 
 .hero p{
-    margin:20px auto;
-    max-width:600px;
-    font-size:18px;
-    color:#ddd;
+    max-width:650px;
+    margin:auto;
+    color:#aaa;
     line-height:1.7;
+    font-size:16px;
 }
 
-.hero button{
-    margin-top:20px;
-    padding:15px 30px;
-    background:#2196f3;
-    color:#fff;
-    border:none;
-    font-weight:bold;
-    cursor:pointer;
-    border-radius:4px;
-}
+/* SECTION */
 
 .section{
-    padding:70px 6%;
+    max-width:1200px;
+    margin:auto;
+    padding:40px 20px 70px;
 }
 
 .section-title{
     text-align:center;
-    margin-bottom:40px;
+    margin-bottom:35px;
 }
 
 .section-title h2{
-    color:#2196f3;
-    font-size:35px;
-}
-
-.section-title p{
-    margin-top:10px;
-    color:#aaa;
-}
-
-.products{
-    display:grid;
-    grid-template-columns:
-    repeat(auto-fit,minmax(230px,1fr));
-    gap:25px;
-}
-
-.product{
-    background:#080f1c;
-    border:1px solid #123b70;
-    border-radius:10px;
-    overflow:hidden;
-    transition:.3s;
-}
-
-.product:hover{
-    transform:translateY(-5px);
-    border-color:#2196f3;
-}
-
-.product img{
-    width:100%;
-    height:280px;
-    object-fit:cover;
-}
-
-.product-info{
-    padding:20px;
-}
-
-.product h3{
-    font-size:20px;
+    font-size:32px;
     margin-bottom:10px;
 }
 
-.price{
-    color:#2196f3;
-    font-size:21px;
-    font-weight:bold;
-    margin-bottom:15px;
+.section-title p{
+    color:#999;
 }
 
-.product button{
-    width:100%;
-    padding:13px;
-    border:none;
-    background:#2196f3;
-    color:#fff;
-    font-weight:bold;
-    border-radius:4px;
-    cursor:pointer;
-}
+/* PRODUCTS */
 
-.about{
-    max-width:850px;
-    margin:auto;
-    text-align:center;
-    line-height:1.8;
-    color:#ccc;
-}
-
-.features{
+.products{
     display:grid;
-    grid-template-columns:
-    repeat(auto-fit,minmax(200px,1fr));
+    grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
     gap:20px;
 }
 
+.product-card{
+    background:#101010;
+    border:1px solid #242424;
+    border-radius:15px;
+    padding:22px;
+    transition:.2s;
+}
+
+.product-card:hover{
+    transform:translateY(-3px);
+    border-color:#6b552d;
+}
+
+.watch-image{
+    height:220px;
+    border-radius:12px;
+    background:
+        radial-gradient(circle at 50% 40%,#444 0,#1b1b1b 35%,#090909 70%);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin-bottom:20px;
+    overflow:hidden;
+    position:relative;
+}
+
+.watch-face{
+    width:130px;
+    height:130px;
+    border-radius:50%;
+    border:8px solid #333;
+    background:#080808;
+    box-shadow:0 0 25px rgba(215,181,109,.12);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#d7b56d;
+    font-weight:800;
+    letter-spacing:2px;
+    position:relative;
+}
+
+.watch-face::before{
+    content:"";
+    position:absolute;
+    width:3px;
+    height:48px;
+    background:#d7b56d;
+    top:17px;
+    left:50%;
+    transform:translateX(-50%);
+    transform-origin:bottom;
+}
+
+.watch-face::after{
+    content:"";
+    position:absolute;
+    width:3px;
+    height:38px;
+    background:#fff;
+    top:27px;
+    left:50%;
+    transform:translateX(-50%) rotate(90deg);
+    transform-origin:bottom;
+}
+
+.product-card h3{
+    font-size:20px;
+    margin-bottom:8px;
+}
+
+.product-description{
+    color:#999;
+    font-size:14px;
+    min-height:40px;
+    line-height:1.5;
+}
+
+.price{
+    color:#d7b56d;
+    font-size:21px;
+    font-weight:800;
+    margin:16px 0;
+}
+
+.add-btn{
+    width:100%;
+    border:0;
+    border-radius:9px;
+    background:#d7b56d;
+    color:#080808;
+    padding:13px;
+    font-weight:800;
+}
+
+.add-btn:hover{
+    background:#edd08d;
+}
+
+/* WHY */
+
+.features{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:18px;
+}
+
 .feature{
-    background:#080f1c;
-    padding:30px;
-    text-align:center;
-    border:1px solid #123b70;
-    border-radius:10px;
+    border:1px solid #242424;
+    background:#101010;
+    border-radius:13px;
+    padding:25px;
 }
 
 .feature h3{
-    color:#2196f3;
+    color:#d7b56d;
     margin-bottom:10px;
 }
 
 .feature p{
-    color:#bbb;
+    color:#999;
     line-height:1.6;
+    font-size:14px;
 }
 
-footer{
+/* CUSTOMER SERVICE */
+
+.service-box{
+    max-width:800px;
+    margin:auto;
+    background:#101010;
+    border:1px solid #292929;
+    border-radius:16px;
+    padding:30px;
     text-align:center;
-    padding:40px 20px;
-    border-top:1px solid #123b70;
-    color:#aaa;
-    line-height:2;
 }
 
-footer strong{
-    color:#2196f3;
+.service-box h2{
+    margin-bottom:10px;
 }
 
-/* CART */
-
-.cart{
-    position:fixed;
-    top:0;
-    right:-420px;
-    width:min(420px,100%);
-    height:100%;
-    background:#050b15;
-    z-index:2000;
-    padding:25px;
-    transition:.3s;
-    overflow-y:auto;
-    border-left:1px solid #123b70;
-}
-
-.cart.open{
-    right:0;
-}
-
-.cart-header{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
+.service-box p{
+    color:#999;
+    line-height:1.6;
     margin-bottom:25px;
 }
 
-.cart-header h2{
-    color:#2196f3;
-}
-
-.close{
-    background:none;
-    border:none;
-    color:white;
-    font-size:28px;
-    cursor:pointer;
-}
-
-.cart-item{
+.service-buttons{
     display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
     gap:12px;
-    margin-bottom:18px;
-    border-bottom:1px solid #172235;
-    padding-bottom:15px;
 }
 
-.cart-item img{
-    width:70px;
-    height:70px;
-    object-fit:cover;
-}
-
-.cart-item h4{
-    margin-bottom:8px;
-}
-
-.qty{
-    display:flex;
-    gap:10px;
-    align-items:center;
-    margin-top:8px;
-}
-
-.qty button{
-    width:25px;
-    height:25px;
-    border:none;
-    cursor:pointer;
-    background:#2196f3;
-    color:#fff;
-}
-
-.remove{
-    background:#8b0000;
-    color:white;
-    border:none;
-    padding:5px 8px;
-    cursor:pointer;
-    margin-top:5px;
-}
-
-.total{
-    border-top:1px solid #123b70;
-    margin-top:20px;
-    padding-top:20px;
-    font-size:23px;
-    color:#2196f3;
-    font-weight:bold;
-}
-
-.checkout{
-    width:100%;
-    padding:15px;
-    margin-top:20px;
-    background:#2196f3;
-    color:#fff;
-    border:none;
-    font-weight:bold;
-    cursor:pointer;
-}
-
-.empty{
-    text-align:center;
-    color:#999;
-    padding:30px 0;
-}
-
-/* MODALS */
-
-.modal{
-    display:none;
-    position:fixed;
-    inset:0;
-    background:rgba(0,0,0,.88);
-    z-index:3000;
+.service-btn{
+    display:inline-flex;
     align-items:center;
     justify-content:center;
-    padding:20px;
+    min-width:190px;
+    padding:13px 18px;
+    border-radius:9px;
+    font-weight:800;
+    border:1px solid #444;
+    background:#181818;
 }
 
-.modal.show{
+.service-btn:hover{
+    border-color:#d7b56d;
+    color:#d7b56d;
+}
+
+/* FOOTER */
+
+footer{
+    border-top:1px solid #222;
+    padding:30px 20px;
+    text-align:center;
+    color:#777;
+    font-size:13px;
+}
+
+footer strong{
+    color:#d7b56d;
+}
+
+/* OVERLAY */
+
+.overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.78);
+    z-index:2000;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    padding:18px;
+}
+
+.overlay.show{
     display:flex;
 }
 
-.modal-box{
-    background:#080f1c;
-    width:min(500px,100%);
-    max-height:90vh;
+.modal{
+    width:100%;
+    max-width:560px;
+    max-height:92vh;
     overflow-y:auto;
-    padding:30px;
-    border:1px solid #123b70;
-    border-radius:10px;
+    background:#111;
+    border:1px solid #333;
+    border-radius:16px;
+    padding:25px;
+    position:relative;
 }
 
-.modal-box h2{
-    color:#2196f3;
+.modal.large{
+    max-width:900px;
+}
+
+.modal-header{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:10px;
     margin-bottom:20px;
 }
 
-.modal-box input,
-.modal-box textarea{
-    width:100%;
-    padding:13px;
-    margin-bottom:14px;
-    background:#030712;
+.modal-header h2{
     color:#fff;
-    border:1px solid #23456f;
-    border-radius:4px;
 }
 
-.modal-box textarea{
-    min-height:100px;
+.close-btn{
+    width:35px;
+    height:35px;
+    border-radius:50%;
+    border:1px solid #444;
+    background:#181818;
+    color:#fff;
+    font-size:20px;
+}
+
+/* FORMS */
+
+.form-group{
+    margin-bottom:15px;
+}
+
+.form-group label{
+    display:block;
+    margin-bottom:7px;
+    color:#bbb;
+    font-size:14px;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select{
+    width:100%;
+    background:#080808;
+    border:1px solid #333;
+    color:#fff;
+    border-radius:8px;
+    padding:12px;
+    outline:none;
+}
+
+.form-group textarea{
+    min-height:90px;
     resize:vertical;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus{
+    border-color:#d7b56d;
 }
 
 .primary-btn{
     width:100%;
-    padding:14px;
-    background:#2196f3;
-    color:#fff;
-    border:none;
-    font-weight:bold;
-    cursor:pointer;
-    border-radius:5px;
+    border:0;
+    background:#d7b56d;
+    color:#080808;
+    padding:13px;
+    border-radius:8px;
+    font-weight:800;
+    margin-top:5px;
 }
 
 .secondary-btn{
     width:100%;
-    padding:13px;
+    border:1px solid #444;
+    background:#181818;
+    color:#fff;
+    padding:12px;
+    border-radius:8px;
+    font-weight:700;
     margin-top:10px;
-    background:#222;
-    color:white;
-    border:none;
-    cursor:pointer;
-    border-radius:5px;
 }
 
-.payment-box{
-    background:#0c1728;
-    padding:18px;
-    margin:15px 0;
-    border-radius:7px;
-    line-height:1.9;
-    border:1px solid #123b70;
-}
-
-.payment-box strong{
-    color:#2196f3;
-}
-
-.whatsapp{
-    display:block;
-    text-align:center;
-    background:#25D366;
-    color:#000;
-    padding:15px;
-    text-decoration:none;
-    font-weight:bold;
-    margin-top:15px;
-    border-radius:5px;
-}
-
-.cancel{
+.danger-btn{
     width:100%;
-    padding:13px;
+    border:1px solid #6b3030;
+    background:#211010;
+    color:#ffb1b1;
+    padding:12px;
+    border-radius:8px;
+    font-weight:700;
     margin-top:10px;
-    background:#222;
-    color:white;
-    border:none;
-    cursor:pointer;
+}
+
+/* CART */
+
+.cart-item{
+    display:flex;
+    justify-content:space-between;
+    gap:15px;
+    padding:15px 0;
+    border-bottom:1px solid #252525;
+}
+
+.cart-item-info{
+    flex:1;
+}
+
+.cart-item-name{
+    font-weight:800;
+}
+
+.cart-item-price{
+    color:#d7b56d;
+    margin-top:5px;
+}
+
+.quantity-controls{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    margin-top:10px;
+}
+
+.quantity-controls button{
+    width:28px;
+    height:28px;
+    border-radius:6px;
+    border:1px solid #444;
+    background:#191919;
+    color:#fff;
+}
+
+.remove-btn{
+    color:#ff9d9d;
+    border:0 !important;
+    background:transparent !important;
+}
+
+.cart-total{
+    display:flex;
+    justify-content:space-between;
+    margin:22px 0;
+    font-size:20px;
+    font-weight:800;
+}
+
+.cart-total span:last-child{
+    color:#d7b56d;
 }
 
 /* ACCOUNT */
 
-.account-info{
-    background:#0c1728;
-    border:1px solid #123b70;
-    border-radius:7px;
-    padding:15px;
-    margin-bottom:20px;
-    line-height:1.8;
+.account-box{
+    text-align:left;
 }
 
-.order-card{
-    background:#0c1728;
-    border:1px solid #123b70;
-    border-radius:8px;
-    padding:15px;
+.account-email{
+    background:#181818;
+    border:1px solid #292929;
+    padding:14px;
+    border-radius:9px;
     margin-bottom:15px;
 }
 
-.order-card h3{
-    color:#2196f3;
+.account-email span{
+    display:block;
+    color:#888;
+    font-size:12px;
+    margin-bottom:4px;
+}
+
+.order-history{
+    margin-top:20px;
+}
+
+.order-history h3{
+    margin-bottom:12px;
+}
+
+.order-card{
+    background:#0a0a0a;
+    border:1px solid #292929;
+    border-radius:11px;
+    padding:15px;
+    margin-bottom:12px;
+}
+
+.order-card strong{
+    color:#d7b56d;
+}
+
+.order-card p{
+    color:#aaa;
+    margin-top:6px;
+    line-height:1.5;
+    font-size:14px;
+}
+
+.status-row{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    margin-top:10px;
+}
+
+.status-badge{
+    display:inline-block;
+    padding:5px 9px;
+    border-radius:20px;
+    background:#1d1d1d;
+    border:1px solid #333;
+    font-size:12px;
+}
+
+/* AUTH */
+
+.auth-switch{
+    text-align:center;
+    color:#999;
+    margin-top:15px;
+    font-size:14px;
+}
+
+.auth-switch button{
+    background:none;
+    border:0;
+    color:#d7b56d;
+    font-weight:700;
+}
+
+/* CHECKOUT */
+
+.payment-box{
+    background:#17130b;
+    border:1px solid #5c4925;
+    border-radius:10px;
+    padding:15px;
+    margin:18px 0;
+}
+
+.payment-box h3{
+    color:#d7b56d;
     margin-bottom:10px;
 }
 
-.status{
-    display:inline-block;
-    padding:5px 9px;
-    border-radius:4px;
-    background:#172235;
+.payment-box p{
+    color:#bbb;
+    line-height:1.7;
+    font-size:14px;
+}
+
+.payment-box strong{
     color:#fff;
-    font-size:13px;
-    margin-top:5px;
+}
+
+.whatsapp-btn{
+    display:none;
+    width:100%;
+    text-align:center;
+    background:#1b6f39;
+    color:#fff;
+    padding:13px;
+    border-radius:8px;
+    margin-top:10px;
+    font-weight:800;
+}
+
+.success-message{
+    display:none;
+    background:#102315;
+    border:1px solid #285c34;
+    color:#a9e8b8;
+    padding:13px;
+    border-radius:8px;
+    margin-bottom:15px;
+    line-height:1.5;
+}
+
+/* ADMIN */
+
+.admin-summary{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:10px;
+    margin-bottom:20px;
+}
+
+.summary-card{
+    background:#0a0a0a;
+    border:1px solid #292929;
+    border-radius:10px;
+    padding:15px;
+    text-align:center;
+}
+
+.summary-card span{
+    display:block;
+    color:#888;
+    font-size:12px;
+    margin-bottom:7px;
+}
+
+.summary-card strong{
+    font-size:22px;
+    color:#d7b56d;
+}
+
+.admin-order{
+    background:#0a0a0a;
+    border:1px solid #292929;
+    border-radius:13px;
+    padding:18px;
+    margin-bottom:15px;
+}
+
+.admin-order-top{
+    display:flex;
+    justify-content:space-between;
+    gap:15px;
+    flex-wrap:wrap;
+    margin-bottom:12px;
+}
+
+.admin-order-top h3{
+    color:#d7b56d;
+}
+
+.admin-order-details{
+    color:#aaa;
+    font-size:14px;
+    line-height:1.7;
+    margin-bottom:15px;
+}
+
+.admin-order-details strong{
+    color:#fff;
+}
+
+.admin-controls{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+}
+
+.admin-control label{
+    display:block;
+    color:#888;
+    font-size:12px;
+    margin-bottom:6px;
+}
+
+.admin-control select{
+    width:100%;
+    padding:10px;
+    border-radius:7px;
+    background:#151515;
+    color:#fff;
+    border:1px solid #3a3a3a;
+}
+
+.update-order-btn{
+    width:100%;
+    margin-top:12px;
+    background:#d7b56d;
+    color:#080808;
+    border:0;
+    border-radius:8px;
+    padding:11px;
+    font-weight:800;
+}
+
+.admin-empty{
+    text-align:center;
+    color:#888;
+    padding:40px 10px;
 }
 
 /* MOBILE */
 
-@media(max-width:600px){
+@media(max-width:650px){
 
-    header{
-        padding:15px 4%;
+    .header-inner{
+        padding:14px 12px;
     }
 
     .logo{
@@ -493,527 +754,689 @@ footer strong{
         letter-spacing:2px;
     }
 
-    .header-actions{
-        gap:5px;
-    }
-
-    .cart-btn,
-    .account-btn{
-        padding:10px 9px;
+    .header-btn{
+        padding:8px 10px;
         font-size:12px;
     }
 
     .hero{
-        min-height:65vh;
+        padding:60px 18px 45px;
     }
 
     .hero h1{
-        letter-spacing:4px;
+        font-size:43px;
     }
 
     .section{
-        padding:50px 5%;
+        padding:35px 15px 55px;
     }
 
-    .product img{
-        height:240px;
+    .admin-summary{
+        grid-template-columns:repeat(2,1fr);
     }
+
+    .admin-controls{
+        grid-template-columns:1fr;
+    }
+
+    .modal{
+        padding:20px;
+    }
+
 }
+
 </style>
 </head>
 
 <body>
 
 <header>
+    <div class="header-inner">
 
-<div class="logo">
-GRANDSON ROYALE
-</div>
+        <div class="logo">
+            GRANDSON ROYALE
+        </div>
 
-<div class="header-actions">
+        <div class="header-actions">
+            <button class="header-btn" onclick="openAccount()">
+                ACCOUNT
+            </button>
 
-<button class="account-btn" onclick="openAccount()">
-👤 ACCOUNT
-</button>
+            <button class="header-btn" onclick="openCart()">
+                CART (<span id="cartCount">0</span>)
+            </button>
+        </div>
 
-<button class="cart-btn" onclick="openCart()">
-🛒 CART (<span id="cartCount">0</span>)
-</button>
-
-</div>
-
+    </div>
 </header>
+
 
 <section class="hero">
 
-<div>
+    <small>TIMELESS • ROYAL • ELEGANT</small>
 
-<h1>GRANDSON ROYALE</h1>
+    <h1>GRANDSON ROYALE</h1>
 
-<p>
-Luxury timepieces designed for people who appreciate
-style, confidence and timeless elegance.
-</p>
-
-<button onclick="document.getElementById('collection').scrollIntoView()">
-SHOP COLLECTION
-</button>
-
-</div>
+    <p>
+        Luxury timepieces designed for people who value presence,
+        precision and timeless style.
+    </p>
 
 </section>
 
-<section class="section" id="collection">
-
-<div class="section-title">
-
-<h2>THE COLLECTION</h2>
-
-<p>Premium watches for men and women.</p>
-
-</div>
-
-<div class="products">
-
-<div class="product">
-
-<img src="https://images.unsplash.com/photo-1523170335258-f5ed11844a49?auto=format&fit=crop&w=800&q=80">
-
-<div class="product-info">
-
-<h3>Royal Gold</h3>
-
-<div class="price">
-₦850,000
-</div>
-
-<button onclick="addToCart(
-'Royal Gold',
-850000,
-'https://images.unsplash.com/photo-1523170335258-f5ed11844a49?auto=format&fit=crop&w=800&q=80'
-)">
-ADD TO CART
-</button>
-
-</div>
-</div>
-
-<div class="product">
-
-<img src="https://images.unsplash.com/photo-1524805444758-089113d48a6d?auto=format&fit=crop&w=800&q=80">
-
-<div class="product-info">
-
-<h3>Black Royale</h3>
-
-<div class="price">
-₦620,000
-</div>
-
-<button onclick="addToCart(
-'Black Royale',
-620000,
-'https://images.unsplash.com/photo-1524805444758-089113d48a6d?auto=format&fit=crop&w=800&q=80'
-)">
-ADD TO CART
-</button>
-
-</div>
-</div>
-
-<div class="product">
-
-<img src="https://images.unsplash.com/photo-1539874754764-5a96559165b0?auto=format&fit=crop&w=800&q=80">
-
-<div class="product-info">
-
-<h3>Classic Silver</h3>
-
-<div class="price">
-₦490,000
-</div>
-
-<button onclick="addToCart(
-'Classic Silver',
-490000,
-'https://images.unsplash.com/photo-1539874754764-5a96559165b0?auto=format&fit=crop&w=800&q=80'
-)">
-ADD TO CART
-</button>
-
-</div>
-</div>
-
-<div class="product">
-
-<img src="https://images.unsplash.com/photo-1522312346375-d1a52e2b99b3?auto=format&fit=crop&w=800&q=80">
-
-<div class="product-info">
-
-<h3>Executive</h3>
-
-<div class="price">
-₦1,200,000
-</div>
-
-<button onclick="addToCart(
-'Executive',
-1200000,
-'https://images.unsplash.com/photo-1522312346375-d1a52e2b99b3?auto=format&fit=crop&w=800&q=80'
-)">
-ADD TO CART
-</button>
-
-</div>
-</div>
-
-</div>
-
-</section>
 
 <section class="section">
 
-<div class="section-title">
+    <div class="section-title">
+        <h2>THE COLLECTION</h2>
+        <p>Discover our signature timepieces.</p>
+    </div>
 
-<h2>ABOUT GRANDSON ROYALE</h2>
+    <div class="products">
 
-</div>
+        <div class="product-card">
 
-<div class="about">
+            <div class="watch-image">
+                <div class="watch-face">GR</div>
+            </div>
 
-<p>
-GRANDSON ROYALE is an online luxury watch store offering
-premium and stylish watches for men and women, with
-online ordering and delivery.
-</p>
+            <h3>Royal Gold</h3>
 
-</div>
+            <p class="product-description">
+                A bold luxury design with a classic royal finish.
+            </p>
+
+            <div class="price">
+                ₦850,000
+            </div>
+
+            <button class="add-btn"
+                onclick="addToCart('Royal Gold',850000)">
+                ADD TO CART
+            </button>
+
+        </div>
+
+
+        <div class="product-card">
+
+            <div class="watch-image">
+                <div class="watch-face">GR</div>
+            </div>
+
+            <h3>Black Royale</h3>
+
+            <p class="product-description">
+                A dark, sophisticated timepiece made for a powerful look.
+            </p>
+
+            <div class="price">
+                ₦620,000
+            </div>
+
+            <button class="add-btn"
+                onclick="addToCart('Black Royale',620000)">
+                ADD TO CART
+            </button>
+
+        </div>
+
+
+        <div class="product-card">
+
+            <div class="watch-image">
+                <div class="watch-face">GR</div>
+            </div>
+
+            <h3>Classic Silver</h3>
+
+            <p class="product-description">
+                Clean silver styling with an elegant timeless appearance.
+            </p>
+
+            <div class="price">
+                ₦490,000
+            </div>
+
+            <button class="add-btn"
+                onclick="addToCart('Classic Silver',490000)">
+                ADD TO CART
+            </button>
+
+        </div>
+
+
+        <div class="product-card">
+
+            <div class="watch-image">
+                <div class="watch-face">GR</div>
+            </div>
+
+            <h3>Executive</h3>
+
+            <p class="product-description">
+                Premium executive styling for a distinguished presence.
+            </p>
+
+            <div class="price">
+                ₦1,200,000
+            </div>
+
+            <button class="add-btn"
+                onclick="addToCart('Executive',1200000)">
+                ADD TO CART
+            </button>
+
+        </div>
+
+    </div>
 
 </section>
+
 
 <section class="section">
 
-<div class="section-title">
+    <div class="section-title">
+        <h2>WHY GRANDSON ROYALE</h2>
+        <p>A luxury experience from order to delivery.</p>
+    </div>
 
-<h2>WHY GRANDSON ROYALE?</h2>
+    <div class="features">
 
-</div>
+        <div class="feature">
+            <h3>Premium Selection</h3>
+            <p>
+                Carefully selected luxury-inspired watches
+                designed for a distinguished appearance.
+            </p>
+        </div>
 
-<div class="features">
+        <div class="feature">
+            <h3>Secure Ordering</h3>
+            <p>
+                Create an account, place your order and
+                track your order status from your account.
+            </p>
+        </div>
 
-<div class="feature">
+        <div class="feature">
+            <h3>Customer Support</h3>
+            <p>
+                Speak with our customer service team through
+                WhatsApp or telephone.
+            </p>
+        </div>
 
-<h3>Luxury Design</h3>
-
-<p>
-Elegant designs created to make a statement.
-</p>
-
-</div>
-
-<div class="feature">
-
-<h3>Premium Style</h3>
-
-<p>
-Timepieces designed for everyday confidence.
-</p>
-
-</div>
-
-<div class="feature">
-
-<h3>Men & Women</h3>
-
-<p>
-Collections suitable for every style.
-</p>
-
-</div>
-
-<div class="feature">
-
-<h3>Customer Care</h3>
-
-<p>
-We are available to help with your order.
-</p>
-
-</div>
-
-</div>
+    </div>
 
 </section>
+
+
+<section class="section">
+
+    <div class="service-box">
+
+        <h2>CUSTOMER SERVICE</h2>
+
+        <p>
+            Need help with an order, payment or delivery?
+            Contact GRANDSON ROYALE customer service.
+        </p>
+
+        <div class="service-buttons">
+
+            <a
+                class="service-btn"
+                href="https://wa.me/2348108521685?text=Hello%20GRANDSON%20ROYALE%20Customer%20Service%2C%20I%20need%20help%20with%20my%20order."
+                target="_blank"
+                rel="noopener"
+            >
+                📱 WHATSAPP
+            </a>
+
+            <a
+                class="service-btn"
+                href="tel:08057941379"
+            >
+                ☎️ CALL US
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
 
 <footer>
 
-<p>
-<strong>GRANDSON ROYALE</strong>
-</p>
-
-<p>
-Luxury That Speaks Before You Do.
-</p>
-
-<p>
-WhatsApp: +234 810 852 1685
-</p>
-
-<p>
-Calls: 08057941379
-</p>
-
-<p>
-© 2026 Grandson Royale. All Rights Reserved.
-</p>
+    <p>
+        © 2026 <strong>GRANDSON ROYALE</strong>.
+        All rights reserved.
+    </p>
 
 </footer>
 
-<!-- CART -->
 
-<div class="cart" id="cart">
+<!-- CART MODAL -->
 
-<div class="cart-header">
+<div class="overlay" id="cartModal">
 
-<h2>Your Cart</h2>
+    <div class="modal">
 
-<button class="close" onclick="closeCart()">
-×
-</button>
+        <div class="modal-header">
 
-</div>
+            <h2>YOUR CART</h2>
 
-<div id="cartItems"></div>
+            <button class="close-btn" onclick="closeCart()">
+                ×
+            </button>
 
-<div class="total">
+        </div>
 
-Total: ₦<span id="cartTotal">0</span>
+        <div id="cartItems"></div>
 
-</div>
+        <div class="cart-total">
 
-<button class="checkout" onclick="openCheckout()">
-CHECKOUT
-</button>
+            <span>TOTAL</span>
 
-</div>
+            <span id="cartTotal">
+                ₦0
+            </span>
 
-<!-- CHECKOUT -->
+        </div>
 
-<div class="modal" id="checkoutModal">
+        <button
+            class="primary-btn"
+            onclick="openCheckout()"
+        >
+            CHECKOUT
+        </button>
 
-<div class="modal-box">
-
-<h2>
-GRANDSON ROYALE CHECKOUT
-</h2>
-
-<input
-id="customerName"
-type="text"
-placeholder="Full Name"
->
-
-<input
-id="customerPhone"
-type="tel"
-placeholder="Phone Number"
->
-
-<input
-id="customerEmail"
-type="email"
-placeholder="Email Address"
->
-
-<textarea
-id="customerAddress"
-placeholder="Delivery Address"
-></textarea>
-
-<div class="payment-box">
-
-<strong>PAY WITH OPAY</strong>
-
-<br><br>
-
-Account Number:
-<strong>8108521685</strong>
-
-<br>
-
-Account Name:
-<strong>Asogwo Victor</strong>
-
-<br>
-
-Bank:
-<strong>OPay</strong>
-
-<br>
-
-WhatsApp:
-<strong>08108521685</strong>
-
-<br>
-
-Calls:
-<strong>08057941379</strong>
+    </div>
 
 </div>
 
-<p style="color:#aaa;font-size:14px;line-height:1.6;">
 
-Transfer the exact order amount to the OPay account above.
+<!-- ACCOUNT MODAL -->
 
-After payment, click the button below to save your order
-and send your order details on WhatsApp.
+<div class="overlay" id="accountModal">
 
-</p>
+    <div class="modal">
 
-<button
-class="primary-btn"
-onclick="placeOrder()"
->
+        <div class="modal-header">
 
-PLACE ORDER
+            <h2>MY ACCOUNT</h2>
 
-</button>
+            <button class="close-btn" onclick="closeAccount()">
+                ×
+            </button>
 
-<a
-id="whatsappOrder"
-class="whatsapp"
-target="_blank"
-style="display:none;"
->
+        </div>
 
-📱 SEND ORDER ON WHATSAPP
 
-</a>
+        <!-- LOGIN -->
 
-<button
-class="cancel"
-onclick="closeCheckout()"
->
+        <div id="loginView">
 
-CANCEL
+            <div class="form-group">
+                <label>Email</label>
 
-</button>
+                <input
+                    type="email"
+                    id="loginEmail"
+                    placeholder="Your email"
+                >
+            </div>
+
+
+            <div class="form-group">
+                <label>Password</label>
+
+                <input
+                    type="password"
+                    id="loginPassword"
+                    placeholder="Your password"
+                >
+            </div>
+
+
+            <button
+                class="primary-btn"
+                onclick="signIn()"
+            >
+                LOGIN
+            </button>
+
+
+            <div class="auth-switch">
+
+                Don't have an account?
+
+                <button onclick="showSignup()">
+                    CREATE ACCOUNT
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- SIGNUP -->
+
+        <div id="signupView" style="display:none;">
+
+            <div class="form-group">
+
+                <label>Full Name</label>
+
+                <input
+                    type="text"
+                    id="signupName"
+                    placeholder="Full name"
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>Email</label>
+
+                <input
+                    type="email"
+                    id="signupEmail"
+                    placeholder="Email address"
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>Password</label>
+
+                <input
+                    type="password"
+                    id="signupPassword"
+                    placeholder="Create password"
+                >
+
+            </div>
+
+
+            <button
+                class="primary-btn"
+                onclick="signUp()"
+            >
+                CREATE ACCOUNT
+            </button>
+
+
+            <div class="auth-switch">
+
+                Already have an account?
+
+                <button onclick="showLogin()">
+                    LOGIN
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- LOGGED IN -->
+
+        <div id="loggedInView" style="display:none;">
+
+            <div class="account-box">
+
+                <div class="account-email">
+
+                    <span>Email</span>
+
+                    <strong id="accountEmail"></strong>
+
+                </div>
+
+
+                <div class="account-email">
+
+                    <span>Name</span>
+
+                    <strong id="accountName"></strong>
+
+                </div>
+
+
+                <div class="order-history">
+
+                    <h3>MY ORDERS</h3>
+
+                    <div id="myOrders">
+                        Loading...
+                    </div>
+
+                </div>
+
+
+                <button
+                    id="adminOrdersButton"
+                    class="primary-btn"
+                    style="display:none;"
+                    onclick="openAdminOrders()"
+                >
+                    ADMIN ORDERS
+                </button>
+
+
+                <button
+                    class="secondary-btn"
+                    onclick="signOut()"
+                >
+                    LOG OUT
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
 
 </div>
 
+
+<!-- CHECKOUT MODAL -->
+
+<div class="overlay" id="checkoutModal">
+
+    <div class="modal">
+
+        <div class="modal-header">
+
+            <h2>CHECKOUT</h2>
+
+            <button class="close-btn" onclick="closeCheckout()">
+                ×
+            </button>
+
+        </div>
+
+
+        <div
+            id="checkoutSuccess"
+            class="success-message"
+        >
+            Your order has been saved successfully.
+            You can now send the order details to
+            GRANDSON ROYALE on WhatsApp.
+        </div>
+
+
+        <div class="form-group">
+
+            <label>Full Name</label>
+
+            <input
+                type="text"
+                id="customerName"
+                placeholder="Full name"
+            >
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>Phone</label>
+
+            <input
+                type="tel"
+                id="customerPhone"
+                placeholder="Phone number"
+            >
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>Email</label>
+
+            <input
+                type="email"
+                id="customerEmail"
+                placeholder="Email address"
+            >
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>Delivery Address</label>
+
+            <textarea
+                id="deliveryAddress"
+                placeholder="Full delivery address"
+            ></textarea>
+
+        </div>
+
+
+        <div class="payment-box">
+
+            <h3>OPay Payment</h3>
+
+            <p>
+                Payment method: <strong>OPay</strong><br>
+                Please contact GRANDSON ROYALE customer service
+                for payment instructions after placing your order.
+            </p>
+
+        </div>
+
+
+        <button
+            id="placeOrderButton"
+            class="primary-btn"
+            onclick="placeOrder()"
+        >
+            PLACE ORDER
+        </button>
+
+
+        <a
+            id="whatsappOrder"
+            class="whatsapp-btn"
+            href="#"
+            target="_blank"
+            rel="noopener"
+        >
+            📱 SEND ORDER ON WHATSAPP
+        </a>
+
+    </div>
+
 </div>
 
-<!-- ACCOUNT -->
 
-<div class="modal" id="accountModal">
+<!-- ADMIN MODAL -->
 
-<div class="modal-box">
+<div class="overlay" id="adminModal">
 
-<div id="authSection">
+    <div class="modal large">
 
-<h2>GRANDSON ROYALE ACCOUNT</h2>
+        <div class="modal-header">
 
-<input
-id="authEmail"
-type="email"
-placeholder="Email Address"
->
+            <h2>ADMIN ORDERS</h2>
 
-<input
-id="authPassword"
-type="password"
-placeholder="Password"
->
+            <button
+                class="close-btn"
+                onclick="closeAdminOrders()"
+            >
+                ×
+            </button>
 
-<input
-id="authName"
-type="text"
-placeholder="Full Name (for new account)"
->
+        </div>
 
-<button
-class="primary-btn"
-onclick="signUp()"
->
 
-CREATE ACCOUNT
+        <div class="admin-summary">
 
-</button>
+            <div class="summary-card">
+                <span>TOTAL ORDERS</span>
+                <strong id="adminTotalOrders">0</strong>
+            </div>
 
-<button
-class="secondary-btn"
-onclick="signIn()"
->
+            <div class="summary-card">
+                <span>PENDING PAYMENT</span>
+                <strong id="adminPendingPayments">0</strong>
+            </div>
 
-LOGIN
+            <div class="summary-card">
+                <span>ACTIVE ORDERS</span>
+                <strong id="adminActiveOrders">0</strong>
+            </div>
 
-</button>
+            <div class="summary-card">
+                <span>COMPLETED</span>
+                <strong id="adminCompletedOrders">0</strong>
+            </div>
 
-<p id="authMessage"
-style="margin-top:15px;color:#aaa;line-height:1.6;">
-</p>
+        </div>
 
-</div>
 
-<div id="loggedInSection" style="display:none;">
+        <button
+            class="secondary-btn"
+            onclick="loadAdminOrders()"
+        >
+            🔄 REFRESH ORDERS
+        </button>
 
-<h2>MY ACCOUNT</h2>
 
-<div class="account-info">
+        <div
+            id="adminOrdersList"
+            style="margin-top:20px;"
+        >
+            Loading orders...
+        </div>
 
-<div>
-<strong>Email:</strong>
-<span id="accountEmail"></span>
-</div>
-
-<div>
-<strong>Name:</strong>
-<span id="accountName"></span>
-</div>
+    </div>
 
 </div>
 
-<h2 style="font-size:22px;">
-MY ORDERS
-</h2>
 
-<div id="ordersList">
+<!-- SUPABASE -->
 
-<p style="color:#aaa;">
-Loading orders...
-</p>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
-</div>
-
-<button
-class="secondary-btn"
-onclick="signOut()"
->
-
-LOG OUT
-
-</button>
-
-</div>
-
-<button
-class="cancel"
-onclick="closeAccount()"
->
-
-CLOSE
-
-</button>
-
-</div>
-
-</div>
 
 <script>
 
-/* ================================
+/* =========================================================
    SUPABASE
-================================ */
+========================================================= */
 
 const SUPABASE_URL =
 "https://ygoncomnmamvqkoisrlh.supabase.co";
@@ -1028,17 +1451,37 @@ window.supabase.createClient(
 );
 
 
-/* ================================
+/* =========================================================
+   ADMIN
+========================================================= */
+
+const ADMIN_USER_ID =
+"5d17a653-684b-473d-900a-c50416bb0644";
+
+
+function isAdmin(user){
+
+    if(!user){
+        return false;
+    }
+
+    return user.id === ADMIN_USER_ID;
+}
+
+
+/* =========================================================
    CART
-================================ */
+========================================================= */
 
 let cart = [];
 
+let isPlacingOrder = false;
 
-function addToCart(name,price,image){
+
+function addToCart(name,price){
 
     const existing =
-    cart.find(item => item.name === name);
+        cart.find(item => item.name === name);
 
     if(existing){
 
@@ -1049,7 +1492,6 @@ function addToCart(name,price,image){
         cart.push({
             name:name,
             price:price,
-            image:image,
             quantity:1
         });
 
@@ -1057,119 +1499,112 @@ function addToCart(name,price,image){
 
     updateCart();
 
-    openCart();
-
+    alert(name + " added to cart.");
 }
 
 
 function updateCart(){
 
-    const container =
-    document.getElementById("cartItems");
-
     const count =
-    cart.reduce(
-        (sum,item) =>
-        sum + item.quantity,
-        0
-    );
+        cart.reduce(
+            (sum,item) => sum + item.quantity,
+            0
+        );
 
-    document.getElementById("cartCount")
-    .textContent = count;
+    document.getElementById("cartCount").textContent =
+        count;
 
+
+    const container =
+        document.getElementById("cartItems");
 
     if(cart.length === 0){
 
         container.innerHTML =
-        '<div class="empty">Your cart is empty.</div>';
+            '<p style="color:#888;text-align:center;padding:30px 0;">Your cart is empty.</p>';
 
-        document.getElementById("cartTotal")
-        .textContent = "0";
+        document.getElementById("cartTotal").textContent =
+            "₦0";
 
         return;
-
     }
 
 
-    container.innerHTML = "";
-
+    let html = "";
 
     cart.forEach((item,index)=>{
 
-        const div =
-        document.createElement("div");
+        html += `
+            <div class="cart-item">
 
-        div.className = "cart-item";
+                <div class="cart-item-info">
 
+                    <div class="cart-item-name">
+                        ${escapeHtml(item.name)}
+                    </div>
 
-        div.innerHTML = `
+                    <div class="cart-item-price">
+                        ₦${(item.price * item.quantity).toLocaleString()}
+                    </div>
 
-        <img src="${item.image}">
+                    <div class="quantity-controls">
 
-        <div style="flex:1">
+                        <button
+                            onclick="changeQuantity(${index},-1)"
+                        >
+                            −
+                        </button>
 
-        <h4>${item.name}</h4>
+                        <span>
+                            ${item.quantity}
+                        </span>
 
-        <div style="color:#2196f3">
+                        <button
+                            onclick="changeQuantity(${index},1)"
+                        >
+                            +
+                        </button>
 
-        ₦${item.price.toLocaleString()}
+                        <button
+                            class="remove-btn"
+                            onclick="removeFromCart(${index})"
+                        >
+                            Remove
+                        </button>
 
-        </div>
+                    </div>
 
-        <div class="qty">
+                </div>
 
-        <button
-        onclick="changeQty(${index},-1)">
-        −
-        </button>
-
-        <span>
-        ${item.quantity}
-        </span>
-
-        <button
-        onclick="changeQty(${index},1)">
-        +
-        </button>
-
-        </div>
-
-        <button
-        class="remove"
-        onclick="removeItem(${index})">
-        Remove
-        </button>
-
-        </div>
+            </div>
         `;
-
-
-        container.appendChild(div);
 
     });
 
 
+    container.innerHTML = html;
+
+
     const total =
-    cart.reduce(
-        (sum,item) =>
-        sum +
-        item.price *
-        item.quantity,
-        0
-    );
+        cart.reduce(
+            (sum,item) =>
+                sum + item.price * item.quantity,
+            0
+        );
 
 
-    document.getElementById("cartTotal")
-    .textContent =
-    total.toLocaleString();
-
+    document.getElementById("cartTotal").textContent =
+        "₦" + total.toLocaleString();
 }
 
 
-function changeQty(index,amount){
+function changeQuantity(index,change){
 
-    cart[index].quantity += amount;
+    if(!cart[index]){
+        return;
+    }
 
+    cart[index].quantity += change;
 
     if(cart[index].quantity <= 0){
 
@@ -1177,287 +1612,429 @@ function changeQty(index,amount){
 
     }
 
-
     updateCart();
-
 }
 
 
-function removeItem(index){
+function removeFromCart(index){
+
+    if(!cart[index]){
+        return;
+    }
 
     cart.splice(index,1);
 
     updateCart();
-
 }
 
 
 function openCart(){
 
-    document
-    .getElementById("cart")
-    .classList.add("open");
+    updateCart();
 
+    document
+        .getElementById("cartModal")
+        .classList.add("show");
 }
 
 
 function closeCart(){
 
     document
-    .getElementById("cart")
-    .classList.remove("open");
-
+        .getElementById("cartModal")
+        .classList.remove("show");
 }
 
 
-/* ================================
-   AUTH
-================================ */
+/* =========================================================
+   ACCOUNT
+========================================================= */
 
 async function getCurrentUser(){
 
     const {
         data,
         error
-    } =
-    await supabaseClient.auth.getUser();
+    } = await supabaseClient.auth.getUser();
 
     if(error){
 
-        return null;
+        console.error(error);
 
+        return null;
     }
 
     return data.user;
-
 }
 
 
-async function openAccount(){
+function openAccount(){
 
     document
-    .getElementById("accountModal")
-    .classList.add("show");
+        .getElementById("accountModal")
+        .classList.add("show");
 
-    await refreshAccount();
-
+    refreshAccount();
 }
 
 
 function closeAccount(){
 
     document
-    .getElementById("accountModal")
-    .classList.remove("show");
+        .getElementById("accountModal")
+        .classList.remove("show");
+}
 
+
+function showLogin(){
+
+    document.getElementById("loginView").style.display =
+        "block";
+
+    document.getElementById("signupView").style.display =
+        "none";
+
+    document.getElementById("loggedInView").style.display =
+        "none";
+}
+
+
+function showSignup(){
+
+    document.getElementById("loginView").style.display =
+        "none";
+
+    document.getElementById("signupView").style.display =
+        "block";
+
+    document.getElementById("loggedInView").style.display =
+        "none";
 }
 
 
 async function refreshAccount(){
 
     const user =
-    await getCurrentUser();
-
-    const authSection =
-    document.getElementById("authSection");
-
-    const loggedInSection =
-    document.getElementById("loggedInSection");
+        await getCurrentUser();
 
 
     if(!user){
 
-        authSection.style.display = "block";
-
-        loggedInSection.style.display = "none";
+        showLogin();
 
         return;
+    }
+
+
+    document.getElementById("loginView").style.display =
+        "none";
+
+    document.getElementById("signupView").style.display =
+        "none";
+
+    document.getElementById("loggedInView").style.display =
+        "block";
+
+
+    document.getElementById("accountEmail").textContent =
+        user.email || "";
+
+
+    document.getElementById("accountName").textContent =
+        user.user_metadata?.full_name ||
+        "Customer";
+
+
+    const adminButton =
+        document.getElementById("adminOrdersButton");
+
+
+    if(isAdmin(user)){
+
+        adminButton.style.display =
+            "block";
+
+    }else{
+
+        adminButton.style.display =
+            "none";
 
     }
 
 
-    authSection.style.display = "none";
-
-    loggedInSection.style.display = "block";
-
-
-    document.getElementById("accountEmail")
-    .textContent =
-    user.email || "";
-
-
-    document.getElementById("accountName")
-    .textContent =
-    user.user_metadata?.full_name ||
-    "Customer";
-
-
-    loadOrders();
-
+    await loadMyOrders();
 }
 
 
+/* =========================================================
+   SIGN UP
+========================================================= */
+
 async function signUp(){
 
+    const name =
+        document.getElementById("signupName").value.trim();
+
     const email =
-    document.getElementById("authEmail")
-    .value
-    .trim();
+        document.getElementById("signupEmail").value.trim();
 
     const password =
-    document.getElementById("authPassword")
-    .value;
-
-    const name =
-    document.getElementById("authName")
-    .value
-    .trim();
-
-    const message =
-    document.getElementById("authMessage");
+        document.getElementById("signupPassword").value;
 
 
-    if(!email || !password || !name){
+    if(!name || !email || !password){
 
-        message.textContent =
-        "Please enter your full name, email and password.";
+        alert("Please fill in all fields.");
 
         return;
-
     }
 
 
     if(password.length < 6){
 
-        message.textContent =
-        "Password must be at least 6 characters.";
+        alert("Password must be at least 6 characters.");
 
         return;
-
     }
-
-
-    message.textContent =
-    "Creating your account...";
 
 
     const {
         data,
         error
     } =
-    await supabaseClient.auth.signUp({
+        await supabaseClient.auth.signUp({
 
-        email:email,
+            email:email,
 
-        password:password,
+            password:password,
 
-        options:{
-            data:{
-                full_name:name
+            options:{
+                data:{
+                    full_name:name
+                },
+
+                emailRedirectTo:
+                    window.location.href
             }
-        }
 
-    });
+        });
 
 
     if(error){
 
-        message.textContent =
-        error.message;
+        alert(error.message);
 
         return;
-
     }
 
 
-    if(data.session){
+    if(data.user){
 
-        message.textContent =
-        "Account created successfully.";
+        alert(
+            "Account created successfully. Please check your Gmail and confirm your email before logging in."
+        );
 
-        await refreshAccount();
-
-    }else{
-
-        message.textContent =
-        "Account created. Please check your email to confirm your account before logging in.";
+        showLogin();
 
     }
 
 }
 
+
+/* =========================================================
+   LOGIN
+========================================================= */
 
 async function signIn(){
 
     const email =
-    document.getElementById("authEmail")
-    .value
-    .trim();
+        document.getElementById("loginEmail").value.trim();
 
     const password =
-    document.getElementById("authPassword")
-    .value;
-
-    const message =
-    document.getElementById("authMessage");
+        document.getElementById("loginPassword").value;
 
 
     if(!email || !password){
 
-        message.textContent =
-        "Enter your email and password.";
+        alert("Please enter your email and password.");
 
         return;
-
     }
 
 
-    message.textContent =
-    "Logging in...";
-
-
     const {
+        data,
         error
     } =
-    await supabaseClient.auth.signInWithPassword({
+        await supabaseClient.auth.signInWithPassword({
 
-        email:email,
+            email:email,
+            password:password
 
-        password:password
-
-    });
+        });
 
 
     if(error){
 
-        message.textContent =
-        error.message;
+        alert(error.message);
 
         return;
-
     }
 
 
-    message.textContent =
-    "Login successful.";
+    alert("Login successful.");
 
     await refreshAccount();
-
 }
 
+
+/* =========================================================
+   LOG OUT
+========================================================= */
 
 async function signOut(){
 
-    await supabaseClient.auth.signOut();
+    const {
+        error
+    } =
+        await supabaseClient.auth.signOut();
 
-    await refreshAccount();
 
+    if(error){
+
+        alert(error.message);
+
+        return;
+    }
+
+
+    alert("You have been logged out.");
+
+    refreshAccount();
 }
 
 
-/* ================================
+/* =========================================================
+   MY ORDERS
+========================================================= */
+
+async function loadMyOrders(){
+
+    const user =
+        await getCurrentUser();
+
+
+    if(!user){
+
+        return;
+    }
+
+
+    const container =
+        document.getElementById("myOrders");
+
+
+    container.innerHTML =
+        "Loading...";
+
+
+    const {
+        data,
+        error
+    } =
+        await supabaseClient
+            .from("orders")
+            .select("*")
+            .eq("user_id",user.id)
+            .order("created_at",{ascending:false});
+
+
+    if(error){
+
+        console.error(error);
+
+        container.innerHTML =
+            '<p style="color:#ff9999;">Unable to load orders.</p>';
+
+        return;
+    }
+
+
+    if(!data || data.length === 0){
+
+        container.innerHTML =
+            '<p style="color:#888;">You have no orders yet.</p>';
+
+        return;
+    }
+
+
+    let html = "";
+
+
+    data.forEach(order=>{
+
+        const created =
+            order.created_at
+                ? new Date(order.created_at).toLocaleString()
+                : "";
+
+
+        html += `
+
+            <div class="order-card">
+
+                <p>
+                    <strong>Order #${escapeHtml(String(order.id))}</strong>
+                </p>
+
+                <p>
+                    Date: ${escapeHtml(created)}
+                </p>
+
+                <p>
+                    ${escapeHtml(order.items || "")}
+                </p>
+
+                <p>
+                    Total:
+                    <strong>
+                        ₦${Number(order.total_amount || 0).toLocaleString()}
+                    </strong>
+                </p>
+
+                <div class="status-row">
+
+                    <span class="status-badge">
+                        Payment:
+                        ${escapeHtml(
+                            formatStatus(order.payment_status)
+                        )}
+                    </span>
+
+                    <span class="status-badge">
+                        Order:
+                        ${escapeHtml(
+                            formatStatus(order.order_status)
+                        )}
+                    </span>
+
+                </div>
+
+            </div>
+
+        `;
+
+    });
+
+
+    container.innerHTML = html;
+}
+
+
+/* =========================================================
    CHECKOUT
-================================ */
+========================================================= */
 
 async function openCheckout(){
 
@@ -1466,12 +2043,11 @@ async function openCheckout(){
         alert("Your cart is empty.");
 
         return;
-
     }
 
 
     const user =
-    await getCurrentUser();
+        await getCurrentUser();
 
 
     if(!user){
@@ -1485,295 +2061,841 @@ async function openCheckout(){
         openAccount();
 
         return;
-
     }
 
 
     document
-    .getElementById("checkoutModal")
-    .classList.add("show");
+        .getElementById("checkoutModal")
+        .classList.add("show");
 
 
     const fullName =
-    user.user_metadata?.full_name || "";
+        user.user_metadata?.full_name || "";
 
 
-    document
-    .getElementById("customerName")
-    .value =
-    fullName;
+    document.getElementById("customerName").value =
+        fullName;
 
 
-    document
-    .getElementById("customerEmail")
-    .value =
-    user.email || "";
+    document.getElementById("customerEmail").value =
+        user.email || "";
+
+
+    document.getElementById("checkoutSuccess").style.display =
+        "none";
+
+
+    const whatsappButton =
+        document.getElementById("whatsappOrder");
+
+
+    whatsappButton.style.display =
+        "none";
+
+
+    whatsappButton.href =
+        "#";
+
+
+    document.getElementById("placeOrderButton").disabled =
+        false;
 
 
     updateWhatsApp();
-
 }
 
 
 function closeCheckout(){
 
     document
-    .getElementById("checkoutModal")
-    .classList.remove("show");
+        .getElementById("checkoutModal")
+        .classList.remove("show");
 
 }
 
 
-/* ================================
+/* =========================================================
    WHATSAPP MESSAGE
-================================ */
+========================================================= */
 
 function buildWhatsAppMessage(
     name,
     phone,
     email,
     address,
-    cartSnapshot
+    cartSnapshot,
+    orderId = null
 ){
 
     let message =
-    "GRANDSON ROYALE ORDER\n\n";
+        "GRANDSON ROYALE ORDER\n\n";
+
+
+    if(orderId){
+
+        message +=
+            "Order ID: #" +
+            orderId +
+            "\n";
+
+    }
 
 
     message +=
-    "Customer: " +
-    name +
-    "\n";
+        "Customer: " +
+        name +
+        "\n";
 
 
     message +=
-    "Phone: " +
-    phone +
-    "\n";
+        "Phone: " +
+        phone +
+        "\n";
 
 
     message +=
-    "Email: " +
-    email +
-    "\n";
+        "Email: " +
+        email +
+        "\n";
 
 
     message +=
-    "Address: " +
-    address +
-    "\n\n";
+        "Address: " +
+        address +
+        "\n\n";
 
 
     message +=
-    "ORDER:\n";
+        "ORDER:\n";
 
 
     cartSnapshot.forEach(item=>{
 
         message +=
-        item.name +
-        " x" +
-        item.quantity +
-        " = ₦" +
-        (
-            item.price *
-            item.quantity
-        ).toLocaleString() +
-        "\n";
+            item.name +
+            " x" +
+            item.quantity +
+            " = ₦" +
+            (
+                item.price *
+                item.quantity
+            ).toLocaleString() +
+            "\n";
 
     });
 
 
     const total =
-    cartSnapshot.reduce(
-        (sum,item) =>
-        sum +
-        item.price *
-        item.quantity,
-        0
-    );
+        cartSnapshot.reduce(
+            (sum,item)=>
+                sum +
+                item.price *
+                item.quantity,
+            0
+        );
 
 
     message +=
-    "\nTOTAL: ₦" +
-    total.toLocaleString();
+        "\nTOTAL: ₦" +
+        total.toLocaleString();
 
 
     message +=
-    "\n\nPayment method: OPay";
+        "\n\nPayment method: OPay";
 
 
     return message;
-
 }
 
+
+/* =========================================================
+   UPDATE WHATSAPP LINK
+========================================================= */
 
 function updateWhatsApp(){
 
     const name =
-    document.getElementById("customerName").value;
+        document.getElementById("customerName").value.trim();
 
     const phone =
-    document.getElementById("customerPhone").value;
+        document.getElementById("customerPhone").value.trim();
 
     const email =
-    document.getElementById("customerEmail").value;
+        document.getElementById("customerEmail").value.trim();
 
     const address =
-    document.getElementById("customerAddress").value;
-
-
-    const message =
-    buildWhatsAppMessage(
-        name,
-        phone,
-        email,
-        address,
-        cart
-    );
+        document.getElementById("deliveryAddress").value.trim();
 
 
     const phoneNumber =
-    "2348108521685";
+        "2348108521685";
 
 
-    document
-    .getElementById("whatsappOrder")
-    .href =
-    "https://wa.me/" +
-    phoneNumber +
-    "?text=" +
-    encodeURIComponent(message);
+    const message =
+        buildWhatsAppMessage(
+            name,
+            phone,
+            email,
+            address,
+            cart
+        );
 
+
+    document.getElementById("whatsappOrder").href =
+        "https://wa.me/" +
+        phoneNumber +
+        "?text=" +
+        encodeURIComponent(message);
 }
 
 
-/* ================================
+/* =========================================================
    PLACE ORDER
-================================ */
+========================================================= */
 
 async function placeOrder(){
+
+    if(isPlacingOrder){
+
+        return;
+    }
+
 
     if(cart.length === 0){
 
         alert("Your cart is empty.");
 
         return;
-
     }
 
 
     const user =
-    await getCurrentUser();
+        await getCurrentUser();
 
 
     if(!user){
 
         alert(
-            "Please log in before placing your order."
+            "Please log in before placing an order."
         );
 
-        closeCheckout();
-
-        openAccount();
-
         return;
-
     }
 
 
     const name =
-    document.getElementById("customerName")
-    .value
-    .trim();
+        document.getElementById("customerName").value.trim();
 
     const phone =
-    document.getElementById("customerPhone")
-    .value
-    .trim();
+        document.getElementById("customerPhone").value.trim();
 
     const email =
-    document.getElementById("customerEmail")
-    .value
-    .trim();
+        document.getElementById("customerEmail").value.trim();
 
     const address =
-    document.getElementById("customerAddress")
-    .value
-    .trim();
+        document.getElementById("deliveryAddress").value.trim();
 
 
-    if(!name || !phone || !email || !address){
+    if(!name){
 
-        alert(
-            "Please complete all checkout fields."
-        );
+        alert("Please enter your full name.");
 
         return;
-
     }
 
 
-    const cartSnapshot =
-    cart.map(item => ({
-        name:item.name,
-        price:item.price,
-        image:item.image,
-        quantity:item.quantity
-    }));
+    if(!phone){
 
+        alert("Please enter your phone number.");
+
+        return;
+    }
+
+
+    if(!email){
+
+        alert("Please enter your email.");
+
+        return;
+    }
+
+
+    if(!address){
+
+        alert("Please enter your delivery address.");
+
+        return;
+    }
+
+
+    isPlacingOrder = true;
+
+
+    const placeButton =
+        document.getElementById("placeOrderButton");
+
+
+    placeButton.disabled =
+        true;
+
+
+    placeButton.textContent =
+        "SAVING ORDER...";
+
+
+    try{
+
+        const cartSnapshot =
+            JSON.parse(
+                JSON.stringify(cart)
+            );
+
+
+        const itemsText =
+            cartSnapshot
+                .map(item =>
+                    item.name +
+                    " x" +
+                    item.quantity
+                )
+                .join(", ");
+
+
+        const total =
+            cartSnapshot.reduce(
+                (sum,item) =>
+                    sum +
+                    item.price *
+                    item.quantity,
+                0
+            );
+
+
+        const {
+            data,
+            error
+        } =
+            await supabaseClient
+                .from("orders")
+                .insert({
+
+                    user_id:user.id,
+
+                    customer_name:name,
+
+                    phone:phone,
+
+                    email:email,
+
+                    delivery_address:address,
+
+                    items:itemsText,
+
+                    total_amount:total,
+
+                    payment_status:"pending",
+
+                    order_status:"pending"
+
+                })
+                .select("id")
+                .single();
+
+
+        if(error){
+
+            console.error(error);
+
+            alert(
+                "Order could not be saved: " +
+                error.message
+            );
+
+            return;
+        }
+
+
+        const orderId =
+            data?.id || null;
+
+
+        const message =
+            buildWhatsAppMessage(
+                name,
+                phone,
+                email,
+                address,
+                cartSnapshot,
+                orderId
+            );
+
+
+        const phoneNumber =
+            "2348108521685";
+
+
+        const whatsappUrl =
+            "https://wa.me/" +
+            phoneNumber +
+            "?text=" +
+            encodeURIComponent(message);
+
+
+        const whatsappButton =
+            document.getElementById("whatsappOrder");
+
+
+        whatsappButton.href =
+            whatsappUrl;
+
+
+        whatsappButton.style.display =
+            "block";
+
+
+        whatsappButton.textContent =
+            "📱 SEND ORDER ON WHATSAPP";
+
+
+        document.getElementById("checkoutSuccess").style.display =
+            "block";
+
+
+        alert(
+            "Your order has been saved successfully!"
+        );
+
+
+        /*
+            Clear the cart after the order is saved.
+            The checkout window stays open so the customer
+            can still tap SEND ORDER ON WHATSAPP.
+        */
+
+        cart = [];
+
+        updateCart();
+
+        closeCart();
+
+
+        /*
+            Refresh the customer's order history.
+        */
+
+        await loadMyOrders();
+
+
+    }catch(error){
+
+        console.error(error);
+
+        alert(
+            "Something went wrong while placing your order."
+        );
+
+    }finally{
+
+        isPlacingOrder = false;
+
+        placeButton.disabled =
+            false;
+
+        placeButton.textContent =
+            "PLACE ORDER";
+
+    }
+
+}
+
+
+/* =========================================================
+   ADMIN ORDERS
+========================================================= */
+
+async function openAdminOrders(){
+
+    const user =
+        await getCurrentUser();
+
+
+    if(!user){
+
+        alert("Please log in.");
+
+        return;
+    }
+
+
+    if(!isAdmin(user)){
+
+        alert(
+            "You do not have permission to access admin orders."
+        );
+
+        return;
+    }
+
+
+    document
+        .getElementById("adminModal")
+        .classList.add("show");
+
+
+    await loadAdminOrders();
+}
+
+
+function closeAdminOrders(){
+
+    document
+        .getElementById("adminModal")
+        .classList.remove("show");
+}
+
+
+/* =========================================================
+   LOAD ALL ADMIN ORDERS
+========================================================= */
+
+async function loadAdminOrders(){
+
+    const user =
+        await getCurrentUser();
+
+
+    if(!user || !isAdmin(user)){
+
+        alert(
+            "Admin access required."
+        );
+
+        return;
+    }
+
+
+    const container =
+        document.getElementById("adminOrdersList");
+
+
+    container.innerHTML =
+        "Loading orders...";
+
+
+    const {
+        data,
+        error
+    } =
+        await supabaseClient
+            .from("orders")
+            .select("*")
+            .order("created_at",{ascending:false});
+
+
+    if(error){
+
+        console.error(error);
+
+        container.innerHTML =
+            `
+            <div class="admin-empty">
+                Unable to load orders.<br><br>
+                ${escapeHtml(error.message)}
+            </div>
+            `;
+
+        return;
+    }
+
+
+    const orders =
+        data || [];
+
+
+    updateAdminSummary(orders);
+
+
+    if(orders.length === 0){
+
+        container.innerHTML =
+            `
+            <div class="admin-empty">
+                No orders have been placed yet.
+            </div>
+            `;
+
+        return;
+    }
+
+
+    let html = "";
+
+
+    orders.forEach(order=>{
+
+        const created =
+            order.created_at
+                ? new Date(
+                    order.created_at
+                ).toLocaleString()
+                : "";
+
+
+        html += `
+
+            <div class="admin-order">
+
+                <div class="admin-order-top">
+
+                    <div>
+
+                        <h3>
+                            Order #${escapeHtml(String(order.id))}
+                        </h3>
+
+                        <p style="color:#777;margin-top:5px;">
+                            ${escapeHtml(created)}
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="admin-order-details">
+
+                    <strong>Customer:</strong>
+                    ${escapeHtml(order.customer_name || "")}
+
+                    <br>
+
+                    <strong>Phone:</strong>
+                    ${escapeHtml(order.phone || "")}
+
+                    <br>
+
+                    <strong>Email:</strong>
+                    ${escapeHtml(order.email || "")}
+
+                    <br>
+
+                    <strong>Address:</strong>
+                    ${escapeHtml(order.delivery_address || "")}
+
+                    <br>
+
+                    <strong>Items:</strong>
+                    ${escapeHtml(order.items || "")}
+
+                    <br>
+
+                    <strong>Total:</strong>
+                    ₦${Number(
+                        order.total_amount || 0
+                    ).toLocaleString()}
+
+                </div>
+
+
+                <div class="admin-controls">
+
+
+                    <div class="admin-control">
+
+                        <label>
+                            PAYMENT STATUS
+                        </label>
+
+                        <select
+                            id="payment-${order.id}"
+                        >
+
+                            <option
+                                value="pending"
+                                ${order.payment_status === "pending" ? "selected" : ""}
+                            >
+                                Pending
+                            </option>
+
+                            <option
+                                value="paid"
+                                ${order.payment_status === "paid" ? "selected" : ""}
+                            >
+                                Paid
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="admin-control">
+
+                        <label>
+                            ORDER STATUS
+                        </label>
+
+                        <select
+                            id="status-${order.id}"
+                        >
+
+                            <option
+                                value="pending"
+                                ${order.order_status === "pending" ? "selected" : ""}
+                            >
+                                Pending
+                            </option>
+
+                            <option
+                                value="confirmed"
+                                ${order.order_status === "confirmed" ? "selected" : ""}
+                            >
+                                Confirmed
+                            </option>
+
+                            <option
+                                value="processing"
+                                ${order.order_status === "processing" ? "selected" : ""}
+                            >
+                                Processing
+                            </option>
+
+                            <option
+                                value="completed"
+                                ${order.order_status === "completed" ? "selected" : ""}
+                            >
+                                Completed
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+                <button
+                    class="update-order-btn"
+                    onclick="updateAdminOrder(${order.id})"
+                >
+                    SAVE ORDER UPDATE
+                </button>
+
+            </div>
+
+        `;
+
+    });
+
+
+    container.innerHTML =
+        html;
+}
+
+
+/* =========================================================
+   ADMIN SUMMARY
+========================================================= */
+
+function updateAdminSummary(orders){
 
     const total =
-    cartSnapshot.reduce(
-        (sum,item) =>
-        sum +
-        item.price *
-        item.quantity,
-        0
-    );
+        orders.length;
 
 
-    const itemsText =
-    cartSnapshot
-    .map(item =>
-        item.name +
-        " x" +
-        item.quantity +
-        " = ₦" +
-        (
-            item.price *
-            item.quantity
-        ).toLocaleString()
-    )
-    .join("\n");
+    const pendingPayments =
+        orders.filter(
+            order =>
+                order.payment_status === "pending"
+        ).length;
+
+
+    const activeOrders =
+        orders.filter(
+            order =>
+                order.order_status !== "completed"
+        ).length;
+
+
+    const completedOrders =
+        orders.filter(
+            order =>
+                order.order_status === "completed"
+        ).length;
+
+
+    document.getElementById(
+        "adminTotalOrders"
+    ).textContent =
+        total;
+
+
+    document.getElementById(
+        "adminPendingPayments"
+    ).textContent =
+        pendingPayments;
+
+
+    document.getElementById(
+        "adminActiveOrders"
+    ).textContent =
+        activeOrders;
+
+
+    document.getElementById(
+        "adminCompletedOrders"
+    ).textContent =
+        completedOrders;
+}
+
+
+/* =========================================================
+   UPDATE ADMIN ORDER
+========================================================= */
+
+async function updateAdminOrder(orderId){
+
+    const user =
+        await getCurrentUser();
+
+
+    if(!user || !isAdmin(user)){
+
+        alert(
+            "Admin access required."
+        );
+
+        return;
+    }
+
+
+    const paymentStatus =
+        document.getElementById(
+            "payment-" + orderId
+        ).value;
+
+
+    const orderStatus =
+        document.getElementById(
+            "status-" + orderId
+        ).value;
 
 
     const {
         error
     } =
-    await supabaseClient
-    .from("orders")
-    .insert({
+        await supabaseClient
+            .from("orders")
+            .update({
 
-        user_id:user.id,
+                payment_status:
+                    paymentStatus,
 
-        customer_name:name,
+                order_status:
+                    orderStatus
 
-        phone:phone,
-
-        email:email,
-
-        delivery_address:address,
-
-        items:itemsText,
-
-        total_amount:total,
-
-        payment_status:"pending",
-
-        order_status:"pending"
-
-    });
+            })
+            .eq("id",orderId);
 
 
     if(error){
@@ -1781,241 +2903,64 @@ async function placeOrder(){
         console.error(error);
 
         alert(
-            "Order could not be saved.\n\n" +
+            "Order update failed: " +
             error.message
         );
 
         return;
-
     }
-
-
-    /*
-       IMPORTANT:
-       Build the WhatsApp message from cartSnapshot
-       BEFORE clearing the cart.
-    */
-
-    const message =
-    buildWhatsAppMessage(
-        name,
-        phone,
-        email,
-        address,
-        cartSnapshot
-    );
-
-
-    const phoneNumber =
-    "2348108521685";
-
-
-    const whatsappUrl =
-    "https://wa.me/" +
-    phoneNumber +
-    "?text=" +
-    encodeURIComponent(message);
-
-
-    const whatsappButton =
-    document.getElementById("whatsappOrder");
-
-
-    whatsappButton.href =
-    whatsappUrl;
-
-
-    whatsappButton.style.display =
-    "block";
-
-
-    whatsappButton.textContent =
-    "📱 SEND ORDER ON WHATSAPP";
 
 
     alert(
-        "Your order has been saved successfully!"
+        "Order #" +
+        orderId +
+        " has been updated successfully."
     );
 
 
-    /*
-       Clear cart only AFTER the order
-       and WhatsApp message have been created.
-    */
-
-    cart = [];
-
-    updateCart();
-
-    closeCart();
-
+    await loadAdminOrders();
 }
 
 
-/* ================================
-   INPUT LISTENERS
-================================ */
+/* =========================================================
+   STATUS DISPLAY
+========================================================= */
 
-[
-    "customerName",
-    "customerPhone",
-    "customerEmail",
-    "customerAddress"
-].forEach(id=>{
+function formatStatus(status){
 
-    document
-    .getElementById(id)
-    .addEventListener(
-        "input",
-        updateWhatsApp
-    );
+    if(!status){
 
-});
-
-
-/* ================================
-   ORDER HISTORY
-================================ */
-
-async function loadOrders(){
-
-    const user =
-    await getCurrentUser();
-
-
-    const container =
-    document.getElementById("ordersList");
-
-
-    if(!user){
-
-        container.innerHTML =
-        "<p style='color:#aaa'>Please log in.</p>";
-
-        return;
-
+        return "Pending";
     }
 
 
-    container.innerHTML =
-    "<p style='color:#aaa'>Loading orders...</p>";
-
-
-    const {
-        data,
-        error
-    } =
-    await supabaseClient
-    .from("orders")
-    .select("*")
-    .eq("user_id",user.id)
-    .order(
-        "created_at",
-        {
-            ascending:false
-        }
-    );
-
-
-    if(error){
-
-        container.innerHTML =
-        "<p style='color:#ff7777'>" +
-        error.message +
-        "</p>";
-
-        return;
-
-    }
-
-
-    if(!data || data.length === 0){
-
-        container.innerHTML =
-        "<p style='color:#aaa'>You have no orders yet.</p>";
-
-        return;
-
-    }
-
-
-    container.innerHTML = "";
-
-
-    data.forEach(order=>{
-
-        const div =
-        document.createElement("div");
-
-
-        div.className =
-        "order-card";
-
-
-        const createdDate =
-        new Date(order.created_at)
-        .toLocaleString();
-
-
-        div.innerHTML = `
-
-        <h3>
-        Order #${order.id}
-        </h3>
-
-        <p style="color:#aaa;margin-bottom:10px;">
-        ${createdDate}
-        </p>
-
-        <p style="line-height:1.7;">
-        <strong>Items:</strong><br>
-        ${escapeHtml(order.items || "").replace(/\n/g,"<br>")}
-        </p>
-
-        <p style="margin-top:10px;">
-        <strong>Total:</strong>
-        ₦${Number(order.total_amount || 0).toLocaleString()}
-        </p>
-
-        <p style="margin-top:10px;">
-        <strong>Payment:</strong>
-        <span class="status">
-        ${escapeHtml(order.payment_status || "pending")}
-        </span>
-        </p>
-
-        <p style="margin-top:5px;">
-        <strong>Order:</strong>
-        <span class="status">
-        ${escapeHtml(order.order_status || "pending")}
-        </span>
-        </p>
-
-        `;
-
-
-        container.appendChild(div);
-
-    });
-
+    return status
+        .charAt(0)
+        .toUpperCase() +
+        status
+            .slice(1)
+            .toLowerCase();
 }
 
+
+/* =========================================================
+   SECURITY / HTML ESCAPE
+========================================================= */
 
 function escapeHtml(value){
 
-    return String(value)
-    .replace(/&/g,"&amp;")
-    .replace(/</g,"&lt;")
-    .replace(/>/g,"&gt;")
-    .replace(/"/g,"&quot;")
-    .replace(/'/g,"&#039;");
-
+    return String(value ?? "")
+        .replace(/&/g,"&amp;")
+        .replace(/</g,"&lt;")
+        .replace(/>/g,"&gt;")
+        .replace(/"/g,"&quot;")
+        .replace(/'/g,"&#039;");
 }
 
 
-/* ================================
+/* =========================================================
    AUTH STATE
-================================ */
+========================================================= */
 
 supabaseClient.auth.onAuthStateChange(
     async (event,session)=>{
@@ -2029,40 +2974,39 @@ supabaseClient.auth.onAuthStateChange(
 );
 
 
-/* ================================
-   INITIAL CART
-================================ */
+/* =========================================================
+   INITIAL LOAD
+========================================================= */
 
 updateCart();
 
 
-/* ================================
-   REGISTER APP SERVICE WORKER
-================================ */
+/* =========================================================
+   SERVICE WORKER
+========================================================= */
 
-if ("serviceWorker" in navigator) {
+if("serviceWorker" in navigator){
 
-    window.addEventListener("load", function(){
+    window.addEventListener(
+        "load",
+        ()=>{
 
-        navigator.serviceWorker
-        .register("./sw.js")
-        .then(function(){
+            navigator.serviceWorker
+                .register("./service-worker.js")
+                .then(()=>{
+                    console.log(
+                        "Service worker registered."
+                    );
+                })
+                .catch(error=>{
+                    console.log(
+                        "Service worker registration failed:",
+                        error
+                    );
+                });
 
-            console.log(
-                "GRANDSON ROYALE app service worker registered."
-            );
-
-        })
-        .catch(function(error){
-
-            console.log(
-                "Service worker registration failed:",
-                error
-            );
-
-        });
-
-    });
+        }
+    );
 
 }
 
