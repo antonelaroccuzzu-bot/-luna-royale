@@ -6,6 +6,9 @@
 
 <title>GRANDSON ROYALE | Luxury Watches</title>
 
+<!-- SUPABASE -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
 <!-- APP / PWA -->
 <link rel="manifest" href="./manifest.json">
 <meta name="theme-color" content="#2196f3">
@@ -37,6 +40,7 @@ header{
     display:flex;
     justify-content:space-between;
     align-items:center;
+    gap:10px;
 }
 
 .logo{
@@ -46,7 +50,14 @@ header{
     color:#2196f3;
 }
 
-.cart-btn{
+.header-actions{
+    display:flex;
+    gap:8px;
+    align-items:center;
+}
+
+.cart-btn,
+.account-btn{
     background:#2196f3;
     color:#fff;
     border:none;
@@ -54,6 +65,11 @@ header{
     border-radius:5px;
     font-weight:bold;
     cursor:pointer;
+}
+
+.account-btn{
+    background:#0c1728;
+    border:1px solid #123b70;
 }
 
 .hero{
@@ -325,7 +341,7 @@ footer strong{
     padding:30px 0;
 }
 
-/* CHECKOUT */
+/* MODALS */
 
 .modal{
     display:none;
@@ -373,6 +389,28 @@ footer strong{
     resize:vertical;
 }
 
+.primary-btn{
+    width:100%;
+    padding:14px;
+    background:#2196f3;
+    color:#fff;
+    border:none;
+    font-weight:bold;
+    cursor:pointer;
+    border-radius:5px;
+}
+
+.secondary-btn{
+    width:100%;
+    padding:13px;
+    margin-top:10px;
+    background:#222;
+    color:white;
+    border:none;
+    cursor:pointer;
+    border-radius:5px;
+}
+
 .payment-box{
     background:#0c1728;
     padding:18px;
@@ -408,6 +446,40 @@ footer strong{
     cursor:pointer;
 }
 
+/* ACCOUNT */
+
+.account-info{
+    background:#0c1728;
+    border:1px solid #123b70;
+    border-radius:7px;
+    padding:15px;
+    margin-bottom:20px;
+    line-height:1.8;
+}
+
+.order-card{
+    background:#0c1728;
+    border:1px solid #123b70;
+    border-radius:8px;
+    padding:15px;
+    margin-bottom:15px;
+}
+
+.order-card h3{
+    color:#2196f3;
+    margin-bottom:10px;
+}
+
+.status{
+    display:inline-block;
+    padding:5px 9px;
+    border-radius:4px;
+    background:#172235;
+    color:#fff;
+    font-size:13px;
+    margin-top:5px;
+}
+
 /* MOBILE */
 
 @media(max-width:600px){
@@ -417,12 +489,18 @@ footer strong{
     }
 
     .logo{
-        font-size:17px;
+        font-size:15px;
         letter-spacing:2px;
     }
 
-    .cart-btn{
-        padding:10px 12px;
+    .header-actions{
+        gap:5px;
+    }
+
+    .cart-btn,
+    .account-btn{
+        padding:10px 9px;
+        font-size:12px;
     }
 
     .hero{
@@ -452,9 +530,17 @@ footer strong{
 GRANDSON ROYALE
 </div>
 
+<div class="header-actions">
+
+<button class="account-btn" onclick="openAccount()">
+👤 ACCOUNT
+</button>
+
 <button class="cart-btn" onclick="openCart()">
 🛒 CART (<span id="cartCount">0</span>)
 </button>
+
+</div>
 
 </header>
 
@@ -779,18 +865,28 @@ Calls:
 
 Transfer the exact order amount to the OPay account above.
 
-After payment, click the WhatsApp button below to send
-your order details for confirmation.
+After payment, click the button below to save your order
+and send your order details on WhatsApp.
 
 </p>
+
+<button
+class="primary-btn"
+onclick="placeOrder()"
+>
+
+PLACE ORDER
+
+</button>
 
 <a
 id="whatsappOrder"
 class="whatsapp"
 target="_blank"
+style="display:none;"
 >
 
-📱 I HAVE MADE PAYMENT
+📱 SEND ORDER ON WHATSAPP
 
 </a>
 
@@ -807,9 +903,137 @@ CANCEL
 
 </div>
 
+<!-- ACCOUNT -->
+
+<div class="modal" id="accountModal">
+
+<div class="modal-box">
+
+<div id="authSection">
+
+<h2>GRANDSON ROYALE ACCOUNT</h2>
+
+<input
+id="authEmail"
+type="email"
+placeholder="Email Address"
+>
+
+<input
+id="authPassword"
+type="password"
+placeholder="Password"
+>
+
+<input
+id="authName"
+type="text"
+placeholder="Full Name (for new account)"
+>
+
+<button
+class="primary-btn"
+onclick="signUp()"
+>
+
+CREATE ACCOUNT
+
+</button>
+
+<button
+class="secondary-btn"
+onclick="signIn()"
+>
+
+LOGIN
+
+</button>
+
+<p id="authMessage"
+style="margin-top:15px;color:#aaa;line-height:1.6;">
+</p>
+
+</div>
+
+<div id="loggedInSection" style="display:none;">
+
+<h2>MY ACCOUNT</h2>
+
+<div class="account-info">
+
+<div>
+<strong>Email:</strong>
+<span id="accountEmail"></span>
+</div>
+
+<div>
+<strong>Name:</strong>
+<span id="accountName"></span>
+</div>
+
+</div>
+
+<h2 style="font-size:22px;">
+MY ORDERS
+</h2>
+
+<div id="ordersList">
+
+<p style="color:#aaa;">
+Loading orders...
+</p>
+
+</div>
+
+<button
+class="secondary-btn"
+onclick="signOut()"
+>
+
+LOG OUT
+
+</button>
+
+</div>
+
+<button
+class="cancel"
+onclick="closeAccount()"
+>
+
+CLOSE
+
+</button>
+
+</div>
+
+</div>
+
 <script>
 
+/* ================================
+   SUPABASE
+================================ */
+
+const SUPABASE_URL =
+"https://ygoncomnmamvqkoisrlh.supabase.co";
+
+const SUPABASE_PUBLISHABLE_KEY =
+"sb_publishable_L-MigpYUxgxvGHiGciS7VQ_QilIcR94";
+
+const supabaseClient =
+window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_PUBLISHABLE_KEY
+);
+
+
+/* ================================
+   CART
+================================ */
+
 let cart = [];
+
 
 function addToCart(name,price,image){
 
@@ -837,6 +1061,7 @@ function addToCart(name,price,image){
 
 }
 
+
 function updateCart(){
 
     const container =
@@ -852,6 +1077,7 @@ function updateCart(){
     document.getElementById("cartCount")
     .textContent = count;
 
+
     if(cart.length === 0){
 
         container.innerHTML =
@@ -864,7 +1090,9 @@ function updateCart(){
 
     }
 
+
     container.innerHTML = "";
+
 
     cart.forEach((item,index)=>{
 
@@ -872,6 +1100,7 @@ function updateCart(){
         document.createElement("div");
 
         div.className = "cart-item";
+
 
         div.innerHTML = `
 
@@ -914,16 +1143,21 @@ function updateCart(){
         </div>
         `;
 
+
         container.appendChild(div);
 
     });
 
+
     const total =
     cart.reduce(
         (sum,item) =>
-        sum + item.price * item.quantity,
+        sum +
+        item.price *
+        item.quantity,
         0
     );
+
 
     document.getElementById("cartTotal")
     .textContent =
@@ -931,9 +1165,11 @@ function updateCart(){
 
 }
 
+
 function changeQty(index,amount){
 
     cart[index].quantity += amount;
+
 
     if(cart[index].quantity <= 0){
 
@@ -941,9 +1177,11 @@ function changeQty(index,amount){
 
     }
 
+
     updateCart();
 
 }
+
 
 function removeItem(index){
 
@@ -953,6 +1191,7 @@ function removeItem(index){
 
 }
 
+
 function openCart(){
 
     document
@@ -960,6 +1199,7 @@ function openCart(){
     .classList.add("open");
 
 }
+
 
 function closeCart(){
 
@@ -969,7 +1209,257 @@ function closeCart(){
 
 }
 
-function openCheckout(){
+
+/* ================================
+   AUTH
+================================ */
+
+async function getCurrentUser(){
+
+    const {
+        data,
+        error
+    } =
+    await supabaseClient.auth.getUser();
+
+    if(error){
+
+        return null;
+
+    }
+
+    return data.user;
+
+}
+
+
+async function openAccount(){
+
+    document
+    .getElementById("accountModal")
+    .classList.add("show");
+
+    await refreshAccount();
+
+}
+
+
+function closeAccount(){
+
+    document
+    .getElementById("accountModal")
+    .classList.remove("show");
+
+}
+
+
+async function refreshAccount(){
+
+    const user =
+    await getCurrentUser();
+
+    const authSection =
+    document.getElementById("authSection");
+
+    const loggedInSection =
+    document.getElementById("loggedInSection");
+
+
+    if(!user){
+
+        authSection.style.display = "block";
+
+        loggedInSection.style.display = "none";
+
+        return;
+
+    }
+
+
+    authSection.style.display = "none";
+
+    loggedInSection.style.display = "block";
+
+
+    document.getElementById("accountEmail")
+    .textContent =
+    user.email || "";
+
+
+    document.getElementById("accountName")
+    .textContent =
+    user.user_metadata?.full_name ||
+    "Customer";
+
+
+    loadOrders();
+
+}
+
+
+async function signUp(){
+
+    const email =
+    document.getElementById("authEmail")
+    .value
+    .trim();
+
+    const password =
+    document.getElementById("authPassword")
+    .value;
+
+    const name =
+    document.getElementById("authName")
+    .value
+    .trim();
+
+    const message =
+    document.getElementById("authMessage");
+
+
+    if(!email || !password || !name){
+
+        message.textContent =
+        "Please enter your full name, email and password.";
+
+        return;
+
+    }
+
+
+    if(password.length < 6){
+
+        message.textContent =
+        "Password must be at least 6 characters.";
+
+        return;
+
+    }
+
+
+    message.textContent =
+    "Creating your account...";
+
+
+    const {
+        data,
+        error
+    } =
+    await supabaseClient.auth.signUp({
+
+        email:email,
+
+        password:password,
+
+        options:{
+            data:{
+                full_name:name
+            }
+        }
+
+    });
+
+
+    if(error){
+
+        message.textContent =
+        error.message;
+
+        return;
+
+    }
+
+
+    if(data.session){
+
+        message.textContent =
+        "Account created successfully.";
+
+        await refreshAccount();
+
+    }else{
+
+        message.textContent =
+        "Account created. Please check your email to confirm your account before logging in.";
+
+    }
+
+}
+
+
+async function signIn(){
+
+    const email =
+    document.getElementById("authEmail")
+    .value
+    .trim();
+
+    const password =
+    document.getElementById("authPassword")
+    .value;
+
+    const message =
+    document.getElementById("authMessage");
+
+
+    if(!email || !password){
+
+        message.textContent =
+        "Enter your email and password.";
+
+        return;
+
+    }
+
+
+    message.textContent =
+    "Logging in...";
+
+
+    const {
+        error
+    } =
+    await supabaseClient.auth.signInWithPassword({
+
+        email:email,
+
+        password:password
+
+    });
+
+
+    if(error){
+
+        message.textContent =
+        error.message;
+
+        return;
+
+    }
+
+
+    message.textContent =
+    "Login successful.";
+
+    await refreshAccount();
+
+}
+
+
+async function signOut(){
+
+    await supabaseClient.auth.signOut();
+
+    await refreshAccount();
+
+}
+
+
+/* ================================
+   CHECKOUT
+================================ */
+
+async function openCheckout(){
 
     if(cart.length === 0){
 
@@ -979,13 +1469,51 @@ function openCheckout(){
 
     }
 
+
+    const user =
+    await getCurrentUser();
+
+
+    if(!user){
+
+        alert(
+            "Please create an account or log in before checkout."
+        );
+
+        closeCart();
+
+        openAccount();
+
+        return;
+
+    }
+
+
     document
     .getElementById("checkoutModal")
     .classList.add("show");
 
+
+    const fullName =
+    user.user_metadata?.full_name || "";
+
+
+    document
+    .getElementById("customerName")
+    .value =
+    fullName;
+
+
+    document
+    .getElementById("customerEmail")
+    .value =
+    user.email || "";
+
+
     updateWhatsApp();
 
 }
+
 
 function closeCheckout(){
 
@@ -994,6 +1522,91 @@ function closeCheckout(){
     .classList.remove("show");
 
 }
+
+
+/* ================================
+   WHATSAPP MESSAGE
+================================ */
+
+function buildWhatsAppMessage(
+    name,
+    phone,
+    email,
+    address,
+    cartSnapshot
+){
+
+    let message =
+    "GRANDSON ROYALE ORDER\n\n";
+
+
+    message +=
+    "Customer: " +
+    name +
+    "\n";
+
+
+    message +=
+    "Phone: " +
+    phone +
+    "\n";
+
+
+    message +=
+    "Email: " +
+    email +
+    "\n";
+
+
+    message +=
+    "Address: " +
+    address +
+    "\n\n";
+
+
+    message +=
+    "ORDER:\n";
+
+
+    cartSnapshot.forEach(item=>{
+
+        message +=
+        item.name +
+        " x" +
+        item.quantity +
+        " = ₦" +
+        (
+            item.price *
+            item.quantity
+        ).toLocaleString() +
+        "\n";
+
+    });
+
+
+    const total =
+    cartSnapshot.reduce(
+        (sum,item) =>
+        sum +
+        item.price *
+        item.quantity,
+        0
+    );
+
+
+    message +=
+    "\nTOTAL: ₦" +
+    total.toLocaleString();
+
+
+    message +=
+    "\n\nPayment method: OPay";
+
+
+    return message;
+
+}
+
 
 function updateWhatsApp(){
 
@@ -1009,65 +1622,20 @@ function updateWhatsApp(){
     const address =
     document.getElementById("customerAddress").value;
 
-    let message =
-    "GRANDSON ROYALE ORDER%0A%0A";
 
-    message +=
-    "Customer: " +
-    name +
-    "%0A";
-
-    message +=
-    "Phone: " +
-    phone +
-    "%0A";
-
-    message +=
-    "Email: " +
-    email +
-    "%0A";
-
-    message +=
-    "Address: " +
-    address +
-    "%0A%0A";
-
-    message +=
-    "ORDER:%0A";
-
-    cart.forEach(item=>{
-
-        message +=
-        item.name +
-        " x" +
-        item.quantity +
-        " = ₦" +
-        (
-            item.price *
-            item.quantity
-        ).toLocaleString() +
-        "%0A";
-
-    });
-
-    const total =
-    cart.reduce(
-        (sum,item) =>
-        sum +
-        item.price *
-        item.quantity,
-        0
+    const message =
+    buildWhatsAppMessage(
+        name,
+        phone,
+        email,
+        address,
+        cart
     );
 
-    message +=
-    "%0ATOTAL: ₦" +
-    total.toLocaleString();
-
-    message +=
-    "%0A%0APayment method: OPay";
 
     const phoneNumber =
     "2348108521685";
+
 
     document
     .getElementById("whatsappOrder")
@@ -1075,9 +1643,218 @@ function updateWhatsApp(){
     "https://wa.me/" +
     phoneNumber +
     "?text=" +
-    message;
+    encodeURIComponent(message);
 
 }
+
+
+/* ================================
+   PLACE ORDER
+================================ */
+
+async function placeOrder(){
+
+    if(cart.length === 0){
+
+        alert("Your cart is empty.");
+
+        return;
+
+    }
+
+
+    const user =
+    await getCurrentUser();
+
+
+    if(!user){
+
+        alert(
+            "Please log in before placing your order."
+        );
+
+        closeCheckout();
+
+        openAccount();
+
+        return;
+
+    }
+
+
+    const name =
+    document.getElementById("customerName")
+    .value
+    .trim();
+
+    const phone =
+    document.getElementById("customerPhone")
+    .value
+    .trim();
+
+    const email =
+    document.getElementById("customerEmail")
+    .value
+    .trim();
+
+    const address =
+    document.getElementById("customerAddress")
+    .value
+    .trim();
+
+
+    if(!name || !phone || !email || !address){
+
+        alert(
+            "Please complete all checkout fields."
+        );
+
+        return;
+
+    }
+
+
+    const cartSnapshot =
+    cart.map(item => ({
+        name:item.name,
+        price:item.price,
+        image:item.image,
+        quantity:item.quantity
+    }));
+
+
+    const total =
+    cartSnapshot.reduce(
+        (sum,item) =>
+        sum +
+        item.price *
+        item.quantity,
+        0
+    );
+
+
+    const itemsText =
+    cartSnapshot
+    .map(item =>
+        item.name +
+        " x" +
+        item.quantity +
+        " = ₦" +
+        (
+            item.price *
+            item.quantity
+        ).toLocaleString()
+    )
+    .join("\n");
+
+
+    const {
+        error
+    } =
+    await supabaseClient
+    .from("orders")
+    .insert({
+
+        user_id:user.id,
+
+        customer_name:name,
+
+        phone:phone,
+
+        email:email,
+
+        delivery_address:address,
+
+        items:itemsText,
+
+        total_amount:total,
+
+        payment_status:"pending",
+
+        order_status:"pending"
+
+    });
+
+
+    if(error){
+
+        console.error(error);
+
+        alert(
+            "Order could not be saved.\n\n" +
+            error.message
+        );
+
+        return;
+
+    }
+
+
+    /*
+       IMPORTANT:
+       Build the WhatsApp message from cartSnapshot
+       BEFORE clearing the cart.
+    */
+
+    const message =
+    buildWhatsAppMessage(
+        name,
+        phone,
+        email,
+        address,
+        cartSnapshot
+    );
+
+
+    const phoneNumber =
+    "2348108521685";
+
+
+    const whatsappUrl =
+    "https://wa.me/" +
+    phoneNumber +
+    "?text=" +
+    encodeURIComponent(message);
+
+
+    const whatsappButton =
+    document.getElementById("whatsappOrder");
+
+
+    whatsappButton.href =
+    whatsappUrl;
+
+
+    whatsappButton.style.display =
+    "block";
+
+
+    whatsappButton.textContent =
+    "📱 SEND ORDER ON WHATSAPP";
+
+
+    alert(
+        "Your order has been saved successfully!"
+    );
+
+
+    /*
+       Clear cart only AFTER the order
+       and WhatsApp message have been created.
+    */
+
+    cart = [];
+
+    updateCart();
+
+    closeCart();
+
+}
+
+
+/* ================================
+   INPUT LISTENERS
+================================ */
 
 [
     "customerName",
@@ -1095,9 +1872,173 @@ function updateWhatsApp(){
 
 });
 
+
+/* ================================
+   ORDER HISTORY
+================================ */
+
+async function loadOrders(){
+
+    const user =
+    await getCurrentUser();
+
+
+    const container =
+    document.getElementById("ordersList");
+
+
+    if(!user){
+
+        container.innerHTML =
+        "<p style='color:#aaa'>Please log in.</p>";
+
+        return;
+
+    }
+
+
+    container.innerHTML =
+    "<p style='color:#aaa'>Loading orders...</p>";
+
+
+    const {
+        data,
+        error
+    } =
+    await supabaseClient
+    .from("orders")
+    .select("*")
+    .eq("user_id",user.id)
+    .order(
+        "created_at",
+        {
+            ascending:false
+        }
+    );
+
+
+    if(error){
+
+        container.innerHTML =
+        "<p style='color:#ff7777'>" +
+        error.message +
+        "</p>";
+
+        return;
+
+    }
+
+
+    if(!data || data.length === 0){
+
+        container.innerHTML =
+        "<p style='color:#aaa'>You have no orders yet.</p>";
+
+        return;
+
+    }
+
+
+    container.innerHTML = "";
+
+
+    data.forEach(order=>{
+
+        const div =
+        document.createElement("div");
+
+
+        div.className =
+        "order-card";
+
+
+        const createdDate =
+        new Date(order.created_at)
+        .toLocaleString();
+
+
+        div.innerHTML = `
+
+        <h3>
+        Order #${order.id}
+        </h3>
+
+        <p style="color:#aaa;margin-bottom:10px;">
+        ${createdDate}
+        </p>
+
+        <p style="line-height:1.7;">
+        <strong>Items:</strong><br>
+        ${escapeHtml(order.items || "").replace(/\n/g,"<br>")}
+        </p>
+
+        <p style="margin-top:10px;">
+        <strong>Total:</strong>
+        ₦${Number(order.total_amount || 0).toLocaleString()}
+        </p>
+
+        <p style="margin-top:10px;">
+        <strong>Payment:</strong>
+        <span class="status">
+        ${escapeHtml(order.payment_status || "pending")}
+        </span>
+        </p>
+
+        <p style="margin-top:5px;">
+        <strong>Order:</strong>
+        <span class="status">
+        ${escapeHtml(order.order_status || "pending")}
+        </span>
+        </p>
+
+        `;
+
+
+        container.appendChild(div);
+
+    });
+
+}
+
+
+function escapeHtml(value){
+
+    return String(value)
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
+
+}
+
+
+/* ================================
+   AUTH STATE
+================================ */
+
+supabaseClient.auth.onAuthStateChange(
+    async (event,session)=>{
+
+        console.log(
+            "Auth event:",
+            event
+        );
+
+    }
+);
+
+
+/* ================================
+   INITIAL CART
+================================ */
+
 updateCart();
 
-/* REGISTER APP SERVICE WORKER */
+
+/* ================================
+   REGISTER APP SERVICE WORKER
+================================ */
 
 if ("serviceWorker" in navigator) {
 
@@ -1107,12 +2048,17 @@ if ("serviceWorker" in navigator) {
         .register("./sw.js")
         .then(function(){
 
-            console.log("GRANDSON ROYALE app service worker registered.");
+            console.log(
+                "GRANDSON ROYALE app service worker registered."
+            );
 
         })
         .catch(function(error){
 
-            console.log("Service worker registration failed:", error);
+            console.log(
+                "Service worker registration failed:",
+                error
+            );
 
         });
 
