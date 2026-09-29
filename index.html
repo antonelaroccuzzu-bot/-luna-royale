@@ -1,14 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 
 <title>GRANDSON ROYALE</title>
 
+<!-- PWA -->
+<link rel="manifest" href="./manifest.json">
+
+<!-- iPhone / iPad -->
+<link rel="apple-touch-icon" href="./icon-180.png">
+
 <meta name="theme-color" content="#0b0b0b">
+
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+<meta name="apple-mobile-web-app-status-bar-style"
+      content="black-translucent">
+
+<meta name="apple-mobile-web-app-title"
+      content="GRANDSON ROYALE">
+
+<meta name="mobile-web-app-capable"
+      content="yes">
 
 <style>
 
@@ -23,6 +41,7 @@ body{
     background:#080808;
     color:#fff;
     min-height:100vh;
+    padding-top:env(safe-area-inset-top);
 }
 
 button,
@@ -435,6 +454,11 @@ footer strong{
     margin-top:5px;
 }
 
+.primary-btn:disabled{
+    opacity:.55;
+    cursor:not-allowed;
+}
+
 .secondary-btn{
     width:100%;
     border:1px solid #444;
@@ -501,6 +525,8 @@ footer strong{
     border:0 !important;
     background:transparent !important;
 }
+
+/* CART TOTAL */
 
 .cart-total{
     display:flex;
@@ -696,6 +722,7 @@ footer strong{
     font-size:14px;
     line-height:1.7;
     margin-bottom:15px;
+    word-break:break-word;
 }
 
 .admin-order-details strong{
@@ -741,6 +768,46 @@ footer strong{
     padding:40px 10px;
 }
 
+/* INSTALL APP */
+
+.install-box{
+    display:none;
+    max-width:1200px;
+    margin:15px auto 0;
+    padding:0 20px;
+}
+
+.install-inner{
+    background:#12100b;
+    border:1px solid #5c4925;
+    border-radius:12px;
+    padding:15px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:15px;
+}
+
+.install-inner p{
+    color:#bbb;
+    font-size:14px;
+    line-height:1.5;
+}
+
+.install-inner strong{
+    color:#d7b56d;
+}
+
+.install-btn{
+    border:0;
+    background:#d7b56d;
+    color:#080808;
+    padding:10px 15px;
+    border-radius:8px;
+    font-weight:800;
+    white-space:nowrap;
+}
+
 /* MOBILE */
 
 @media(max-width:650px){
@@ -783,14 +850,27 @@ footer strong{
         padding:20px;
     }
 
+    .install-inner{
+        flex-direction:column;
+        align-items:stretch;
+        text-align:center;
+    }
+
+    .install-btn{
+        width:100%;
+    }
+
 }
 
 </style>
+
 </head>
 
 <body>
 
+
 <header>
+
     <div class="header-inner">
 
         <div class="logo">
@@ -798,24 +878,63 @@ footer strong{
         </div>
 
         <div class="header-actions">
-            <button class="header-btn" onclick="openAccount()">
+
+            <button
+                class="header-btn"
+                onclick="openAccount()"
+            >
                 ACCOUNT
             </button>
 
-            <button class="header-btn" onclick="openCart()">
+            <button
+                class="header-btn"
+                onclick="openCart()"
+            >
                 CART (<span id="cartCount">0</span>)
             </button>
+
         </div>
 
     </div>
+
 </header>
+
+
+<!-- APP INSTALL NOTICE -->
+
+<div
+    class="install-box"
+    id="installBox"
+>
+
+    <div class="install-inner">
+
+        <p>
+            <strong>GRANDSON ROYALE</strong><br>
+            Install our app for faster access.
+        </p>
+
+        <button
+            class="install-btn"
+            id="installButton"
+        >
+            INSTALL APP
+        </button>
+
+    </div>
+
+</div>
 
 
 <section class="hero">
 
-    <small>TIMELESS • ROYAL • ELEGANT</small>
+    <small>
+        TIMELESS • ROYAL • ELEGANT
+    </small>
 
-    <h1>GRANDSON ROYALE</h1>
+    <h1>
+        GRANDSON ROYALE
+    </h1>
 
     <p>
         Luxury timepieces designed for people who value presence,
@@ -828,19 +947,34 @@ footer strong{
 <section class="section">
 
     <div class="section-title">
-        <h2>THE COLLECTION</h2>
-        <p>Discover our signature timepieces.</p>
+
+        <h2>
+            THE COLLECTION
+        </h2>
+
+        <p>
+            Discover our signature timepieces.
+        </p>
+
     </div>
 
+
     <div class="products">
+
 
         <div class="product-card">
 
             <div class="watch-image">
-                <div class="watch-face">GR</div>
+
+                <div class="watch-face">
+                    GR
+                </div>
+
             </div>
 
-            <h3>Royal Gold</h3>
+            <h3>
+                Royal Gold
+            </h3>
 
             <p class="product-description">
                 A bold luxury design with a classic royal finish.
@@ -850,8 +984,10 @@ footer strong{
                 ₦850,000
             </div>
 
-            <button class="add-btn"
-                onclick="addToCart('Royal Gold',850000)">
+            <button
+                class="add-btn"
+                onclick="addToCart('Royal Gold',850000)"
+            >
                 ADD TO CART
             </button>
 
@@ -861,10 +997,16 @@ footer strong{
         <div class="product-card">
 
             <div class="watch-image">
-                <div class="watch-face">GR</div>
+
+                <div class="watch-face">
+                    GR
+                </div>
+
             </div>
 
-            <h3>Black Royale</h3>
+            <h3>
+                Black Royale
+            </h3>
 
             <p class="product-description">
                 A dark, sophisticated timepiece made for a powerful look.
@@ -874,8 +1016,10 @@ footer strong{
                 ₦620,000
             </div>
 
-            <button class="add-btn"
-                onclick="addToCart('Black Royale',620000)">
+            <button
+                class="add-btn"
+                onclick="addToCart('Black Royale',620000)"
+            >
                 ADD TO CART
             </button>
 
@@ -885,10 +1029,16 @@ footer strong{
         <div class="product-card">
 
             <div class="watch-image">
-                <div class="watch-face">GR</div>
+
+                <div class="watch-face">
+                    GR
+                </div>
+
             </div>
 
-            <h3>Classic Silver</h3>
+            <h3>
+                Classic Silver
+            </h3>
 
             <p class="product-description">
                 Clean silver styling with an elegant timeless appearance.
@@ -898,8 +1048,10 @@ footer strong{
                 ₦490,000
             </div>
 
-            <button class="add-btn"
-                onclick="addToCart('Classic Silver',490000)">
+            <button
+                class="add-btn"
+                onclick="addToCart('Classic Silver',490000)"
+            >
                 ADD TO CART
             </button>
 
@@ -909,10 +1061,16 @@ footer strong{
         <div class="product-card">
 
             <div class="watch-image">
-                <div class="watch-face">GR</div>
+
+                <div class="watch-face">
+                    GR
+                </div>
+
             </div>
 
-            <h3>Executive</h3>
+            <h3>
+                Executive
+            </h3>
 
             <p class="product-description">
                 Premium executive styling for a distinguished presence.
@@ -922,12 +1080,15 @@ footer strong{
                 ₦1,200,000
             </div>
 
-            <button class="add-btn"
-                onclick="addToCart('Executive',1200000)">
+            <button
+                class="add-btn"
+                onclick="addToCart('Executive',1200000)"
+            >
                 ADD TO CART
             </button>
 
         </div>
+
 
     </div>
 
@@ -937,35 +1098,62 @@ footer strong{
 <section class="section">
 
     <div class="section-title">
-        <h2>WHY GRANDSON ROYALE</h2>
-        <p>A luxury experience from order to delivery.</p>
+
+        <h2>
+            WHY GRANDSON ROYALE
+        </h2>
+
+        <p>
+            A luxury experience from order to delivery.
+        </p>
+
     </div>
+
 
     <div class="features">
 
+
         <div class="feature">
-            <h3>Premium Selection</h3>
+
+            <h3>
+                Premium Selection
+            </h3>
+
             <p>
                 Carefully selected luxury-inspired watches
                 designed for a distinguished appearance.
             </p>
+
         </div>
 
+
         <div class="feature">
-            <h3>Secure Ordering</h3>
+
+            <h3>
+                Secure Ordering
+            </h3>
+
             <p>
                 Create an account, place your order and
                 track your order status from your account.
             </p>
+
         </div>
 
+
         <div class="feature">
-            <h3>Customer Support</h3>
+
+            <h3>
+                Customer Support
+            </h3>
+
             <p>
                 Speak with our customer service team through
                 WhatsApp or telephone.
             </p>
+
         </div>
+
 
     </div>
 
@@ -976,7 +1164,9 @@ footer strong{
 
     <div class="service-box">
 
-        <h2>CUSTOMER SERVICE</h2>
+        <h2>
+            CUSTOMER SERVICE
+        </h2>
 
         <p>
             Need help with an order, payment or delivery?
@@ -1011,7 +1201,8 @@ footer strong{
 <footer>
 
     <p>
-        © 2026 <strong>GRANDSON ROYALE</strong>.
+        © 2026
+        <strong>GRANDSON ROYALE</strong>.
         All rights reserved.
     </p>
 
@@ -1020,31 +1211,44 @@ footer strong{
 
 <!-- CART MODAL -->
 
-<div class="overlay" id="cartModal">
+<div
+    class="overlay"
+    id="cartModal"
+>
 
     <div class="modal">
 
         <div class="modal-header">
 
-            <h2>YOUR CART</h2>
+            <h2>
+                YOUR CART
+            </h2>
 
-            <button class="close-btn" onclick="closeCart()">
+            <button
+                class="close-btn"
+                onclick="closeCart()"
+            >
                 ×
             </button>
 
         </div>
 
+
         <div id="cartItems"></div>
+
 
         <div class="cart-total">
 
-            <span>TOTAL</span>
+            <span>
+                TOTAL
+            </span>
 
             <span id="cartTotal">
                 ₦0
             </span>
 
         </div>
+
 
         <button
             class="primary-btn"
@@ -1060,15 +1264,23 @@ footer strong{
 
 <!-- ACCOUNT MODAL -->
 
-<div class="overlay" id="accountModal">
+<div
+    class="overlay"
+    id="accountModal"
+>
 
     <div class="modal">
 
         <div class="modal-header">
 
-            <h2>MY ACCOUNT</h2>
+            <h2>
+                MY ACCOUNT
+            </h2>
 
-            <button class="close-btn" onclick="closeAccount()">
+            <button
+                class="close-btn"
+                onclick="closeAccount()"
+            >
                 ×
             </button>
 
@@ -1080,24 +1292,34 @@ footer strong{
         <div id="loginView">
 
             <div class="form-group">
-                <label>Email</label>
+
+                <label>
+                    Email
+                </label>
 
                 <input
                     type="email"
                     id="loginEmail"
                     placeholder="Your email"
+                    autocomplete="email"
                 >
+
             </div>
 
 
             <div class="form-group">
-                <label>Password</label>
+
+                <label>
+                    Password
+                </label>
 
                 <input
                     type="password"
                     id="loginPassword"
                     placeholder="Your password"
+                    autocomplete="current-password"
                 >
+
             </div>
 
 
@@ -1124,16 +1346,22 @@ footer strong{
 
         <!-- SIGNUP -->
 
-        <div id="signupView" style="display:none;">
+        <div
+            id="signupView"
+            style="display:none;"
+        >
 
             <div class="form-group">
 
-                <label>Full Name</label>
+                <label>
+                    Full Name
+                </label>
 
                 <input
                     type="text"
                     id="signupName"
                     placeholder="Full name"
+                    autocomplete="name"
                 >
 
             </div>
@@ -1141,12 +1369,15 @@ footer strong{
 
             <div class="form-group">
 
-                <label>Email</label>
+                <label>
+                    Email
+                </label>
 
                 <input
                     type="email"
                     id="signupEmail"
                     placeholder="Email address"
+                    autocomplete="email"
                 >
 
             </div>
@@ -1154,12 +1385,15 @@ footer strong{
 
             <div class="form-group">
 
-                <label>Password</label>
+                <label>
+                    Password
+                </label>
 
                 <input
                     type="password"
                     id="signupPassword"
                     placeholder="Create password"
+                    autocomplete="new-password"
                 >
 
             </div>
@@ -1188,13 +1422,18 @@ footer strong{
 
         <!-- LOGGED IN -->
 
-        <div id="loggedInView" style="display:none;">
+        <div
+            id="loggedInView"
+            style="display:none;"
+        >
 
             <div class="account-box">
 
                 <div class="account-email">
 
-                    <span>Email</span>
+                    <span>
+                        Email
+                    </span>
 
                     <strong id="accountEmail"></strong>
 
@@ -1203,7 +1442,9 @@ footer strong{
 
                 <div class="account-email">
 
-                    <span>Name</span>
+                    <span>
+                        Name
+                    </span>
 
                     <strong id="accountName"></strong>
 
@@ -1212,7 +1453,9 @@ footer strong{
 
                 <div class="order-history">
 
-                    <h3>MY ORDERS</h3>
+                    <h3>
+                        MY ORDERS
+                    </h3>
 
                     <div id="myOrders">
                         Loading...
@@ -1249,15 +1492,23 @@ footer strong{
 
 <!-- CHECKOUT MODAL -->
 
-<div class="overlay" id="checkoutModal">
+<div
+    class="overlay"
+    id="checkoutModal"
+>
 
     <div class="modal">
 
         <div class="modal-header">
 
-            <h2>CHECKOUT</h2>
+            <h2>
+                CHECKOUT
+            </h2>
 
-            <button class="close-btn" onclick="closeCheckout()">
+            <button
+                class="close-btn"
+                onclick="closeCheckout()"
+            >
                 ×
             </button>
 
@@ -1276,12 +1527,15 @@ footer strong{
 
         <div class="form-group">
 
-            <label>Full Name</label>
+            <label>
+                Full Name
+            </label>
 
             <input
                 type="text"
                 id="customerName"
                 placeholder="Full name"
+                autocomplete="name"
             >
 
         </div>
@@ -1289,12 +1543,15 @@ footer strong{
 
         <div class="form-group">
 
-            <label>Phone</label>
+            <label>
+                Phone
+            </label>
 
             <input
                 type="tel"
                 id="customerPhone"
                 placeholder="Phone number"
+                autocomplete="tel"
             >
 
         </div>
@@ -1302,12 +1559,15 @@ footer strong{
 
         <div class="form-group">
 
-            <label>Email</label>
+            <label>
+                Email
+            </label>
 
             <input
                 type="email"
                 id="customerEmail"
                 placeholder="Email address"
+                autocomplete="email"
             >
 
         </div>
@@ -1315,11 +1575,14 @@ footer strong{
 
         <div class="form-group">
 
-            <label>Delivery Address</label>
+            <label>
+                Delivery Address
+            </label>
 
             <textarea
                 id="deliveryAddress"
                 placeholder="Full delivery address"
+                autocomplete="street-address"
             ></textarea>
 
         </div>
@@ -1327,10 +1590,15 @@ footer strong{
 
         <div class="payment-box">
 
-            <h3>OPay Payment</h3>
+            <h3>
+                OPay Payment
+            </h3>
 
             <p>
-                Payment method: <strong>OPay</strong><br>
+                Payment method:
+                <strong>OPay</strong>
+                <br>
+
                 Please contact GRANDSON ROYALE customer service
                 for payment instructions after placing your order.
             </p>
@@ -1364,13 +1632,18 @@ footer strong{
 
 <!-- ADMIN MODAL -->
 
-<div class="overlay" id="adminModal">
+<div
+    class="overlay"
+    id="adminModal"
+>
 
     <div class="modal large">
 
         <div class="modal-header">
 
-            <h2>ADMIN ORDERS</h2>
+            <h2>
+                ADMIN ORDERS
+            </h2>
 
             <button
                 class="close-btn"
@@ -1385,23 +1658,54 @@ footer strong{
         <div class="admin-summary">
 
             <div class="summary-card">
-                <span>TOTAL ORDERS</span>
-                <strong id="adminTotalOrders">0</strong>
+
+                <span>
+                    TOTAL ORDERS
+                </span>
+
+                <strong id="adminTotalOrders">
+                    0
+                </strong>
+
             </div>
 
-            <div class="summary-card">
-                <span>PENDING PAYMENT</span>
-                <strong id="adminPendingPayments">0</strong>
-            </div>
 
             <div class="summary-card">
-                <span>ACTIVE ORDERS</span>
-                <strong id="adminActiveOrders">0</strong>
+
+                <span>
+                    PENDING PAYMENT
+                </span>
+
+                <strong id="adminPendingPayments">
+                    0
+                </strong>
+
             </div>
 
+
             <div class="summary-card">
-                <span>COMPLETED</span>
-                <strong id="adminCompletedOrders">0</strong>
+
+                <span>
+                    ACTIVE ORDERS
+                </span>
+
+                <strong id="adminActiveOrders">
+                    0
+                </strong>
+
+            </div>
+
+
+            <div class="summary-card">
+
+                <span>
+                    COMPLETED
+                </span>
+
+                <strong id="adminCompletedOrders">
+                    0
+                </strong>
+
             </div>
 
         </div>
@@ -1429,7 +1733,9 @@ footer strong{
 
 <!-- SUPABASE -->
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script
+    src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"
+></script>
 
 
 <script>
@@ -1462,10 +1768,13 @@ const ADMIN_USER_ID =
 function isAdmin(user){
 
     if(!user){
+
         return false;
+
     }
 
     return user.id === ADMIN_USER_ID;
+
 }
 
 
@@ -1481,7 +1790,10 @@ let isPlacingOrder = false;
 function addToCart(name,price){
 
     const existing =
-        cart.find(item => item.name === name);
+        cart.find(
+            item => item.name === name
+        );
+
 
     if(existing){
 
@@ -1490,16 +1802,26 @@ function addToCart(name,price){
     }else{
 
         cart.push({
+
             name:name,
+
             price:price,
+
             quantity:1
+
         });
 
     }
 
+
     updateCart();
 
-    alert(name + " added to cart.");
+
+    alert(
+        name +
+        " added to cart."
+    );
+
 }
 
 
@@ -1507,124 +1829,169 @@ function updateCart(){
 
     const count =
         cart.reduce(
-            (sum,item) => sum + item.quantity,
+            (sum,item) =>
+                sum + item.quantity,
             0
         );
 
-    document.getElementById("cartCount").textContent =
+
+    document.getElementById(
+        "cartCount"
+    ).textContent =
         count;
 
 
     const container =
-        document.getElementById("cartItems");
+        document.getElementById(
+            "cartItems"
+        );
+
 
     if(cart.length === 0){
 
         container.innerHTML =
             '<p style="color:#888;text-align:center;padding:30px 0;">Your cart is empty.</p>';
 
-        document.getElementById("cartTotal").textContent =
+
+        document.getElementById(
+            "cartTotal"
+        ).textContent =
             "₦0";
 
+
         return;
+
     }
 
 
     let html = "";
 
-    cart.forEach((item,index)=>{
 
-        html += `
-            <div class="cart-item">
+    cart.forEach(
+        (item,index)=>{
 
-                <div class="cart-item-info">
+            html += `
 
-                    <div class="cart-item-name">
-                        ${escapeHtml(item.name)}
-                    </div>
+                <div class="cart-item">
 
-                    <div class="cart-item-price">
-                        ₦${(item.price * item.quantity).toLocaleString()}
-                    </div>
+                    <div class="cart-item-info">
 
-                    <div class="quantity-controls">
+                        <div class="cart-item-name">
+                            ${escapeHtml(item.name)}
+                        </div>
 
-                        <button
-                            onclick="changeQuantity(${index},-1)"
-                        >
-                            −
-                        </button>
+                        <div class="cart-item-price">
+                            ₦${(
+                                item.price *
+                                item.quantity
+                            ).toLocaleString()}
+                        </div>
 
-                        <span>
-                            ${item.quantity}
-                        </span>
+                        <div class="quantity-controls">
 
-                        <button
-                            onclick="changeQuantity(${index},1)"
-                        >
-                            +
-                        </button>
+                            <button
+                                onclick="changeQuantity(${index},-1)"
+                            >
+                                −
+                            </button>
 
-                        <button
-                            class="remove-btn"
-                            onclick="removeFromCart(${index})"
-                        >
-                            Remove
-                        </button>
+                            <span>
+                                ${item.quantity}
+                            </span>
+
+                            <button
+                                onclick="changeQuantity(${index},1)"
+                            >
+                                +
+                            </button>
+
+                            <button
+                                class="remove-btn"
+                                onclick="removeFromCart(${index})"
+                            >
+                                Remove
+                            </button>
+
+                        </div>
 
                     </div>
 
                 </div>
 
-            </div>
-        `;
+            `;
 
-    });
+        }
+    );
 
 
-    container.innerHTML = html;
+    container.innerHTML =
+        html;
 
 
     const total =
         cart.reduce(
             (sum,item) =>
-                sum + item.price * item.quantity,
+                sum +
+                item.price *
+                item.quantity,
             0
         );
 
 
-    document.getElementById("cartTotal").textContent =
-        "₦" + total.toLocaleString();
+    document.getElementById(
+        "cartTotal"
+    ).textContent =
+        "₦" +
+        total.toLocaleString();
+
 }
 
 
 function changeQuantity(index,change){
 
     if(!cart[index]){
+
         return;
+
     }
 
-    cart[index].quantity += change;
+
+    cart[index].quantity +=
+        change;
+
 
     if(cart[index].quantity <= 0){
 
-        cart.splice(index,1);
+        cart.splice(
+            index,
+            1
+        );
 
     }
 
+
     updateCart();
+
 }
 
 
 function removeFromCart(index){
 
     if(!cart[index]){
+
         return;
+
     }
 
-    cart.splice(index,1);
+
+    cart.splice(
+        index,
+        1
+    );
+
 
     updateCart();
+
 }
 
 
@@ -1632,9 +1999,11 @@ function openCart(){
 
     updateCart();
 
+
     document
         .getElementById("cartModal")
         .classList.add("show");
+
 }
 
 
@@ -1643,6 +2012,7 @@ function closeCart(){
     document
         .getElementById("cartModal")
         .classList.remove("show");
+
 }
 
 
@@ -1655,16 +2025,21 @@ async function getCurrentUser(){
     const {
         data,
         error
-    } = await supabaseClient.auth.getUser();
+    } =
+        await supabaseClient.auth.getUser();
+
 
     if(error){
 
         console.error(error);
 
         return null;
+
     }
 
+
     return data.user;
+
 }
 
 
@@ -1674,7 +2049,9 @@ function openAccount(){
         .getElementById("accountModal")
         .classList.add("show");
 
+
     refreshAccount();
+
 }
 
 
@@ -1683,32 +2060,51 @@ function closeAccount(){
     document
         .getElementById("accountModal")
         .classList.remove("show");
+
 }
 
 
 function showLogin(){
 
-    document.getElementById("loginView").style.display =
+    document.getElementById(
+        "loginView"
+    ).style.display =
         "block";
 
-    document.getElementById("signupView").style.display =
+
+    document.getElementById(
+        "signupView"
+    ).style.display =
         "none";
 
-    document.getElementById("loggedInView").style.display =
+
+    document.getElementById(
+        "loggedInView"
+    ).style.display =
         "none";
+
 }
 
 
 function showSignup(){
 
-    document.getElementById("loginView").style.display =
+    document.getElementById(
+        "loginView"
+    ).style.display =
         "none";
 
-    document.getElementById("signupView").style.display =
+
+    document.getElementById(
+        "signupView"
+    ).style.display =
         "block";
 
-    document.getElementById("loggedInView").style.display =
+
+    document.getElementById(
+        "loggedInView"
+    ).style.display =
         "none";
+
 }
 
 
@@ -1723,30 +2119,45 @@ async function refreshAccount(){
         showLogin();
 
         return;
+
     }
 
 
-    document.getElementById("loginView").style.display =
+    document.getElementById(
+        "loginView"
+    ).style.display =
         "none";
 
-    document.getElementById("signupView").style.display =
+
+    document.getElementById(
+        "signupView"
+    ).style.display =
         "none";
 
-    document.getElementById("loggedInView").style.display =
+
+    document.getElementById(
+        "loggedInView"
+    ).style.display =
         "block";
 
 
-    document.getElementById("accountEmail").textContent =
+    document.getElementById(
+        "accountEmail"
+    ).textContent =
         user.email || "";
 
 
-    document.getElementById("accountName").textContent =
+    document.getElementById(
+        "accountName"
+    ).textContent =
         user.user_metadata?.full_name ||
         "Customer";
 
 
     const adminButton =
-        document.getElementById("adminOrdersButton");
+        document.getElementById(
+            "adminOrdersButton"
+        );
 
 
     if(isAdmin(user)){
@@ -1763,6 +2174,7 @@ async function refreshAccount(){
 
 
     await loadMyOrders();
+
 }
 
 
@@ -1773,28 +2185,46 @@ async function refreshAccount(){
 async function signUp(){
 
     const name =
-        document.getElementById("signupName").value.trim();
+        document.getElementById(
+            "signupName"
+        ).value.trim();
+
 
     const email =
-        document.getElementById("signupEmail").value.trim();
+        document.getElementById(
+            "signupEmail"
+        ).value.trim();
+
 
     const password =
-        document.getElementById("signupPassword").value;
+        document.getElementById(
+            "signupPassword"
+        ).value;
 
 
-    if(!name || !email || !password){
+    if(
+        !name ||
+        !email ||
+        !password
+    ){
 
-        alert("Please fill in all fields.");
+        alert(
+            "Please fill in all fields."
+        );
 
         return;
+
     }
 
 
     if(password.length < 6){
 
-        alert("Password must be at least 6 characters.");
+        alert(
+            "Password must be at least 6 characters."
+        );
 
         return;
+
     }
 
 
@@ -1809,12 +2239,16 @@ async function signUp(){
             password:password,
 
             options:{
+
                 data:{
+
                     full_name:name
+
                 },
 
                 emailRedirectTo:
                     window.location.href
+
             }
 
         });
@@ -1822,9 +2256,12 @@ async function signUp(){
 
     if(error){
 
-        alert(error.message);
+        alert(
+            error.message
+        );
 
         return;
+
     }
 
 
@@ -1833,6 +2270,7 @@ async function signUp(){
         alert(
             "Account created successfully. Please check your Gmail and confirm your email before logging in."
         );
+
 
         showLogin();
 
@@ -1848,17 +2286,28 @@ async function signUp(){
 async function signIn(){
 
     const email =
-        document.getElementById("loginEmail").value.trim();
+        document.getElementById(
+            "loginEmail"
+        ).value.trim();
+
 
     const password =
-        document.getElementById("loginPassword").value;
+        document.getElementById(
+            "loginPassword"
+        ).value;
 
 
-    if(!email || !password){
+    if(
+        !email ||
+        !password
+    ){
 
-        alert("Please enter your email and password.");
+        alert(
+            "Please enter your email and password."
+        );
 
         return;
+
     }
 
 
@@ -1869,6 +2318,7 @@ async function signIn(){
         await supabaseClient.auth.signInWithPassword({
 
             email:email,
+
             password:password
 
         });
@@ -1876,15 +2326,22 @@ async function signIn(){
 
     if(error){
 
-        alert(error.message);
+        alert(
+            error.message
+        );
 
         return;
+
     }
 
 
-    alert("Login successful.");
+    alert(
+        "Login successful."
+    );
+
 
     await refreshAccount();
+
 }
 
 
@@ -1902,15 +2359,22 @@ async function signOut(){
 
     if(error){
 
-        alert(error.message);
+        alert(
+            error.message
+        );
 
         return;
+
     }
 
 
-    alert("You have been logged out.");
+    alert(
+        "You have been logged out."
+    );
+
 
     refreshAccount();
+
 }
 
 
@@ -1927,11 +2391,14 @@ async function loadMyOrders(){
     if(!user){
 
         return;
+
     }
 
 
     const container =
-        document.getElementById("myOrders");
+        document.getElementById(
+            "myOrders"
+        );
 
 
     container.innerHTML =
@@ -1945,90 +2412,136 @@ async function loadMyOrders(){
         await supabaseClient
             .from("orders")
             .select("*")
-            .eq("user_id",user.id)
-            .order("created_at",{ascending:false});
+            .eq(
+                "user_id",
+                user.id
+            )
+            .order(
+                "created_at",
+                {
+                    ascending:false
+                }
+            );
 
 
     if(error){
 
         console.error(error);
 
+
         container.innerHTML =
             '<p style="color:#ff9999;">Unable to load orders.</p>';
 
+
         return;
+
     }
 
 
-    if(!data || data.length === 0){
+    if(
+        !data ||
+        data.length === 0
+    ){
 
         container.innerHTML =
             '<p style="color:#888;">You have no orders yet.</p>';
 
+
         return;
+
     }
 
 
     let html = "";
 
 
-    data.forEach(order=>{
+    data.forEach(
+        order=>{
 
-        const created =
-            order.created_at
-                ? new Date(order.created_at).toLocaleString()
-                : "";
+            const created =
+                order.created_at
+                    ? new Date(
+                        order.created_at
+                    ).toLocaleString()
+                    : "";
 
 
-        html += `
+            html += `
 
-            <div class="order-card">
+                <div class="order-card">
 
-                <p>
-                    <strong>Order #${escapeHtml(String(order.id))}</strong>
-                </p>
+                    <p>
 
-                <p>
-                    Date: ${escapeHtml(created)}
-                </p>
+                        <strong>
+                            Order #${escapeHtml(
+                                String(order.id)
+                            )}
+                        </strong>
 
-                <p>
-                    ${escapeHtml(order.items || "")}
-                </p>
+                    </p>
 
-                <p>
-                    Total:
-                    <strong>
-                        ₦${Number(order.total_amount || 0).toLocaleString()}
-                    </strong>
-                </p>
+                    <p>
+                        Date:
+                        ${escapeHtml(created)}
+                    </p>
 
-                <div class="status-row">
-
-                    <span class="status-badge">
-                        Payment:
+                    <p>
                         ${escapeHtml(
-                            formatStatus(order.payment_status)
+                            order.items || ""
                         )}
-                    </span>
+                    </p>
 
-                    <span class="status-badge">
-                        Order:
-                        ${escapeHtml(
-                            formatStatus(order.order_status)
-                        )}
-                    </span>
+                    <p>
+
+                        Total:
+
+                        <strong>
+                            ₦${Number(
+                                order.total_amount || 0
+                            ).toLocaleString()}
+                        </strong>
+
+                    </p>
+
+                    <div class="status-row">
+
+                        <span class="status-badge">
+
+                            Payment:
+
+                            ${escapeHtml(
+                                formatStatus(
+                                    order.payment_status
+                                )
+                            )}
+
+                        </span>
+
+                        <span class="status-badge">
+
+                            Order:
+
+                            ${escapeHtml(
+                                formatStatus(
+                                    order.order_status
+                                )
+                            )}
+
+                        </span>
+
+                    </div>
 
                 </div>
 
-            </div>
+            `;
 
-        `;
+        }
+    );
 
-    });
 
+    container.innerHTML =
+        html;
 
-    container.innerHTML = html;
 }
 
 
@@ -2040,9 +2553,12 @@ async function openCheckout(){
 
     if(cart.length === 0){
 
-        alert("Your cart is empty.");
+        alert(
+            "Your cart is empty."
+        );
 
         return;
+
     }
 
 
@@ -2056,37 +2572,52 @@ async function openCheckout(){
             "Please create an account or log in before checkout."
         );
 
+
         closeCart();
 
         openAccount();
 
+
         return;
+
     }
 
 
     document
-        .getElementById("checkoutModal")
+        .getElementById(
+            "checkoutModal"
+        )
         .classList.add("show");
 
 
     const fullName =
-        user.user_metadata?.full_name || "";
+        user.user_metadata?.full_name ||
+        "";
 
 
-    document.getElementById("customerName").value =
+    document.getElementById(
+        "customerName"
+    ).value =
         fullName;
 
 
-    document.getElementById("customerEmail").value =
-        user.email || "";
+    document.getElementById(
+        "customerEmail"
+    ).value =
+        user.email ||
+        "";
 
 
-    document.getElementById("checkoutSuccess").style.display =
+    document.getElementById(
+        "checkoutSuccess"
+    ).style.display =
         "none";
 
 
     const whatsappButton =
-        document.getElementById("whatsappOrder");
+        document.getElementById(
+            "whatsappOrder"
+        );
 
 
     whatsappButton.style.display =
@@ -2097,18 +2628,23 @@ async function openCheckout(){
         "#";
 
 
-    document.getElementById("placeOrderButton").disabled =
+    document.getElementById(
+        "placeOrderButton"
+    ).disabled =
         false;
 
 
     updateWhatsApp();
+
 }
 
 
 function closeCheckout(){
 
     document
-        .getElementById("checkoutModal")
+        .getElementById(
+            "checkoutModal"
+        )
         .classList.remove("show");
 
 }
@@ -2169,20 +2705,22 @@ function buildWhatsAppMessage(
         "ORDER:\n";
 
 
-    cartSnapshot.forEach(item=>{
+    cartSnapshot.forEach(
+        item=>{
 
-        message +=
-            item.name +
-            " x" +
-            item.quantity +
-            " = ₦" +
-            (
-                item.price *
-                item.quantity
-            ).toLocaleString() +
-            "\n";
+            message +=
+                item.name +
+                " x" +
+                item.quantity +
+                " = ₦" +
+                (
+                    item.price *
+                    item.quantity
+                ).toLocaleString() +
+                "\n";
 
-    });
+        }
+    );
 
 
     const total =
@@ -2205,6 +2743,7 @@ function buildWhatsAppMessage(
 
 
     return message;
+
 }
 
 
@@ -2215,16 +2754,27 @@ function buildWhatsAppMessage(
 function updateWhatsApp(){
 
     const name =
-        document.getElementById("customerName").value.trim();
+        document.getElementById(
+            "customerName"
+        ).value.trim();
+
 
     const phone =
-        document.getElementById("customerPhone").value.trim();
+        document.getElementById(
+            "customerPhone"
+        ).value.trim();
+
 
     const email =
-        document.getElementById("customerEmail").value.trim();
+        document.getElementById(
+            "customerEmail"
+        ).value.trim();
+
 
     const address =
-        document.getElementById("deliveryAddress").value.trim();
+        document.getElementById(
+            "deliveryAddress"
+        ).value.trim();
 
 
     const phoneNumber =
@@ -2241,11 +2791,14 @@ function updateWhatsApp(){
         );
 
 
-    document.getElementById("whatsappOrder").href =
+    document.getElementById(
+        "whatsappOrder"
+    ).href =
         "https://wa.me/" +
         phoneNumber +
         "?text=" +
         encodeURIComponent(message);
+
 }
 
 
@@ -2258,14 +2811,18 @@ async function placeOrder(){
     if(isPlacingOrder){
 
         return;
+
     }
 
 
     if(cart.length === 0){
 
-        alert("Your cart is empty.");
+        alert(
+            "Your cart is empty."
+        );
 
         return;
+
     }
 
 
@@ -2280,59 +2837,86 @@ async function placeOrder(){
         );
 
         return;
+
     }
 
 
     const name =
-        document.getElementById("customerName").value.trim();
+        document.getElementById(
+            "customerName"
+        ).value.trim();
+
 
     const phone =
-        document.getElementById("customerPhone").value.trim();
+        document.getElementById(
+            "customerPhone"
+        ).value.trim();
+
 
     const email =
-        document.getElementById("customerEmail").value.trim();
+        document.getElementById(
+            "customerEmail"
+        ).value.trim();
+
 
     const address =
-        document.getElementById("deliveryAddress").value.trim();
+        document.getElementById(
+            "deliveryAddress"
+        ).value.trim();
 
 
     if(!name){
 
-        alert("Please enter your full name.");
+        alert(
+            "Please enter your full name."
+        );
 
         return;
+
     }
 
 
     if(!phone){
 
-        alert("Please enter your phone number.");
+        alert(
+            "Please enter your phone number."
+        );
 
         return;
+
     }
 
 
     if(!email){
 
-        alert("Please enter your email.");
+        alert(
+            "Please enter your email."
+        );
 
         return;
+
     }
 
 
     if(!address){
 
-        alert("Please enter your delivery address.");
+        alert(
+            "Please enter your delivery address."
+        );
 
         return;
+
     }
 
 
-    isPlacingOrder = true;
+    isPlacingOrder =
+        true;
 
 
     const placeButton =
-        document.getElementById("placeOrderButton");
+        document.getElementById(
+            "placeOrderButton"
+        );
 
 
     placeButton.disabled =
@@ -2353,10 +2937,11 @@ async function placeOrder(){
 
         const itemsText =
             cartSnapshot
-                .map(item =>
-                    item.name +
-                    " x" +
-                    item.quantity
+                .map(
+                    item =>
+                        item.name +
+                        " x" +
+                        item.quantity
                 )
                 .join(", ");
 
@@ -2371,6 +2956,19 @@ async function placeOrder(){
             );
 
 
+        /*
+         IMPORTANT:
+
+         The database trigger now forces every
+         new order to start as:
+
+         payment_status = pending
+         order_status = pending
+
+         Even if someone modifies the browser request.
+        */
+
+
         const {
             data,
             error
@@ -2379,23 +2977,32 @@ async function placeOrder(){
                 .from("orders")
                 .insert({
 
-                    user_id:user.id,
+                    user_id:
+                        user.id,
 
-                    customer_name:name,
+                    customer_name:
+                        name,
 
-                    phone:phone,
+                    phone:
+                        phone,
 
-                    email:email,
+                    email:
+                        email,
 
-                    delivery_address:address,
+                    delivery_address:
+                        address,
 
-                    items:itemsText,
+                    items:
+                        itemsText,
 
-                    total_amount:total,
+                    total_amount:
+                        total,
 
-                    payment_status:"pending",
+                    payment_status:
+                        "pending",
 
-                    order_status:"pending"
+                    order_status:
+                        "pending"
 
                 })
                 .select("id")
@@ -2406,17 +3013,21 @@ async function placeOrder(){
 
             console.error(error);
 
+
             alert(
                 "Order could not be saved: " +
                 error.message
             );
 
+
             return;
+
         }
 
 
         const orderId =
-            data?.id || null;
+            data?.id ||
+            null;
 
 
         const message =
@@ -2438,11 +3049,15 @@ async function placeOrder(){
             "https://wa.me/" +
             phoneNumber +
             "?text=" +
-            encodeURIComponent(message);
+            encodeURIComponent(
+                message
+            );
 
 
         const whatsappButton =
-            document.getElementById("whatsappOrder");
+            document.getElementById(
+                "whatsappOrder"
+            );
 
 
         whatsappButton.href =
@@ -2457,7 +3072,9 @@ async function placeOrder(){
             "📱 SEND ORDER ON WHATSAPP";
 
 
-        document.getElementById("checkoutSuccess").style.display =
+        document.getElementById(
+            "checkoutSuccess"
+        ).style.display =
             "block";
 
 
@@ -2466,22 +3083,14 @@ async function placeOrder(){
         );
 
 
-        /*
-            Clear the cart after the order is saved.
-            The checkout window stays open so the customer
-            can still tap SEND ORDER ON WHATSAPP.
-        */
-
         cart = [];
+
 
         updateCart();
 
+
         closeCart();
 
-
-        /*
-            Refresh the customer's order history.
-        */
 
         await loadMyOrders();
 
@@ -2490,16 +3099,21 @@ async function placeOrder(){
 
         console.error(error);
 
+
         alert(
             "Something went wrong while placing your order."
         );
 
+
     }finally{
 
-        isPlacingOrder = false;
+        isPlacingOrder =
+            false;
+
 
         placeButton.disabled =
             false;
+
 
         placeButton.textContent =
             "PLACE ORDER";
@@ -2521,9 +3135,12 @@ async function openAdminOrders(){
 
     if(!user){
 
-        alert("Please log in.");
+        alert(
+            "Please log in."
+        );
 
         return;
+
     }
 
 
@@ -2534,28 +3151,35 @@ async function openAdminOrders(){
         );
 
         return;
+
     }
 
 
     document
-        .getElementById("adminModal")
+        .getElementById(
+            "adminModal"
+        )
         .classList.add("show");
 
 
     await loadAdminOrders();
+
 }
 
 
 function closeAdminOrders(){
 
     document
-        .getElementById("adminModal")
+        .getElementById(
+            "adminModal"
+        )
         .classList.remove("show");
+
 }
 
 
 /* =========================================================
-   LOAD ALL ADMIN ORDERS
+   LOAD ADMIN ORDERS
 ========================================================= */
 
 async function loadAdminOrders(){
@@ -2564,18 +3188,24 @@ async function loadAdminOrders(){
         await getCurrentUser();
 
 
-    if(!user || !isAdmin(user)){
+    if(
+        !user ||
+        !isAdmin(user)
+    ){
 
         alert(
             "Admin access required."
         );
 
         return;
+
     }
 
 
     const container =
-        document.getElementById("adminOrdersList");
+        document.getElementById(
+            "adminOrdersList"
+        );
 
 
     container.innerHTML =
@@ -2589,22 +3219,39 @@ async function loadAdminOrders(){
         await supabaseClient
             .from("orders")
             .select("*")
-            .order("created_at",{ascending:false});
+            .order(
+                "created_at",
+                {
+                    ascending:false
+                }
+            );
 
 
     if(error){
 
         console.error(error);
 
+
         container.innerHTML =
             `
+
             <div class="admin-empty">
-                Unable to load orders.<br><br>
-                ${escapeHtml(error.message)}
+
+                Unable to load orders.
+
+                <br><br>
+
+                ${escapeHtml(
+                    error.message
+                )}
+
             </div>
+
             `;
 
+
         return;
+
     }
 
 
@@ -2612,184 +3259,260 @@ async function loadAdminOrders(){
         data || [];
 
 
-    updateAdminSummary(orders);
+    updateAdminSummary(
+        orders
+    );
 
 
     if(orders.length === 0){
 
         container.innerHTML =
             `
+
             <div class="admin-empty">
+
                 No orders have been placed yet.
+
             </div>
+
             `;
 
+
         return;
+
     }
 
 
     let html = "";
 
 
-    orders.forEach(order=>{
+    orders.forEach(
+        order=>{
 
-        const created =
-            order.created_at
-                ? new Date(
-                    order.created_at
-                ).toLocaleString()
-                : "";
-
-
-        html += `
-
-            <div class="admin-order">
-
-                <div class="admin-order-top">
-
-                    <div>
-
-                        <h3>
-                            Order #${escapeHtml(String(order.id))}
-                        </h3>
-
-                        <p style="color:#777;margin-top:5px;">
-                            ${escapeHtml(created)}
-                        </p>
-
-                    </div>
-
-                </div>
+            const created =
+                order.created_at
+                    ? new Date(
+                        order.created_at
+                    ).toLocaleString()
+                    : "";
 
 
-                <div class="admin-order-details">
+            html += `
 
-                    <strong>Customer:</strong>
-                    ${escapeHtml(order.customer_name || "")}
+                <div class="admin-order">
 
-                    <br>
+                    <div class="admin-order-top">
 
-                    <strong>Phone:</strong>
-                    ${escapeHtml(order.phone || "")}
+                        <div>
 
-                    <br>
+                            <h3>
 
-                    <strong>Email:</strong>
-                    ${escapeHtml(order.email || "")}
+                                Order #${escapeHtml(
+                                    String(order.id)
+                                )}
 
-                    <br>
+                            </h3>
 
-                    <strong>Address:</strong>
-                    ${escapeHtml(order.delivery_address || "")}
-
-                    <br>
-
-                    <strong>Items:</strong>
-                    ${escapeHtml(order.items || "")}
-
-                    <br>
-
-                    <strong>Total:</strong>
-                    ₦${Number(
-                        order.total_amount || 0
-                    ).toLocaleString()}
-
-                </div>
-
-
-                <div class="admin-controls">
-
-
-                    <div class="admin-control">
-
-                        <label>
-                            PAYMENT STATUS
-                        </label>
-
-                        <select
-                            id="payment-${order.id}"
-                        >
-
-                            <option
-                                value="pending"
-                                ${order.payment_status === "pending" ? "selected" : ""}
+                            <p
+                                style="color:#777;margin-top:5px;"
                             >
-                                Pending
-                            </option>
+                                ${escapeHtml(
+                                    created
+                                )}
+                            </p>
 
-                            <option
-                                value="paid"
-                                ${order.payment_status === "paid" ? "selected" : ""}
-                            >
-                                Paid
-                            </option>
-
-                        </select>
+                        </div>
 
                     </div>
 
 
-                    <div class="admin-control">
+                    <div class="admin-order-details">
 
-                        <label>
-                            ORDER STATUS
-                        </label>
+                        <strong>
+                            Customer:
+                        </strong>
 
-                        <select
-                            id="status-${order.id}"
-                        >
+                        ${escapeHtml(
+                            order.customer_name || ""
+                        )}
 
-                            <option
-                                value="pending"
-                                ${order.order_status === "pending" ? "selected" : ""}
-                            >
-                                Pending
-                            </option>
+                        <br>
 
-                            <option
-                                value="confirmed"
-                                ${order.order_status === "confirmed" ? "selected" : ""}
-                            >
-                                Confirmed
-                            </option>
 
-                            <option
-                                value="processing"
-                                ${order.order_status === "processing" ? "selected" : ""}
-                            >
-                                Processing
-                            </option>
+                        <strong>
+                            Phone:
+                        </strong>
 
-                            <option
-                                value="completed"
-                                ${order.order_status === "completed" ? "selected" : ""}
-                            >
-                                Completed
-                            </option>
+                        ${escapeHtml(
+                            order.phone || ""
+                        )}
 
-                        </select>
+                        <br>
+
+
+                        <strong>
+                            Email:
+                        </strong>
+
+                        ${escapeHtml(
+                            order.email || ""
+                        )}
+
+                        <br>
+
+
+                        <strong>
+                            Address:
+                        </strong>
+
+                        ${escapeHtml(
+                            order.delivery_address || ""
+                        )}
+
+                        <br>
+
+
+                        <strong>
+                            Items:
+                        </strong>
+
+                        ${escapeHtml(
+                            order.items || ""
+                        )}
+
+                        <br>
+
+
+                        <strong>
+                            Total:
+                        </strong>
+
+                        ₦${Number(
+                            order.total_amount || 0
+                        ).toLocaleString()}
 
                     </div>
 
+
+                    <div class="admin-controls">
+
+
+                        <div class="admin-control">
+
+                            <label>
+                                PAYMENT STATUS
+                            </label>
+
+                            <select
+                                id="payment-${order.id}"
+                            >
+
+                                <option
+                                    value="pending"
+                                    ${
+                                        order.payment_status === "pending"
+                                            ? "selected"
+                                            : ""
+                                    }
+                                >
+                                    Pending
+                                </option>
+
+                                <option
+                                    value="paid"
+                                    ${
+                                        order.payment_status === "paid"
+                                            ? "selected"
+                                            : ""
+                                    }
+                                >
+                                    Paid
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="admin-control">
+
+                            <label>
+                                ORDER STATUS
+                            </label>
+
+                            <select
+                                id="status-${order.id}"
+                            >
+
+                                <option
+                                    value="pending"
+                                    ${
+                                        order.order_status === "pending"
+                                            ? "selected"
+                                            : ""
+                                    }
+                                >
+                                    Pending
+                                </option>
+
+                                <option
+                                    value="confirmed"
+                                    ${
+                                        order.order_status === "confirmed"
+                                            ? "selected"
+                                            : ""
+                                    }
+                                >
+                                    Confirmed
+                                </option>
+
+                                <option
+                                    value="processing"
+                                    ${
+                                        order.order_status === "processing"
+                                            ? "selected"
+                                            : ""
+                                    }
+                                >
+                                    Processing
+                                </option>
+
+                                <option
+                                    value="completed"
+                                    ${
+                                        order.order_status === "completed"
+                                            ? "selected"
+                                            : ""
+                                    }
+                                >
+                                    Completed
+                                </option>
+
+                            </select>
+
+                        </div>
+
+                    </div>
+
+
+                    <button
+                        class="update-order-btn"
+                        onclick="updateAdminOrder(${order.id})"
+                    >
+                        SAVE ORDER UPDATE
+                    </button>
+
                 </div>
 
+            `;
 
-                <button
-                    class="update-order-btn"
-                    onclick="updateAdminOrder(${order.id})"
-                >
-                    SAVE ORDER UPDATE
-                </button>
-
-            </div>
-
-        `;
-
-    });
+        }
+    );
 
 
     container.innerHTML =
         html;
+
 }
 
 
@@ -2797,7 +3520,9 @@ async function loadAdminOrders(){
    ADMIN SUMMARY
 ========================================================= */
 
-function updateAdminSummary(orders){
+function updateAdminSummary(
+    orders
+){
 
     const total =
         orders.length;
@@ -2806,21 +3531,24 @@ function updateAdminSummary(orders){
     const pendingPayments =
         orders.filter(
             order =>
-                order.payment_status === "pending"
+                order.payment_status ===
+                "pending"
         ).length;
 
 
     const activeOrders =
         orders.filter(
             order =>
-                order.order_status !== "completed"
+                order.order_status !==
+                "completed"
         ).length;
 
 
     const completedOrders =
         orders.filter(
             order =>
-                order.order_status === "completed"
+                order.order_status ===
+                "completed"
         ).length;
 
 
@@ -2846,6 +3574,7 @@ function updateAdminSummary(orders){
         "adminCompletedOrders"
     ).textContent =
         completedOrders;
+
 }
 
 
@@ -2853,31 +3582,39 @@ function updateAdminSummary(orders){
    UPDATE ADMIN ORDER
 ========================================================= */
 
-async function updateAdminOrder(orderId){
+async function updateAdminOrder(
+    orderId
+){
 
     const user =
         await getCurrentUser();
 
 
-    if(!user || !isAdmin(user)){
+    if(
+        !user ||
+        !isAdmin(user)
+    ){
 
         alert(
             "Admin access required."
         );
 
         return;
+
     }
 
 
     const paymentStatus =
         document.getElementById(
-            "payment-" + orderId
+            "payment-" +
+            orderId
         ).value;
 
 
     const orderStatus =
         document.getElementById(
-            "status-" + orderId
+            "status-" +
+            orderId
         ).value;
 
 
@@ -2895,19 +3632,25 @@ async function updateAdminOrder(orderId){
                     orderStatus
 
             })
-            .eq("id",orderId);
+            .eq(
+                "id",
+                orderId
+            );
 
 
     if(error){
 
         console.error(error);
 
+
         alert(
             "Order update failed: " +
             error.message
         );
 
+
         return;
+
     }
 
 
@@ -2919,6 +3662,7 @@ async function updateAdminOrder(orderId){
 
 
     await loadAdminOrders();
+
 }
 
 
@@ -2926,11 +3670,14 @@ async function updateAdminOrder(orderId){
    STATUS DISPLAY
 ========================================================= */
 
-function formatStatus(status){
+function formatStatus(
+    status
+){
 
     if(!status){
 
         return "Pending";
+
     }
 
 
@@ -2940,6 +3687,7 @@ function formatStatus(status){
         status
             .slice(1)
             .toLowerCase();
+
 }
 
 
@@ -2947,14 +3695,34 @@ function formatStatus(status){
    SECURITY / HTML ESCAPE
 ========================================================= */
 
-function escapeHtml(value){
+function escapeHtml(
+    value
+){
 
-    return String(value ?? "")
-        .replace(/&/g,"&amp;")
-        .replace(/</g,"&lt;")
-        .replace(/>/g,"&gt;")
-        .replace(/"/g,"&quot;")
-        .replace(/'/g,"&#039;");
+    return String(
+        value ?? ""
+    )
+    .replace(
+        /&/g,
+        "&amp;"
+    )
+    .replace(
+        /</g,
+        "&lt;"
+    )
+    .replace(
+        />/g,
+        "&gt;"
+    )
+    .replace(
+        /"/g,
+        "&quot;"
+    )
+    .replace(
+        /'/g,
+        "&#039;"
+    );
+
 }
 
 
@@ -2963,7 +3731,10 @@ function escapeHtml(value){
 ========================================================= */
 
 supabaseClient.auth.onAuthStateChange(
-    async (event,session)=>{
+    async (
+        event,
+        session
+    )=>{
 
         console.log(
             "Auth event:",
@@ -2982,28 +3753,137 @@ updateCart();
 
 
 /* =========================================================
+   PWA INSTALL
+========================================================= */
+
+let deferredInstallPrompt = null;
+
+
+window.addEventListener(
+    "beforeinstallprompt",
+    event=>{
+
+        event.preventDefault();
+
+        deferredInstallPrompt =
+            event;
+
+
+        const installBox =
+            document.getElementById(
+                "installBox"
+            );
+
+
+        installBox.style.display =
+            "block";
+
+    }
+);
+
+
+document.getElementById(
+    "installButton"
+).addEventListener(
+    "click",
+    async ()=>{
+
+        if(!deferredInstallPrompt){
+
+            alert(
+                "On iPhone, use Safari → Share → Add to Home Screen."
+            );
+
+            return;
+
+        }
+
+
+        deferredInstallPrompt.prompt();
+
+
+        const result =
+            await deferredInstallPrompt
+                .userChoice;
+
+
+        console.log(
+            "Install result:",
+            result.outcome
+        );
+
+
+        deferredInstallPrompt =
+            null;
+
+
+        document.getElementById(
+            "installBox"
+        ).style.display =
+            "none";
+
+    }
+);
+
+
+window.addEventListener(
+    "appinstalled",
+    ()=>{
+
+        console.log(
+            "GRANDSON ROYALE installed."
+        );
+
+
+        deferredInstallPrompt =
+            null;
+
+
+        document.getElementById(
+            "installBox"
+        ).style.display =
+            "none";
+
+    }
+);
+
+
+/* =========================================================
    SERVICE WORKER
 ========================================================= */
 
-if("serviceWorker" in navigator){
+if(
+    "serviceWorker" in navigator
+){
 
     window.addEventListener(
         "load",
         ()=>{
 
             navigator.serviceWorker
-                .register("./service-worker.js")
-                .then(()=>{
-                    console.log(
-                        "Service worker registered."
-                    );
-                })
-                .catch(error=>{
-                    console.log(
-                        "Service worker registration failed:",
-                        error
-                    );
-                });
+                .register(
+                    "./service-worker.js"
+                )
+                .then(
+                    registration=>{
+
+                        console.log(
+                            "GRANDSON ROYALE service worker registered:",
+                            registration.scope
+                        );
+
+                    }
+                )
+                .catch(
+                    error=>{
+
+                        console.log(
+                            "Service worker registration failed:",
+                            error
+                        );
+
+                    }
+                );
 
         }
     );
