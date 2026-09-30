@@ -1,1748 +1,805 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
 <meta charset="UTF-8">
-
-<meta name="viewport"
-      content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-
+<meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover">
 <title>GRANDSON ROYALE</title>
 
-<!-- PWA -->
 <link rel="manifest" href="./manifest.json">
-
-<!-- iPhone / iPad -->
 <link rel="apple-touch-icon" href="./icon-180.png">
 
 <meta name="theme-color" content="#0b0b0b">
-
 <meta name="apple-mobile-web-app-capable" content="yes">
-
-<meta name="apple-mobile-web-app-status-bar-style"
-      content="black-translucent">
-
-<meta name="apple-mobile-web-app-title"
-      content="GRANDSON ROYALE">
-
-<meta name="mobile-web-app-capable"
-      content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="GRANDSON ROYALE">
+<meta name="mobile-web-app-capable" content="yes">
 
 <style>
-
-*{
-    box-sizing:border-box;
-    margin:0;
-    padding:0;
-}
-
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
 body{
-    font-family:Arial, Helvetica, sans-serif;
-    background:#080808;
-    color:#fff;
-    min-height:100vh;
-    padding-top:env(safe-area-inset-top);
+margin:0;
+font-family:Arial,Helvetica,sans-serif;
+background:#080808;
+color:#fff;
+line-height:1.5
 }
-
-button,
-input,
-textarea,
-select{
-    font:inherit;
-}
-
-button{
-    cursor:pointer;
-}
-
-a{
-    color:inherit;
-    text-decoration:none;
-}
-
-/* HEADER */
+button,input,textarea,select{font:inherit}
+button{cursor:pointer}
+a{text-decoration:none;color:inherit}
 
 header{
-    position:sticky;
-    top:0;
-    z-index:1000;
-    background:rgba(8,8,8,.96);
-    border-bottom:1px solid #222;
-    backdrop-filter:blur(10px);
-}
-
-.header-inner{
-    max-width:1200px;
-    margin:auto;
-    padding:18px 20px;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:15px;
+position:sticky;
+top:0;
+z-index:100;
+background:rgba(8,8,8,.96);
+border-bottom:1px solid #242424;
+padding:16px 20px;
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:12px
 }
 
 .logo{
-    font-size:20px;
-    font-weight:800;
-    letter-spacing:3px;
-    color:#d7b56d;
+font-size:20px;
+font-weight:800;
+letter-spacing:2px;
+color:#d4af37
 }
 
 .header-actions{
-    display:flex;
-    gap:8px;
+display:flex;
+gap:8px
 }
 
-.header-btn{
-    border:1px solid #444;
-    background:#111;
-    color:#fff;
-    padding:10px 14px;
-    border-radius:8px;
-    font-weight:600;
+.btn{
+border:1px solid #d4af37;
+background:#d4af37;
+color:#080808;
+padding:10px 15px;
+border-radius:8px;
+font-weight:700
 }
 
-.header-btn:hover{
-    border-color:#d7b56d;
-    color:#d7b56d;
+.btn.secondary{
+background:transparent;
+color:#d4af37
 }
-
-/* HERO */
 
 .hero{
-    max-width:1200px;
-    margin:auto;
-    padding:80px 20px 65px;
-    text-align:center;
-}
-
-.hero small{
-    color:#d7b56d;
-    letter-spacing:4px;
-    font-weight:700;
+min-height:520px;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+padding:70px 20px;
+background:
+radial-gradient(circle at center,#27200d 0%,#101010 35%,#080808 70%)
 }
 
 .hero h1{
-    font-size:clamp(42px,8vw,78px);
-    line-height:1;
-    margin:18px 0;
-    letter-spacing:3px;
+font-size:clamp(42px,8vw,80px);
+margin:0 0 12px;
+letter-spacing:4px
 }
+
+.gold{color:#d4af37}
 
 .hero p{
-    max-width:650px;
-    margin:auto;
-    color:#aaa;
-    line-height:1.7;
-    font-size:16px;
+max-width:650px;
+margin:0 auto 25px;
+color:#c9c9c9
 }
 
-/* SECTION */
-
-.section{
-    max-width:1200px;
-    margin:auto;
-    padding:40px 20px 70px;
+section{
+padding:55px 20px;
+max-width:1200px;
+margin:auto
 }
 
 .section-title{
-    text-align:center;
-    margin-bottom:35px;
+text-align:center;
+margin-bottom:35px
 }
 
 .section-title h2{
-    font-size:32px;
-    margin-bottom:10px;
+font-size:32px;
+margin:0 0 8px
 }
 
 .section-title p{
-    color:#999;
+color:#999;
+margin:0
 }
-
-/* PRODUCTS */
 
 .products{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
-    gap:20px;
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:20px
 }
 
-.product-card{
-    background:#101010;
-    border:1px solid #242424;
-    border-radius:15px;
-    padding:22px;
-    transition:.2s;
+.product{
+background:#111;
+border:1px solid #292929;
+border-radius:14px;
+padding:20px;
+text-align:center
 }
 
-.product-card:hover{
-    transform:translateY(-3px);
-    border-color:#6b552d;
+.watch{
+height:190px;
+border-radius:12px;
+background:
+radial-gradient(circle,#d4af37 0 5%,transparent 6%),
+linear-gradient(145deg,#292929,#080808);
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:54px;
+margin-bottom:18px;
+border:1px solid #333
 }
 
-.watch-image{
-    height:220px;
-    border-radius:12px;
-    background:
-        radial-gradient(circle at 50% 40%,#444 0,#1b1b1b 35%,#090909 70%);
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    margin-bottom:20px;
-    overflow:hidden;
-    position:relative;
-}
-
-.watch-face{
-    width:130px;
-    height:130px;
-    border-radius:50%;
-    border:8px solid #333;
-    background:#080808;
-    box-shadow:0 0 25px rgba(215,181,109,.12);
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    color:#d7b56d;
-    font-weight:800;
-    letter-spacing:2px;
-    position:relative;
-}
-
-.watch-face::before{
-    content:"";
-    position:absolute;
-    width:3px;
-    height:48px;
-    background:#d7b56d;
-    top:17px;
-    left:50%;
-    transform:translateX(-50%);
-    transform-origin:bottom;
-}
-
-.watch-face::after{
-    content:"";
-    position:absolute;
-    width:3px;
-    height:38px;
-    background:#fff;
-    top:27px;
-    left:50%;
-    transform:translateX(-50%) rotate(90deg);
-    transform-origin:bottom;
-}
-
-.product-card h3{
-    font-size:20px;
-    margin-bottom:8px;
-}
-
-.product-description{
-    color:#999;
-    font-size:14px;
-    min-height:40px;
-    line-height:1.5;
-}
-
+.product h3{margin:5px 0}
+.product p{color:#999}
 .price{
-    color:#d7b56d;
-    font-size:21px;
-    font-weight:800;
-    margin:16px 0;
+font-size:21px;
+font-weight:800;
+color:#d4af37;
+margin:15px 0
 }
 
-.add-btn{
-    width:100%;
-    border:0;
-    border-radius:9px;
-    background:#d7b56d;
-    color:#080808;
-    padding:13px;
-    font-weight:800;
+.why-grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:20px
 }
 
-.add-btn:hover{
-    background:#edd08d;
+.info-card{
+background:#111;
+border:1px solid #292929;
+border-radius:12px;
+padding:25px
 }
 
-/* WHY */
+.info-card h3{color:#d4af37}
 
-.features{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-    gap:18px;
+.service{
+background:#101010;
+border:1px solid #282828;
+border-radius:15px;
+padding:30px;
+text-align:center
 }
-
-.feature{
-    border:1px solid #242424;
-    background:#101010;
-    border-radius:13px;
-    padding:25px;
-}
-
-.feature h3{
-    color:#d7b56d;
-    margin-bottom:10px;
-}
-
-.feature p{
-    color:#999;
-    line-height:1.6;
-    font-size:14px;
-}
-
-/* CUSTOMER SERVICE */
-
-.service-box{
-    max-width:800px;
-    margin:auto;
-    background:#101010;
-    border:1px solid #292929;
-    border-radius:16px;
-    padding:30px;
-    text-align:center;
-}
-
-.service-box h2{
-    margin-bottom:10px;
-}
-
-.service-box p{
-    color:#999;
-    line-height:1.6;
-    margin-bottom:25px;
-}
-
-.service-buttons{
-    display:flex;
-    justify-content:center;
-    flex-wrap:wrap;
-    gap:12px;
-}
-
-.service-btn{
-    display:inline-flex;
-    align-items:center;
-    justify-content:center;
-    min-width:190px;
-    padding:13px 18px;
-    border-radius:9px;
-    font-weight:800;
-    border:1px solid #444;
-    background:#181818;
-}
-
-.service-btn:hover{
-    border-color:#d7b56d;
-    color:#d7b56d;
-}
-
-/* FOOTER */
 
 footer{
-    border-top:1px solid #222;
-    padding:30px 20px;
-    text-align:center;
-    color:#777;
-    font-size:13px;
-}
-
-footer strong{
-    color:#d7b56d;
-}
-
-/* OVERLAY */
-
-.overlay{
-    position:fixed;
-    inset:0;
-    background:rgba(0,0,0,.78);
-    z-index:2000;
-    display:none;
-    align-items:center;
-    justify-content:center;
-    padding:18px;
-}
-
-.overlay.show{
-    display:flex;
+border-top:1px solid #242424;
+padding:30px 20px;
+text-align:center;
+color:#777
 }
 
 .modal{
-    width:100%;
-    max-width:560px;
-    max-height:92vh;
-    overflow-y:auto;
-    background:#111;
-    border:1px solid #333;
-    border-radius:16px;
-    padding:25px;
-    position:relative;
+display:none;
+position:fixed;
+inset:0;
+z-index:500;
+background:rgba(0,0,0,.82);
+overflow:auto;
+padding:20px
 }
 
-.modal.large{
-    max-width:900px;
+.modal-box{
+max-width:650px;
+margin:40px auto;
+background:#111;
+border:1px solid #333;
+border-radius:15px;
+padding:25px;
+position:relative
 }
 
-.modal-header{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:10px;
-    margin-bottom:20px;
+.close{
+position:absolute;
+right:15px;
+top:12px;
+background:none;
+border:0;
+color:#aaa;
+font-size:28px
 }
-
-.modal-header h2{
-    color:#fff;
-}
-
-.close-btn{
-    width:35px;
-    height:35px;
-    border-radius:50%;
-    border:1px solid #444;
-    background:#181818;
-    color:#fff;
-    font-size:20px;
-}
-
-/* FORMS */
 
 .form-group{
-    margin-bottom:15px;
+margin-bottom:15px
 }
 
 .form-group label{
-    display:block;
-    margin-bottom:7px;
-    color:#bbb;
-    font-size:14px;
+display:block;
+margin-bottom:7px;
+font-weight:700
 }
 
-.form-group input,
-.form-group textarea,
-.form-group select{
-    width:100%;
-    background:#080808;
-    border:1px solid #333;
-    color:#fff;
-    border-radius:8px;
-    padding:12px;
-    outline:none;
+input,textarea,select{
+width:100%;
+background:#080808;
+color:#fff;
+border:1px solid #333;
+border-radius:8px;
+padding:12px
 }
 
-.form-group textarea{
-    min-height:90px;
-    resize:vertical;
+textarea{
+min-height:90px;
+resize:vertical
 }
 
-.form-group input:focus,
-.form-group textarea:focus,
-.form-group select:focus{
-    border-color:#d7b56d;
+input:focus,textarea:focus,select:focus{
+outline:none;
+border-color:#d4af37
 }
-
-.primary-btn{
-    width:100%;
-    border:0;
-    background:#d7b56d;
-    color:#080808;
-    padding:13px;
-    border-radius:8px;
-    font-weight:800;
-    margin-top:5px;
-}
-
-.primary-btn:disabled{
-    opacity:.55;
-    cursor:not-allowed;
-}
-
-.secondary-btn{
-    width:100%;
-    border:1px solid #444;
-    background:#181818;
-    color:#fff;
-    padding:12px;
-    border-radius:8px;
-    font-weight:700;
-    margin-top:10px;
-}
-
-.danger-btn{
-    width:100%;
-    border:1px solid #6b3030;
-    background:#211010;
-    color:#ffb1b1;
-    padding:12px;
-    border-radius:8px;
-    font-weight:700;
-    margin-top:10px;
-}
-
-/* CART */
 
 .cart-item{
-    display:flex;
-    justify-content:space-between;
-    gap:15px;
-    padding:15px 0;
-    border-bottom:1px solid #252525;
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:12px;
+padding:15px 0;
+border-bottom:1px solid #292929
 }
 
-.cart-item-info{
-    flex:1;
+.qty{
+display:flex;
+align-items:center;
+gap:8px
 }
 
-.cart-item-name{
-    font-weight:800;
+.qty button{
+width:30px;
+height:30px;
+border:1px solid #555;
+background:#222;
+color:#fff;
+border-radius:5px
 }
 
-.cart-item-price{
-    color:#d7b56d;
-    margin-top:5px;
+.total-box{
+margin-top:20px;
+padding:18px;
+background:#0a0a0a;
+border:1px solid #333;
+border-radius:10px
 }
 
-.quantity-controls{
-    display:flex;
-    align-items:center;
-    gap:8px;
-    margin-top:10px;
+.total-row{
+display:flex;
+justify-content:space-between;
+gap:15px;
+margin:8px 0
 }
 
-.quantity-controls button{
-    width:28px;
-    height:28px;
-    border-radius:6px;
-    border:1px solid #444;
-    background:#191919;
-    color:#fff;
+.grand-total{
+font-size:23px;
+font-weight:800;
+color:#d4af37;
+border-top:1px solid #333;
+padding-top:12px;
+margin-top:12px
 }
-
-.remove-btn{
-    color:#ff9d9d;
-    border:0 !important;
-    background:transparent !important;
-}
-
-/* CART TOTAL */
-
-.cart-total{
-    display:flex;
-    justify-content:space-between;
-    margin:22px 0;
-    font-size:20px;
-    font-weight:800;
-}
-
-.cart-total span:last-child{
-    color:#d7b56d;
-}
-
-/* ACCOUNT */
-
-.account-box{
-    text-align:left;
-}
-
-.account-email{
-    background:#181818;
-    border:1px solid #292929;
-    padding:14px;
-    border-radius:9px;
-    margin-bottom:15px;
-}
-
-.account-email span{
-    display:block;
-    color:#888;
-    font-size:12px;
-    margin-bottom:4px;
-}
-
-.order-history{
-    margin-top:20px;
-}
-
-.order-history h3{
-    margin-bottom:12px;
-}
-
-.order-card{
-    background:#0a0a0a;
-    border:1px solid #292929;
-    border-radius:11px;
-    padding:15px;
-    margin-bottom:12px;
-}
-
-.order-card strong{
-    color:#d7b56d;
-}
-
-.order-card p{
-    color:#aaa;
-    margin-top:6px;
-    line-height:1.5;
-    font-size:14px;
-}
-
-.status-row{
-    display:flex;
-    flex-wrap:wrap;
-    gap:8px;
-    margin-top:10px;
-}
-
-.status-badge{
-    display:inline-block;
-    padding:5px 9px;
-    border-radius:20px;
-    background:#1d1d1d;
-    border:1px solid #333;
-    font-size:12px;
-}
-
-/* AUTH */
-
-.auth-switch{
-    text-align:center;
-    color:#999;
-    margin-top:15px;
-    font-size:14px;
-}
-
-.auth-switch button{
-    background:none;
-    border:0;
-    color:#d7b56d;
-    font-weight:700;
-}
-
-/* CHECKOUT */
 
 .payment-box{
-    background:#17130b;
-    border:1px solid #5c4925;
-    border-radius:10px;
-    padding:15px;
-    margin:18px 0;
+background:#17130a;
+border:1px solid #8d7220;
+border-radius:12px;
+padding:20px;
+margin:20px 0
 }
 
 .payment-box h3{
-    color:#d7b56d;
-    margin-bottom:10px;
+margin-top:0;
+color:#d4af37
 }
 
-.payment-box p{
-    color:#bbb;
-    line-height:1.7;
-    font-size:14px;
+.account-number{
+font-size:25px;
+font-weight:900;
+letter-spacing:2px;
+color:#fff;
+background:#080808;
+padding:13px;
+border-radius:8px;
+text-align:center;
+margin:12px 0
 }
 
-.payment-box strong{
-    color:#fff;
+.delivery-box{
+background:#0d1110;
+border:1px solid #34503d;
+border-radius:12px;
+padding:18px;
+margin:20px 0
 }
 
-.whatsapp-btn{
-    display:none;
-    width:100%;
-    text-align:center;
-    background:#1b6f39;
-    color:#fff;
-    padding:13px;
-    border-radius:8px;
-    margin-top:10px;
-    font-weight:800;
+.delivery-box h3{
+margin-top:0;
+color:#8fd19e
 }
 
-.success-message{
-    display:none;
-    background:#102315;
-    border:1px solid #285c34;
-    color:#a9e8b8;
-    padding:13px;
-    border-radius:8px;
-    margin-bottom:15px;
-    line-height:1.5;
+.delivery-result{
+margin-top:15px;
+padding:15px;
+background:#080808;
+border-radius:9px;
+border:1px solid #292929
 }
 
-/* ADMIN */
-
-.admin-summary{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:10px;
-    margin-bottom:20px;
+.notice{
+background:#16120a;
+color:#d4af37;
+border:1px solid #5e4d19;
+padding:12px;
+border-radius:8px;
+margin:15px 0
 }
 
-.summary-card{
-    background:#0a0a0a;
-    border:1px solid #292929;
-    border-radius:10px;
-    padding:15px;
-    text-align:center;
+.order{
+background:#101010;
+border:1px solid #292929;
+border-radius:10px;
+padding:15px;
+margin:12px 0
 }
 
-.summary-card span{
-    display:block;
-    color:#888;
-    font-size:12px;
-    margin-bottom:7px;
-}
-
-.summary-card strong{
-    font-size:22px;
-    color:#d7b56d;
+.status{
+display:inline-block;
+padding:5px 9px;
+border-radius:20px;
+font-size:12px;
+font-weight:700;
+background:#242424;
+color:#ddd
 }
 
 .admin-order{
-    background:#0a0a0a;
-    border:1px solid #292929;
-    border-radius:13px;
-    padding:18px;
-    margin-bottom:15px;
+background:#0d0d0d;
+border:1px solid #303030;
+border-radius:12px;
+padding:18px;
+margin-bottom:15px
 }
 
-.admin-order-top{
-    display:flex;
-    justify-content:space-between;
-    gap:15px;
-    flex-wrap:wrap;
-    margin-bottom:12px;
+.admin-order select{
+margin-top:6px
 }
 
-.admin-order-top h3{
-    color:#d7b56d;
+.empty{
+color:#888;
+text-align:center;
+padding:25px
 }
 
-.admin-order-details{
-    color:#aaa;
-    font-size:14px;
-    line-height:1.7;
-    margin-bottom:15px;
-    word-break:break-word;
+.hidden{display:none!important}
+
+@media(max-width:900px){
+.products{grid-template-columns:repeat(2,1fr)}
+.why-grid{grid-template-columns:1fr}
 }
 
-.admin-order-details strong{
-    color:#fff;
+@media(max-width:600px){
+header{padding:13px}
+.logo{font-size:16px}
+.header-actions .btn{padding:8px 10px;font-size:12px}
+.products{grid-template-columns:1fr}
+.hero{min-height:450px}
+section{padding:40px 15px}
+.modal{padding:10px}
+.modal-box{margin:15px auto;padding:20px}
+.cart-item{align-items:flex-start}
 }
-
-.admin-controls{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:12px;
-}
-
-.admin-control label{
-    display:block;
-    color:#888;
-    font-size:12px;
-    margin-bottom:6px;
-}
-
-.admin-control select{
-    width:100%;
-    padding:10px;
-    border-radius:7px;
-    background:#151515;
-    color:#fff;
-    border:1px solid #3a3a3a;
-}
-
-.update-order-btn{
-    width:100%;
-    margin-top:12px;
-    background:#d7b56d;
-    color:#080808;
-    border:0;
-    border-radius:8px;
-    padding:11px;
-    font-weight:800;
-}
-
-.admin-empty{
-    text-align:center;
-    color:#888;
-    padding:40px 10px;
-}
-
-/* INSTALL APP */
-
-.install-box{
-    display:none;
-    max-width:1200px;
-    margin:15px auto 0;
-    padding:0 20px;
-}
-
-.install-inner{
-    background:#12100b;
-    border:1px solid #5c4925;
-    border-radius:12px;
-    padding:15px;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:15px;
-}
-
-.install-inner p{
-    color:#bbb;
-    font-size:14px;
-    line-height:1.5;
-}
-
-.install-inner strong{
-    color:#d7b56d;
-}
-
-.install-btn{
-    border:0;
-    background:#d7b56d;
-    color:#080808;
-    padding:10px 15px;
-    border-radius:8px;
-    font-weight:800;
-    white-space:nowrap;
-}
-
-/* MOBILE */
-
-@media(max-width:650px){
-
-    .header-inner{
-        padding:14px 12px;
-    }
-
-    .logo{
-        font-size:15px;
-        letter-spacing:2px;
-    }
-
-    .header-btn{
-        padding:8px 10px;
-        font-size:12px;
-    }
-
-    .hero{
-        padding:60px 18px 45px;
-    }
-
-    .hero h1{
-        font-size:43px;
-    }
-
-    .section{
-        padding:35px 15px 55px;
-    }
-
-    .admin-summary{
-        grid-template-columns:repeat(2,1fr);
-    }
-
-    .admin-controls{
-        grid-template-columns:1fr;
-    }
-
-    .modal{
-        padding:20px;
-    }
-
-    .install-inner{
-        flex-direction:column;
-        align-items:stretch;
-        text-align:center;
-    }
-
-    .install-btn{
-        width:100%;
-    }
-
-}
-
 </style>
-
 </head>
 
 <body>
 
-
 <header>
+<div class="logo">GRANDSON ROYALE</div>
 
-    <div class="header-inner">
-
-        <div class="logo">
-            GRANDSON ROYALE
-        </div>
-
-        <div class="header-actions">
-
-            <button
-                class="header-btn"
-                onclick="openAccount()"
-            >
-                ACCOUNT
-            </button>
-
-            <button
-                class="header-btn"
-                onclick="openCart()"
-            >
-                CART (<span id="cartCount">0</span>)
-            </button>
-
-        </div>
-
-    </div>
-
+<div class="header-actions">
+<button class="btn secondary" onclick="openAccount()">ACCOUNT</button>
+<button class="btn" onclick="openCart()">CART (<span id="cartCount">0</span>)</button>
+</div>
 </header>
 
-
-<!-- APP INSTALL NOTICE -->
-
-<div
-    class="install-box"
-    id="installBox"
->
-
-    <div class="install-inner">
-
-        <p>
-            <strong>GRANDSON ROYALE</strong><br>
-            Install our app for faster access.
-        </p>
-
-        <button
-            class="install-btn"
-            id="installButton"
-        >
-            INSTALL APP
-        </button>
-
-    </div>
-
+<div class="hero">
+<div>
+<h1>GRANDSON <span class="gold">ROYALE</span></h1>
+<p>Luxury timepieces for those who appreciate elegance, precision and timeless style.</p>
+<button class="btn" onclick="document.getElementById('collection').scrollIntoView()">SHOP COLLECTION</button>
+</div>
 </div>
 
+<section id="collection">
 
-<section class="hero">
+<div class="section-title">
+<h2>THE COLLECTION</h2>
+<p>Selected timepieces from GRANDSON ROYALE.</p>
+</div>
 
-    <small>
-        TIMELESS • ROYAL • ELEGANT
-    </small>
+<div class="products">
 
-    <h1>
-        GRANDSON ROYALE
-    </h1>
+<div class="product">
+<div class="watch">⌚</div>
+<h3>Royal Gold</h3>
+<p>Luxury gold finish.</p>
+<div class="price">₦850,000</div>
+<button class="btn" onclick="addToCart('Royal Gold',850000)">ADD TO CART</button>
+</div>
 
-    <p>
-        Luxury timepieces designed for people who value presence,
-        precision and timeless style.
-    </p>
+<div class="product">
+<div class="watch">⌚</div>
+<h3>Black Royale</h3>
+<p>Bold black luxury design.</p>
+<div class="price">₦620,000</div>
+<button class="btn" onclick="addToCart('Black Royale',620000)">ADD TO CART</button>
+</div>
 
+<div class="product">
+<div class="watch">⌚</div>
+<h3>Classic Silver</h3>
+<p>Clean and timeless silver.</p>
+<div class="price">₦490,000</div>
+<button class="btn" onclick="addToCart('Classic Silver',490000)">ADD TO CART</button>
+</div>
+
+<div class="product">
+<div class="watch">⌚</div>
+<h3>Executive</h3>
+<p>Premium executive timepiece.</p>
+<div class="price">₦1,200,000</div>
+<button class="btn" onclick="addToCart('Executive',1200000)">ADD TO CART</button>
+</div>
+
+</div>
 </section>
 
+<section>
 
-<section class="section">
+<div class="section-title">
+<h2>WHY GRANDSON ROYALE</h2>
+</div>
 
-    <div class="section-title">
+<div class="why-grid">
 
-        <h2>
-            THE COLLECTION
-        </h2>
+<div class="info-card">
+<h3>Luxury</h3>
+<p>Carefully selected designs made for a premium appearance.</p>
+</div>
 
-        <p>
-            Discover our signature timepieces.
-        </p>
+<div class="info-card">
+<h3>Secure Orders</h3>
+<p>Your order is securely recorded through our online system.</p>
+</div>
 
-    </div>
+<div class="info-card">
+<h3>Delivery</h3>
+<p>Choose courier office pickup or door delivery.</p>
+</div>
 
-
-    <div class="products">
-
-
-        <div class="product-card">
-
-            <div class="watch-image">
-
-                <div class="watch-face">
-                    GR
-                </div>
-
-            </div>
-
-            <h3>
-                Royal Gold
-            </h3>
-
-            <p class="product-description">
-                A bold luxury design with a classic royal finish.
-            </p>
-
-            <div class="price">
-                ₦850,000
-            </div>
-
-            <button
-                class="add-btn"
-                onclick="addToCart('Royal Gold',850000)"
-            >
-                ADD TO CART
-            </button>
-
-        </div>
-
-
-        <div class="product-card">
-
-            <div class="watch-image">
-
-                <div class="watch-face">
-                    GR
-                </div>
-
-            </div>
-
-            <h3>
-                Black Royale
-            </h3>
-
-            <p class="product-description">
-                A dark, sophisticated timepiece made for a powerful look.
-            </p>
-
-            <div class="price">
-                ₦620,000
-            </div>
-
-            <button
-                class="add-btn"
-                onclick="addToCart('Black Royale',620000)"
-            >
-                ADD TO CART
-            </button>
-
-        </div>
-
-
-        <div class="product-card">
-
-            <div class="watch-image">
-
-                <div class="watch-face">
-                    GR
-                </div>
-
-            </div>
-
-            <h3>
-                Classic Silver
-            </h3>
-
-            <p class="product-description">
-                Clean silver styling with an elegant timeless appearance.
-            </p>
-
-            <div class="price">
-                ₦490,000
-            </div>
-
-            <button
-                class="add-btn"
-                onclick="addToCart('Classic Silver',490000)"
-            >
-                ADD TO CART
-            </button>
-
-        </div>
-
-
-        <div class="product-card">
-
-            <div class="watch-image">
-
-                <div class="watch-face">
-                    GR
-                </div>
-
-            </div>
-
-            <h3>
-                Executive
-            </h3>
-
-            <p class="product-description">
-                Premium executive styling for a distinguished presence.
-            </p>
-
-            <div class="price">
-                ₦1,200,000
-            </div>
-
-            <button
-                class="add-btn"
-                onclick="addToCart('Executive',1200000)"
-            >
-                ADD TO CART
-            </button>
-
-        </div>
-
-
-    </div>
-
+</div>
 </section>
 
+<section>
 
-<section class="section">
+<div class="service">
+<h2>Customer Service</h2>
+<p>Need help with an order or payment?</p>
 
-    <div class="section-title">
+<a class="btn" target="_blank"
+href="https://wa.me/2348108521685">
+WHATSAPP
+</a>
 
-        <h2>
-            WHY GRANDSON ROYALE
-        </h2>
-
-        <p>
-            A luxury experience from order to delivery.
-        </p>
-
-    </div>
-
-
-    <div class="features">
-
-
-        <div class="feature">
-
-            <h3>
-                Premium Selection
-            </h3>
-
-            <p>
-                Carefully selected luxury-inspired watches
-                designed for a distinguished appearance.
-            </p>
-
-        </div>
-
-
-        <div class="feature">
-
-            <h3>
-                Secure Ordering
-            </h3>
-
-            <p>
-                Create an account, place your order and
-                track your order status from your account.
-            </p>
-
-        </div>
-
-
-        <div class="feature">
-
-            <h3>
-                Customer Support
-            </h3>
-
-            <p>
-                Speak with our customer service team through
-                WhatsApp or telephone.
-            </p>
-
-        </div>
-
-
-    </div>
+<a class="btn secondary" href="tel:08057941379">
+CALL US
+</a>
+</div>
 
 </section>
-
-
-<section class="section">
-
-    <div class="service-box">
-
-        <h2>
-            CUSTOMER SERVICE
-        </h2>
-
-        <p>
-            Need help with an order, payment or delivery?
-            Contact GRANDSON ROYALE customer service.
-        </p>
-
-        <div class="service-buttons">
-
-            <a
-                class="service-btn"
-                href="https://wa.me/2348108521685?text=Hello%20GRANDSON%20ROYALE%20Customer%20Service%2C%20I%20need%20help%20with%20my%20order."
-                target="_blank"
-                rel="noopener"
-            >
-                📱 WHATSAPP
-            </a>
-
-            <a
-                class="service-btn"
-                href="tel:08057941379"
-            >
-                ☎️ CALL US
-            </a>
-
-        </div>
-
-    </div>
-
-</section>
-
 
 <footer>
-
-    <p>
-        © 2026
-        <strong>GRANDSON ROYALE</strong>.
-        All rights reserved.
-    </p>
-
+© 2026 GRANDSON ROYALE. All rights reserved.
 </footer>
 
 
-<!-- CART MODAL -->
+<!-- CART -->
 
-<div
-    class="overlay"
-    id="cartModal"
->
+<div class="modal" id="cartModal">
 
-    <div class="modal">
+<div class="modal-box">
 
-        <div class="modal-header">
+<button class="close" onclick="closeCart()">×</button>
 
-            <h2>
-                YOUR CART
-            </h2>
+<h2>Your Cart</h2>
 
-            <button
-                class="close-btn"
-                onclick="closeCart()"
-            >
-                ×
-            </button>
+<div id="cartItems"></div>
 
-        </div>
+<div class="total-box">
+<div class="total-row">
+<strong>Product Subtotal</strong>
+<strong id="cartTotal">₦0</strong>
+</div>
+</div>
 
+<button class="btn" style="width:100%;margin-top:15px" onclick="openCheckout()">
+CHECKOUT
+</button>
 
-        <div id="cartItems"></div>
-
-
-        <div class="cart-total">
-
-            <span>
-                TOTAL
-            </span>
-
-            <span id="cartTotal">
-                ₦0
-            </span>
-
-        </div>
+</div>
+</div>
 
 
-        <button
-            class="primary-btn"
-            onclick="openCheckout()"
-        >
-            CHECKOUT
-        </button>
+<!-- ACCOUNT -->
 
-    </div>
+<div class="modal" id="accountModal">
+
+<div class="modal-box">
+
+<button class="close" onclick="closeAccount()">×</button>
+
+<div id="accountContent"></div>
+
+</div>
+</div>
+
+
+<!-- CHECKOUT -->
+
+<div class="modal" id="checkoutModal">
+
+<div class="modal-box">
+
+<button class="close" onclick="closeCheckout()">×</button>
+
+<h2>Checkout</h2>
+
+<div id="checkoutNotice"></div>
+
+<div class="form-group">
+<label>Full Name</label>
+<input id="customerName" type="text" placeholder="Your full name">
+</div>
+
+<div class="form-group">
+<label>Phone</label>
+<input id="customerPhone" type="tel" placeholder="080xxxxxxxx">
+</div>
+
+<div class="form-group">
+<label>Email</label>
+<input id="customerEmail" type="email" placeholder="you@example.com">
+</div>
+
+
+<div class="delivery-box">
+
+<h3>Delivery Location</h3>
+
+<div class="form-group">
+<label>State</label>
+
+<select id="deliveryState" onchange="populateCities();updateDeliveryQuote()">
+
+<option value="">Select State</option>
+
+<option>Abia</option>
+<option>Adamawa</option>
+<option>Akwa Ibom</option>
+<option>Anambra</option>
+<option>Bauchi</option>
+<option>Bayelsa</option>
+<option>Benue</option>
+<option>Borno</option>
+<option>Cross River</option>
+<option>Delta</option>
+<option>Ebonyi</option>
+<option>Edo</option>
+<option>Ekiti</option>
+<option>Enugu</option>
+<option>Gombe</option>
+<option>Imo</option>
+<option>Jigawa</option>
+<option>Kaduna</option>
+<option>Kano</option>
+<option>Katsina</option>
+<option>Kebbi</option>
+<option>Kogi</option>
+<option>Kwara</option>
+<option>Lagos</option>
+<option>Nasarawa</option>
+<option>Niger</option>
+<option>Ogun</option>
+<option>Ondo</option>
+<option>Osun</option>
+<option>Oyo</option>
+<option>Plateau</option>
+<option>Rivers</option>
+<option>Sokoto</option>
+<option>Taraba</option>
+<option>Yobe</option>
+<option>Zamfara</option>
+<option>FCT</option>
+
+</select>
+</div>
+
+
+<div class="form-group">
+
+<label>City</label>
+
+<select id="deliveryCity"
+onchange="updateDeliveryQuote()"
+disabled>
+
+<option value="">Select state first</option>
+
+</select>
 
 </div>
 
 
-<!-- ACCOUNT MODAL -->
-
-<div
-    class="overlay"
-    id="accountModal"
->
-
-    <div class="modal">
-
-        <div class="modal-header">
-
-            <h2>
-                MY ACCOUNT
-            </h2>
-
-            <button
-                class="close-btn"
-                onclick="closeAccount()"
-            >
-                ×
-            </button>
-
-        </div>
-
-
-        <!-- LOGIN -->
-
-        <div id="loginView">
-
-            <div class="form-group">
-
-                <label>
-                    Email
-                </label>
-
-                <input
-                    type="email"
-                    id="loginEmail"
-                    placeholder="Your email"
-                    autocomplete="email"
-                >
-
-            </div>
-
-
-            <div class="form-group">
-
-                <label>
-                    Password
-                </label>
-
-                <input
-                    type="password"
-                    id="loginPassword"
-                    placeholder="Your password"
-                    autocomplete="current-password"
-                >
-
-            </div>
-
-
-            <button
-                class="primary-btn"
-                onclick="signIn()"
-            >
-                LOGIN
-            </button>
-
-
-            <div class="auth-switch">
-
-                Don't have an account?
-
-                <button onclick="showSignup()">
-                    CREATE ACCOUNT
-                </button>
-
-            </div>
-
-        </div>
-
-
-        <!-- SIGNUP -->
-
-        <div
-            id="signupView"
-            style="display:none;"
-        >
-
-            <div class="form-group">
-
-                <label>
-                    Full Name
-                </label>
-
-                <input
-                    type="text"
-                    id="signupName"
-                    placeholder="Full name"
-                    autocomplete="name"
-                >
-
-            </div>
-
-
-            <div class="form-group">
-
-                <label>
-                    Email
-                </label>
-
-                <input
-                    type="email"
-                    id="signupEmail"
-                    placeholder="Email address"
-                    autocomplete="email"
-                >
-
-            </div>
-
-
-            <div class="form-group">
-
-                <label>
-                    Password
-                </label>
-
-                <input
-                    type="password"
-                    id="signupPassword"
-                    placeholder="Create password"
-                    autocomplete="new-password"
-                >
-
-            </div>
-
-
-            <button
-                class="primary-btn"
-                onclick="signUp()"
-            >
-                CREATE ACCOUNT
-            </button>
-
-
-            <div class="auth-switch">
-
-                Already have an account?
-
-                <button onclick="showLogin()">
-                    LOGIN
-                </button>
-
-            </div>
-
-        </div>
-
-
-        <!-- LOGGED IN -->
-
-        <div
-            id="loggedInView"
-            style="display:none;"
-        >
-
-            <div class="account-box">
-
-                <div class="account-email">
-
-                    <span>
-                        Email
-                    </span>
-
-                    <strong id="accountEmail"></strong>
-
-                </div>
-
-
-                <div class="account-email">
-
-                    <span>
-                        Name
-                    </span>
-
-                    <strong id="accountName"></strong>
-
-                </div>
-
-
-                <div class="order-history">
-
-                    <h3>
-                        MY ORDERS
-                    </h3>
-
-                    <div id="myOrders">
-                        Loading...
-                    </div>
-
-                </div>
-
-
-                <button
-                    id="adminOrdersButton"
-                    class="primary-btn"
-                    style="display:none;"
-                    onclick="openAdminOrders()"
-                >
-                    ADMIN ORDERS
-                </button>
-
-
-                <button
-                    class="secondary-btn"
-                    onclick="signOut()"
-                >
-                    LOG OUT
-                </button>
-
-            </div>
-
-        </div>
-
-    </div>
+<div class="form-group">
+
+<label>Area</label>
+
+<input
+id="deliveryArea"
+type="text"
+placeholder="e.g. GRA, Ikeja, Abakaliki"
+oninput="updateDeliveryQuote()">
 
 </div>
 
 
-<!-- CHECKOUT MODAL -->
+<div class="form-group">
 
-<div
-    class="overlay"
-    id="checkoutModal"
->
+<label>Delivery Method</label>
 
-    <div class="modal">
+<select id="deliveryMethod"
+onchange="updateDeliveryQuote()">
 
-        <div class="modal-header">
+<option value="">Select delivery method</option>
 
-            <h2>
-                CHECKOUT
-            </h2>
+<option value="pickup">Courier Office Pickup</option>
 
-            <button
-                class="close-btn"
-                onclick="closeCheckout()"
-            >
-                ×
-            </button>
+<option value="door">Door Delivery</option>
 
-        </div>
-
-
-        <div
-            id="checkoutSuccess"
-            class="success-message"
-        >
-            Your order has been saved successfully.
-            You can now send the order details to
-            GRANDSON ROYALE on WhatsApp.
-        </div>
-
-
-        <div class="form-group">
-
-            <label>
-                Full Name
-            </label>
-
-            <input
-                type="text"
-                id="customerName"
-                placeholder="Full name"
-                autocomplete="name"
-            >
-
-        </div>
-
-
-        <div class="form-group">
-
-            <label>
-                Phone
-            </label>
-
-            <input
-                type="tel"
-                id="customerPhone"
-                placeholder="Phone number"
-                autocomplete="tel"
-            >
-
-        </div>
-
-
-        <div class="form-group">
-
-            <label>
-                Email
-            </label>
-
-            <input
-                type="email"
-                id="customerEmail"
-                placeholder="Email address"
-                autocomplete="email"
-            >
-
-        </div>
-
-
-        <div class="form-group">
-
-            <label>
-                Delivery Address
-            </label>
-
-            <textarea
-                id="deliveryAddress"
-                placeholder="Full delivery address"
-                autocomplete="street-address"
-            ></textarea>
-
-        </div>
-
-
-        <div class="payment-box">
-
-            <h3>
-                OPay Payment
-            </h3>
-
-            <p>
-                Payment method:
-                <strong>OPay</strong>
-                <br>
-
-                Please contact GRANDSON ROYALE customer service
-                for payment instructions after placing your order.
-            </p>
-
-        </div>
-
-
-        <button
-            id="placeOrderButton"
-            class="primary-btn"
-            onclick="placeOrder()"
-        >
-            PLACE ORDER
-        </button>
-
-
-        <a
-            id="whatsappOrder"
-            class="whatsapp-btn"
-            href="#"
-            target="_blank"
-            rel="noopener"
-        >
-            📱 SEND ORDER ON WHATSAPP
-        </a>
-
-    </div>
+</select>
 
 </div>
 
 
-<!-- ADMIN MODAL -->
+<div id="deliveryResult" class="delivery-result">
 
-<div
-    class="overlay"
-    id="adminModal"
->
+Select your state, city and delivery method to see the delivery fee.
 
-    <div class="modal large">
-
-        <div class="modal-header">
-
-            <h2>
-                ADMIN ORDERS
-            </h2>
-
-            <button
-                class="close-btn"
-                onclick="closeAdminOrders()"
-            >
-                ×
-            </button>
-
-        </div>
-
-
-        <div class="admin-summary">
-
-            <div class="summary-card">
-
-                <span>
-                    TOTAL ORDERS
-                </span>
-
-                <strong id="adminTotalOrders">
-                    0
-                </strong>
-
-            </div>
-
-
-            <div class="summary-card">
-
-                <span>
-                    PENDING PAYMENT
-                </span>
-
-                <strong id="adminPendingPayments">
-                    0
-                </strong>
-
-            </div>
-
-
-            <div class="summary-card">
-
-                <span>
-                    ACTIVE ORDERS
-                </span>
-
-                <strong id="adminActiveOrders">
-                    0
-                </strong>
-
-            </div>
-
-
-            <div class="summary-card">
-
-                <span>
-                    COMPLETED
-                </span>
-
-                <strong id="adminCompletedOrders">
-                    0
-                </strong>
-
-            </div>
-
-        </div>
-
-
-        <button
-            class="secondary-btn"
-            onclick="loadAdminOrders()"
-        >
-            🔄 REFRESH ORDERS
-        </button>
-
-
-        <div
-            id="adminOrdersList"
-            style="margin-top:20px;"
-        >
-            Loading orders...
-        </div>
-
-    </div>
+</div>
 
 </div>
 
 
-<!-- SUPABASE -->
+<div class="form-group">
 
-<script
-    src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"
-></script>
+<label>
+Delivery Address / Landmark
+</label>
 
+<textarea
+id="deliveryAddress"
+placeholder="Enter your full delivery address or useful landmark"></textarea>
+
+</div>
+
+
+<div class="total-box">
+
+<div class="total-row">
+<span>Product Subtotal</span>
+<strong id="checkoutSubtotal">₦0</strong>
+</div>
+
+<div class="total-row">
+<span>Delivery Fee</span>
+<strong id="checkoutDeliveryFee">₦0</strong>
+</div>
+
+<div class="total-row grand-total">
+<span>GRAND TOTAL</span>
+<strong id="checkoutGrandTotal">₦0</strong>
+</div>
+
+</div>
+
+
+<div class="payment-box">
+
+<h3>OPay Payment</h3>
+
+<p>
+Payment method:
+<strong>OPay</strong>
+</p>
+
+<p>
+<strong>Account Name:</strong><br>
+Asogwo Victor
+</p>
+
+<p>
+<strong>OPay Account Number:</strong>
+</p>
+
+<div class="account-number">
+8108521685
+</div>
+
+<p>
+Please transfer the exact <strong>GRAND TOTAL</strong>
+shown above to the account.
+</p>
+
+<p>
+After payment, tap <strong>PLACE ORDER</strong>.
+Your order will remain pending until payment is confirmed.
+</p>
+
+</div>
+
+
+<button
+id="placeOrderBtn"
+class="btn"
+style="width:100%"
+onclick="placeOrder()">
+
+PLACE ORDER
+
+</button>
+
+
+<a
+id="whatsappOrderBtn"
+class="btn secondary hidden"
+style="display:block;text-align:center;margin-top:12px"
+target="_blank">
+
+SEND ORDER ON WHATSAPP
+
+</a>
+
+</div>
+</div>
+
+
+<!-- ADMIN -->
+
+<div class="modal" id="adminModal">
+
+<div class="modal-box">
+
+<button class="close" onclick="closeAdmin()">×</button>
+
+<h2>Admin Orders</h2>
+
+<div id="adminOrders"></div>
+
+</div>
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <script>
-
-/* =========================================================
-   SUPABASE
-========================================================= */
 
 const SUPABASE_URL =
 "https://ygoncomnmamvqkoisrlh.supabase.co";
@@ -1752,2141 +809,1672 @@ const SUPABASE_PUBLISHABLE_KEY =
 
 const supabaseClient =
 window.supabase.createClient(
-    SUPABASE_URL,
-    SUPABASE_PUBLISHABLE_KEY
+SUPABASE_URL,
+SUPABASE_PUBLISHABLE_KEY
 );
-
-
-/* =========================================================
-   ADMIN
-========================================================= */
 
 const ADMIN_USER_ID =
 "5d17a653-684b-473d-900a-c50416bb0644";
 
-
-function isAdmin(user){
-
-    if(!user){
-
-        return false;
-
-    }
-
-    return user.id === ADMIN_USER_ID;
-
-}
-
-
-/* =========================================================
-   CART
-========================================================= */
+let currentUser = null;
 
 let cart = [];
 
 let isPlacingOrder = false;
 
 
+/* =========================
+   DELIVERY DATA
+========================= */
+
+const CITY_OPTIONS = {
+
+"Abia":[
+"Aba",
+"Umuahia"
+],
+
+"Adamawa":[
+"Yola",
+"Mubi"
+],
+
+"Akwa Ibom":[
+"Uyo",
+"Eket"
+],
+
+"Anambra":[
+"Awka",
+"Onitsha",
+"Nnewi"
+],
+
+"Bauchi":[
+"Bauchi",
+"Azare"
+],
+
+"Bayelsa":[
+"Yenagoa"
+],
+
+"Benue":[
+"Makurdi",
+"Gboko"
+],
+
+"Borno":[
+"Maiduguri"
+],
+
+"Cross River":[
+"Calabar",
+"Ogoja"
+],
+
+"Delta":[
+"Asaba",
+"Warri",
+"Sapele",
+"Ughelli"
+],
+
+"Ebonyi":[
+"Abakaliki",
+"Afikpo",
+"Onueke"
+],
+
+"Edo":[
+"Benin City",
+"Auchi"
+],
+
+"Ekiti":[
+"Ado-Ekiti"
+],
+
+"Enugu":[
+"Enugu",
+"Nsukka"
+],
+
+"Gombe":[
+"Gombe"
+],
+
+"Imo":[
+"Owerri",
+"Orlu"
+],
+
+"Jigawa":[
+"Dutse"
+],
+
+"Kaduna":[
+"Kaduna",
+"Zaria"
+],
+
+"Kano":[
+"Kano"
+],
+
+"Katsina":[
+"Katsina"
+],
+
+"Kebbi":[
+"Birnin Kebbi"
+],
+
+"Kogi":[
+"Lokoja",
+"Okene"
+],
+
+"Kwara":[
+"Ilorin"
+],
+
+"Lagos":[
+"Ikeja",
+"Lekki",
+"Victoria Island",
+"Surulere",
+"Yaba",
+"Ikorodu"
+],
+
+"Nasarawa":[
+"Lafia",
+"Keffi"
+],
+
+"Niger":[
+"Minna",
+"Suleja"
+],
+
+"Ogun":[
+"Abeokuta",
+"Sagamu",
+"Ijebu-Ode"
+],
+
+"Ondo":[
+"Akure",
+"Ondo"
+],
+
+"Osun":[
+"Osogbo",
+"Ile-Ife",
+"Ilesa"
+],
+
+"Oyo":[
+"Ibadan",
+"Ogbomoso"
+],
+
+"Plateau":[
+"Jos"
+],
+
+"Rivers":[
+"Port Harcourt",
+"Bonny",
+"Okrika"
+],
+
+"Sokoto":[
+"Sokoto"
+],
+
+"Taraba":[
+"Jalingo"
+],
+
+"Yobe":[
+"Damaturu"
+],
+
+"Zamfara":[
+"Gusau"
+],
+
+"FCT":[
+"Abuja"
+]
+
+};
+
+
+/*
+Temporary delivery estimates.
+
+These are NOT claimed to be current courier-company
+prices. They are placeholders until we obtain your
+actual courier rates.
+*/
+
+const STATE_DEFAULT_RATES = {
+
+"Abia":{pickup:3500,door:5000},
+"Adamawa":{pickup:6500,door:8500},
+"Akwa Ibom":{pickup:4500,door:6500},
+"Anambra":{pickup:3500,door:5000},
+"Bauchi":{pickup:6500,door:8500},
+"Bayelsa":{pickup:5500,door:7500},
+"Benue":{pickup:5500,door:7500},
+"Borno":{pickup:7000,door:9000},
+"Cross River":{pickup:4500,door:6500},
+"Delta":{pickup:4500,door:6500},
+"Ebonyi":{pickup:3000,door:4500},
+"Edo":{pickup:4500,door:6500},
+"Ekiti":{pickup:5000,door:7000},
+"Enugu":{pickup:3500,door:5000},
+"Gombe":{pickup:6500,door:8500},
+"Imo":{pickup:3500,door:5000},
+"Jigawa":{pickup:6500,door:8500},
+"Kaduna":{pickup:6000,door:8000},
+"Kano":{pickup:6500,door:8500},
+"Katsina":{pickup:6500,door:8500},
+"Kebbi":{pickup:7000,door:9000},
+"Kogi":{pickup:5500,door:7500},
+"Kwara":{pickup:5500,door:7500},
+"Lagos":{pickup:5000,door:7000},
+"Nasarawa":{pickup:5500,door:7500},
+"Niger":{pickup:6000,door:8000},
+"Ogun":{pickup:5000,door:7000},
+"Ondo":{pickup:5000,door:7000},
+"Osun":{pickup:5000,door:7000},
+"Oyo":{pickup:5500,door:7500},
+"Plateau":{pickup:6000,door:8000},
+"Rivers":{pickup:4500,door:6500},
+"Sokoto":{pickup:7000,door:9000},
+"Taraba":{pickup:7000,door:9000},
+"Yobe":{pickup:7000,door:9000},
+"Zamfara":{pickup:7000,door:9000},
+"FCT":{pickup:5500,door:7500}
+
+};
+
+
+/* City-specific estimates */
+
+const CITY_RATES = {
+
+"Abakaliki":{pickup:3000,door:4500},
+"Afikpo":{pickup:3500,door:5000},
+
+"Ikeja":{pickup:5000,door:7000},
+"Lekki":{pickup:5500,door:7500},
+"Victoria Island":{pickup:5500,door:7500},
+"Surulere":{pickup:5000,door:7000},
+"Yaba":{pickup:5000,door:7000},
+"Ikorodu":{pickup:5500,door:7500},
+
+"Asaba":{pickup:4500,door:6500},
+"Warri":{pickup:5000,door:7000},
+
+"Enugu":{pickup:3500,door:5000},
+"Nsukka":{pickup:4000,door:5500},
+
+"Awka":{pickup:3500,door:5000},
+"Onitsha":{pickup:3500,door:5000},
+"Nnewi":{pickup:4000,door:5500},
+
+"Aba":{pickup:3500,door:5000},
+"Umuahia":{pickup:3500,door:5000},
+
+"Owerri":{pickup:3500,door:5000},
+
+"Port Harcourt":{pickup:4500,door:6500},
+
+"Benin City":{pickup:4500,door:6500},
+
+"Abuja":{pickup:5500,door:7500},
+
+"Ibadan":{pickup:5500,door:7500},
+
+"Ilorin":{pickup:5500,door:7500}
+
+};
+
+
+function formatNaira(amount){
+
+return "₦" +
+Number(amount || 0)
+.toLocaleString("en-NG");
+
+}
+
+
+function escapeHtml(value){
+
+return String(value ?? "")
+.replace(/&/g,"&amp;")
+.replace(/</g,"&lt;")
+.replace(/>/g,"&gt;")
+.replace(/"/g,"&quot;")
+.replace(/'/g,"&#039;");
+
+}
+
+
+/* =========================
+   DELIVERY FUNCTIONS
+========================= */
+
+function populateCities(){
+
+const state =
+document.getElementById("deliveryState").value;
+
+const city =
+document.getElementById("deliveryCity");
+
+city.innerHTML =
+'<option value="">Select City</option>';
+
+if(!state){
+
+city.disabled=true;
+
+return;
+
+}
+
+const cities =
+CITY_OPTIONS[state] || [];
+
+cities.forEach(name=>{
+
+const option =
+document.createElement("option");
+
+option.value=name;
+option.textContent=name;
+
+city.appendChild(option);
+
+});
+
+city.disabled=false;
+
+updateDeliveryQuote();
+
+}
+
+
+function getDeliveryRate(){
+
+const state =
+document.getElementById("deliveryState").value;
+
+const city =
+document.getElementById("deliveryCity").value;
+
+const method =
+document.getElementById("deliveryMethod").value;
+
+if(!state || !method){
+
+return null;
+
+}
+
+let rates =
+CITY_RATES[city] ||
+STATE_DEFAULT_RATES[state];
+
+if(!rates){
+
+return null;
+
+}
+
+return method === "pickup"
+? rates.pickup
+: rates.door;
+
+}
+
+
+function getCourierLocation(){
+
+const state =
+document.getElementById("deliveryState").value;
+
+const city =
+document.getElementById("deliveryCity").value;
+
+const method =
+document.getElementById("deliveryMethod").value;
+
+if(method==="pickup"){
+
+return "Nearest courier office/collection point in " +
+(city || state) +
+". Exact branch will be confirmed by GRANDSON ROYALE.";
+
+}
+
+if(method==="door"){
+
+return "Door delivery to the address supplied by the customer.";
+
+}
+
+return "";
+
+}
+
+
+function updateDeliveryQuote(){
+
+const state =
+document.getElementById("deliveryState").value;
+
+const city =
+document.getElementById("deliveryCity").value;
+
+const area =
+document.getElementById("deliveryArea").value;
+
+const method =
+document.getElementById("deliveryMethod").value;
+
+const result =
+document.getElementById("deliveryResult");
+
+let fee=0;
+
+if(state && city && method){
+
+fee=getDeliveryRate() || 0;
+
+const methodName =
+method==="pickup"
+? "Courier Office Pickup"
+: "Door Delivery";
+
+result.innerHTML =
+
+"<strong>" +
+escapeHtml(methodName) +
+"</strong><br><br>" +
+
+"Location: " +
+escapeHtml(state) +
+" → " +
+escapeHtml(city) +
+(area ? " → " + escapeHtml(area) : "") +
+"<br><br>" +
+
+"Delivery Fee: <strong>" +
+formatNaira(fee) +
+"</strong><br><br>" +
+
+"<small>" +
+escapeHtml(getCourierLocation()) +
+"</small>";
+
+}else{
+
+result.innerHTML =
+"Select your state, city and delivery method to see the delivery fee.";
+
+}
+
+updateCheckoutTotals();
+
+}
+
+
+function getSubtotal(){
+
+return cart.reduce(
+(sum,item)=>
+sum + item.price * item.quantity,
+0
+);
+
+}
+
+
+function getDeliveryFee(){
+
+return getDeliveryRate() || 0;
+
+}
+
+
+function getGrandTotal(){
+
+return getSubtotal() + getDeliveryFee();
+
+}
+
+
+function updateCheckoutTotals(){
+
+const subtotal =
+getSubtotal();
+
+const fee =
+getDeliveryFee();
+
+const total =
+subtotal + fee;
+
+const subtotalEl =
+document.getElementById("checkoutSubtotal");
+
+const feeEl =
+document.getElementById("checkoutDeliveryFee");
+
+const totalEl =
+document.getElementById("checkoutGrandTotal");
+
+if(subtotalEl)
+subtotalEl.textContent=formatNaira(subtotal);
+
+if(feeEl)
+feeEl.textContent=formatNaira(fee);
+
+if(totalEl)
+totalEl.textContent=formatNaira(total);
+
+}
+
+
+/* =========================
+   CART
+========================= */
+
 function addToCart(name,price){
 
-    const existing =
-        cart.find(
-            item => item.name === name
-        );
+const existing =
+cart.find(item=>item.name===name);
 
+if(existing){
 
-    if(existing){
+existing.quantity++;
 
-        existing.quantity++;
+}else{
 
-    }else{
+cart.push({
+name,
+price,
+quantity:1
+});
 
-        cart.push({
+}
 
-            name:name,
+updateCart();
 
-            price:price,
-
-            quantity:1
-
-        });
-
-    }
-
-
-    updateCart();
-
-
-    alert(
-        name +
-        " added to cart."
-    );
+openCart();
 
 }
 
 
 function updateCart(){
 
-    const count =
-        cart.reduce(
-            (sum,item) =>
-                sum + item.quantity,
-            0
-        );
+const count =
+cart.reduce(
+(sum,item)=>sum+item.quantity,
+0
+);
 
+document.getElementById("cartCount")
+.textContent=count;
 
-    document.getElementById(
-        "cartCount"
-    ).textContent =
-        count;
+const container =
+document.getElementById("cartItems");
 
+if(!cart.length){
 
-    const container =
-        document.getElementById(
-            "cartItems"
-        );
+container.innerHTML =
+'<div class="empty">Your cart is empty.</div>';
 
+document.getElementById("cartTotal")
+.textContent="₦0";
 
-    if(cart.length === 0){
+return;
 
-        container.innerHTML =
-            '<p style="color:#888;text-align:center;padding:30px 0;">Your cart is empty.</p>';
+}
 
+container.innerHTML =
+cart.map((item,index)=>`
 
-        document.getElementById(
-            "cartTotal"
-        ).textContent =
-            "₦0";
+<div class="cart-item">
 
+<div>
+<strong>${escapeHtml(item.name)}</strong>
+<br>
+<span style="color:#d4af37">
+${formatNaira(item.price)}
+</span>
+</div>
 
-        return;
+<div class="qty">
 
-    }
+<button onclick="changeQty(${index},-1)">−</button>
 
+<strong>${item.quantity}</strong>
 
-    let html = "";
+<button onclick="changeQty(${index},1)">+</button>
 
+<button
+onclick="removeFromCart(${index})"
+style="margin-left:5px;background:#3a1515;color:#fff;border:0;border-radius:5px;padding:7px">
+×
+</button>
 
-    cart.forEach(
-        (item,index)=>{
+</div>
 
-            html += `
+</div>
 
-                <div class="cart-item">
+`).join("");
 
-                    <div class="cart-item-info">
+document.getElementById("cartTotal")
+.textContent=formatNaira(getSubtotal());
 
-                        <div class="cart-item-name">
-                            ${escapeHtml(item.name)}
-                        </div>
-
-                        <div class="cart-item-price">
-                            ₦${(
-                                item.price *
-                                item.quantity
-                            ).toLocaleString()}
-                        </div>
-
-                        <div class="quantity-controls">
-
-                            <button
-                                onclick="changeQuantity(${index},-1)"
-                            >
-                                −
-                            </button>
-
-                            <span>
-                                ${item.quantity}
-                            </span>
-
-                            <button
-                                onclick="changeQuantity(${index},1)"
-                            >
-                                +
-                            </button>
-
-                            <button
-                                class="remove-btn"
-                                onclick="removeFromCart(${index})"
-                            >
-                                Remove
-                            </button>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-            `;
-
-        }
-    );
-
-
-    container.innerHTML =
-        html;
-
-
-    const total =
-        cart.reduce(
-            (sum,item) =>
-                sum +
-                item.price *
-                item.quantity,
-            0
-        );
-
-
-    document.getElementById(
-        "cartTotal"
-    ).textContent =
-        "₦" +
-        total.toLocaleString();
+updateCheckoutTotals();
 
 }
 
 
-function changeQuantity(index,change){
+function changeQty(index,change){
 
-    if(!cart[index]){
+cart[index].quantity += change;
 
-        return;
+if(cart[index].quantity<=0){
 
-    }
+cart.splice(index,1);
 
+}
 
-    cart[index].quantity +=
-        change;
-
-
-    if(cart[index].quantity <= 0){
-
-        cart.splice(
-            index,
-            1
-        );
-
-    }
-
-
-    updateCart();
+updateCart();
 
 }
 
 
 function removeFromCart(index){
 
-    if(!cart[index]){
+cart.splice(index,1);
 
-        return;
-
-    }
-
-
-    cart.splice(
-        index,
-        1
-    );
-
-
-    updateCart();
+updateCart();
 
 }
 
 
 function openCart(){
 
-    updateCart();
+document.getElementById("cartModal")
+.style.display="block";
 
-
-    document
-        .getElementById("cartModal")
-        .classList.add("show");
+updateCart();
 
 }
 
 
 function closeCart(){
 
-    document
-        .getElementById("cartModal")
-        .classList.remove("show");
+document.getElementById("cartModal")
+.style.display="none";
 
 }
 
 
-/* =========================================================
+/* =========================
    ACCOUNT
-========================================================= */
+========================= */
 
-async function getCurrentUser(){
+function isAdmin(user){
 
-    const {
-        data,
-        error
-    } =
-        await supabaseClient.auth.getUser();
-
-
-    if(error){
-
-        console.error(error);
-
-        return null;
-
-    }
-
-
-    return data.user;
+return !!user &&
+user.id === ADMIN_USER_ID;
 
 }
 
 
-function openAccount(){
+async function openAccount(){
 
-    document
-        .getElementById("accountModal")
-        .classList.add("show");
+document.getElementById("accountModal")
+.style.display="block";
 
-
-    refreshAccount();
+await renderAuth();
 
 }
 
 
 function closeAccount(){
 
-    document
-        .getElementById("accountModal")
-        .classList.remove("show");
+document.getElementById("accountModal")
+.style.display="none";
 
 }
 
 
-function showLogin(){
+async function renderAuth(){
 
-    document.getElementById(
-        "loginView"
-    ).style.display =
-        "block";
+const container =
+document.getElementById("accountContent");
 
+if(!currentUser){
 
-    document.getElementById(
-        "signupView"
-    ).style.display =
-        "none";
+container.innerHTML=`
 
+<h2>MY ACCOUNT</h2>
 
-    document.getElementById(
-        "loggedInView"
-    ).style.display =
-        "none";
+<div class="form-group">
+<label>Email</label>
+<input id="loginEmail" type="email">
+</div>
 
-}
+<div class="form-group">
+<label>Password</label>
+<input id="loginPassword" type="password">
+</div>
 
+<button class="btn" onclick="login()">
+LOGIN
+</button>
 
-function showSignup(){
+<hr style="border-color:#292929;margin:25px 0">
 
-    document.getElementById(
-        "loginView"
-    ).style.display =
-        "none";
+<h3>Create Account</h3>
 
+<div class="form-group">
+<label>Name</label>
+<input id="signupName" type="text">
+</div>
 
-    document.getElementById(
-        "signupView"
-    ).style.display =
-        "block";
+<div class="form-group">
+<label>Email</label>
+<input id="signupEmail" type="email">
+</div>
 
+<div class="form-group">
+<label>Password</label>
+<input id="signupPassword" type="password">
+</div>
 
-    document.getElementById(
-        "loggedInView"
-    ).style.display =
-        "none";
+<button class="btn secondary" onclick="signup()">
+CREATE ACCOUNT
+</button>
 
-}
+<div id="authMessage"></div>
 
+`;
 
-async function refreshAccount(){
-
-    const user =
-        await getCurrentUser();
-
-
-    if(!user){
-
-        showLogin();
-
-        return;
-
-    }
-
-
-    document.getElementById(
-        "loginView"
-    ).style.display =
-        "none";
-
-
-    document.getElementById(
-        "signupView"
-    ).style.display =
-        "none";
-
-
-    document.getElementById(
-        "loggedInView"
-    ).style.display =
-        "block";
-
-
-    document.getElementById(
-        "accountEmail"
-    ).textContent =
-        user.email || "";
-
-
-    document.getElementById(
-        "accountName"
-    ).textContent =
-        user.user_metadata?.full_name ||
-        "Customer";
-
-
-    const adminButton =
-        document.getElementById(
-            "adminOrdersButton"
-        );
-
-
-    if(isAdmin(user)){
-
-        adminButton.style.display =
-            "block";
-
-    }else{
-
-        adminButton.style.display =
-            "none";
-
-    }
-
-
-    await loadMyOrders();
+return;
 
 }
 
 
-/* =========================================================
-   SIGN UP
-========================================================= */
-
-async function signUp(){
-
-    const name =
-        document.getElementById(
-            "signupName"
-        ).value.trim();
+const {data,error} =
+await supabaseClient
+.from("orders")
+.select("*")
+.eq("user_id",currentUser.id)
+.order("created_at",{ascending:false});
 
 
-    const email =
-        document.getElementById(
-            "signupEmail"
-        ).value.trim();
+container.innerHTML=`
 
+<h2>MY ACCOUNT</h2>
 
-    const password =
-        document.getElementById(
-            "signupPassword"
-        ).value;
+<p>
+Email:
+<strong>${escapeHtml(currentUser.email)}</strong>
+</p>
 
+<h3>MY ORDERS</h3>
 
-    if(
-        !name ||
-        !email ||
-        !password
-    ){
+<div id="myOrders"></div>
 
-        alert(
-            "Please fill in all fields."
-        );
+<button class="btn secondary" onclick="logout()">
+LOG OUT
+</button>
 
-        return;
+${isAdmin(currentUser)?`
 
-    }
+<button
+class="btn"
+style="margin-left:8px"
+onclick="openAdmin()">
+ADMIN ORDERS
+</button>
 
+`:""}
 
-    if(password.length < 6){
+`;
 
-        alert(
-            "Password must be at least 6 characters."
-        );
+const ordersContainer =
+document.getElementById("myOrders");
 
-        return;
+if(error){
 
-    }
+ordersContainer.innerHTML =
+'<div class="empty">Unable to load orders.</div>';
 
+return;
 
-    const {
-        data,
-        error
-    } =
-        await supabaseClient.auth.signUp({
+}
 
-            email:email,
+if(!data || !data.length){
 
-            password:password,
+ordersContainer.innerHTML =
+'<div class="empty">You have no orders yet.</div>';
 
-            options:{
+return;
 
-                data:{
+}
 
-                    full_name:name
+ordersContainer.innerHTML =
+data.map(order=>`
 
-                },
+<div class="order">
 
-                emailRedirectTo:
-                    window.location.href
+<strong>Order #${escapeHtml(order.id)}</strong>
 
-            }
+<p>
+${escapeHtml(order.items)}
+</p>
 
-        });
+<p>
+Total:
+<strong>
+${formatNaira(order.total_amount)}
+</strong>
+</p>
 
+<p>
+Payment:
+<span class="status">
+${escapeHtml(order.payment_status)}
+</span>
+</p>
 
-    if(error){
+<p>
+Order:
+<span class="status">
+${escapeHtml(order.order_status)}
+</span>
+</p>
 
-        alert(
-            error.message
-        );
+<p style="color:#888;font-size:13px">
+${escapeHtml(order.delivery_address)}
+</p>
 
-        return;
+</div>
 
-    }
-
-
-    if(data.user){
-
-        alert(
-            "Account created successfully. Please check your Gmail and confirm your email before logging in."
-        );
-
-
-        showLogin();
-
-    }
+`).join("");
 
 }
 
 
-/* =========================================================
-   LOGIN
-========================================================= */
+async function signup(){
 
-async function signIn(){
+const name =
+document.getElementById("signupName").value.trim();
 
-    const email =
-        document.getElementById(
-            "loginEmail"
-        ).value.trim();
+const email =
+document.getElementById("signupEmail").value.trim();
 
+const password =
+document.getElementById("signupPassword").value;
 
-    const password =
-        document.getElementById(
-            "loginPassword"
-        ).value;
+const message =
+document.getElementById("authMessage");
 
+if(!name || !email || !password){
 
-    if(
-        !email ||
-        !password
-    ){
+message.innerHTML =
+'<div class="notice">Please fill all fields.</div>';
 
-        alert(
-            "Please enter your email and password."
-        );
+return;
 
-        return;
+}
 
-    }
+const {data,error} =
+await supabaseClient.auth.signUp({
 
+email,
+password,
+options:{
+data:{
+full_name:name
+}
+}
 
-    const {
-        data,
-        error
-    } =
-        await supabaseClient.auth.signInWithPassword({
+});
 
-            email:email,
+if(error){
 
-            password:password
+message.innerHTML =
+'<div class="notice">'+
+escapeHtml(error.message)+
+'</div>';
 
-        });
+return;
 
+}
 
-    if(error){
-
-        alert(
-            error.message
-        );
-
-        return;
-
-    }
-
-
-    alert(
-        "Login successful."
-    );
-
-
-    await refreshAccount();
+message.innerHTML =
+'<div class="notice">Account created. Check your email for confirmation.</div>';
 
 }
 
 
-/* =========================================================
-   LOG OUT
-========================================================= */
+async function login(){
 
-async function signOut(){
+const email =
+document.getElementById("loginEmail").value.trim();
 
-    const {
-        error
-    } =
-        await supabaseClient.auth.signOut();
+const password =
+document.getElementById("loginPassword").value;
 
+const {data,error} =
+await supabaseClient.auth.signInWithPassword({
+email,
+password
+});
 
-    if(error){
+if(error){
 
-        alert(
-            error.message
-        );
+document.getElementById("authMessage")
+.innerHTML =
+'<div class="notice">'+
+escapeHtml(error.message)+
+'</div>';
 
-        return;
+return;
 
-    }
+}
 
+currentUser=data.user;
 
-    alert(
-        "You have been logged out."
-    );
-
-
-    refreshAccount();
+await renderAuth();
 
 }
 
 
-/* =========================================================
-   MY ORDERS
-========================================================= */
+async function logout(){
 
-async function loadMyOrders(){
+await supabaseClient.auth.signOut();
 
-    const user =
-        await getCurrentUser();
+currentUser=null;
 
-
-    if(!user){
-
-        return;
-
-    }
-
-
-    const container =
-        document.getElementById(
-            "myOrders"
-        );
-
-
-    container.innerHTML =
-        "Loading...";
-
-
-    const {
-        data,
-        error
-    } =
-        await supabaseClient
-            .from("orders")
-            .select("*")
-            .eq(
-                "user_id",
-                user.id
-            )
-            .order(
-                "created_at",
-                {
-                    ascending:false
-                }
-            );
-
-
-    if(error){
-
-        console.error(error);
-
-
-        container.innerHTML =
-            '<p style="color:#ff9999;">Unable to load orders.</p>';
-
-
-        return;
-
-    }
-
-
-    if(
-        !data ||
-        data.length === 0
-    ){
-
-        container.innerHTML =
-            '<p style="color:#888;">You have no orders yet.</p>';
-
-
-        return;
-
-    }
-
-
-    let html = "";
-
-
-    data.forEach(
-        order=>{
-
-            const created =
-                order.created_at
-                    ? new Date(
-                        order.created_at
-                    ).toLocaleString()
-                    : "";
-
-
-            html += `
-
-                <div class="order-card">
-
-                    <p>
-
-                        <strong>
-                            Order #${escapeHtml(
-                                String(order.id)
-                            )}
-                        </strong>
-
-                    </p>
-
-                    <p>
-                        Date:
-                        ${escapeHtml(created)}
-                    </p>
-
-                    <p>
-                        ${escapeHtml(
-                            order.items || ""
-                        )}
-                    </p>
-
-                    <p>
-
-                        Total:
-
-                        <strong>
-                            ₦${Number(
-                                order.total_amount || 0
-                            ).toLocaleString()}
-                        </strong>
-
-                    </p>
-
-                    <div class="status-row">
-
-                        <span class="status-badge">
-
-                            Payment:
-
-                            ${escapeHtml(
-                                formatStatus(
-                                    order.payment_status
-                                )
-                            )}
-
-                        </span>
-
-                        <span class="status-badge">
-
-                            Order:
-
-                            ${escapeHtml(
-                                formatStatus(
-                                    order.order_status
-                                )
-                            )}
-
-                        </span>
-
-                    </div>
-
-                </div>
-
-            `;
-
-        }
-    );
-
-
-    container.innerHTML =
-        html;
+await renderAuth();
 
 }
 
 
-/* =========================================================
+/* =========================
    CHECKOUT
-========================================================= */
+========================= */
 
 async function openCheckout(){
 
-    if(cart.length === 0){
+if(!cart.length){
 
-        alert(
-            "Your cart is empty."
-        );
+alert("Your cart is empty.");
 
-        return;
+return;
 
-    }
+}
 
+if(!currentUser){
 
-    const user =
-        await getCurrentUser();
+alert("Please login or create an account before checkout.");
 
+closeCart();
 
-    if(!user){
+openAccount();
 
-        alert(
-            "Please create an account or log in before checkout."
-        );
+return;
 
+}
 
-        closeCart();
+closeCart();
 
-        openAccount();
+document.getElementById("checkoutModal")
+.style.display="block";
 
+document.getElementById("customerEmail")
+.value=currentUser.email || "";
 
-        return;
+document.getElementById("whatsappOrderBtn")
+.classList.add("hidden");
 
-    }
+document.getElementById("checkoutNotice")
+.innerHTML="";
 
-
-    document
-        .getElementById(
-            "checkoutModal"
-        )
-        .classList.add("show");
-
-
-    const fullName =
-        user.user_metadata?.full_name ||
-        "";
-
-
-    document.getElementById(
-        "customerName"
-    ).value =
-        fullName;
-
-
-    document.getElementById(
-        "customerEmail"
-    ).value =
-        user.email ||
-        "";
-
-
-    document.getElementById(
-        "checkoutSuccess"
-    ).style.display =
-        "none";
-
-
-    const whatsappButton =
-        document.getElementById(
-            "whatsappOrder"
-        );
-
-
-    whatsappButton.style.display =
-        "none";
-
-
-    whatsappButton.href =
-        "#";
-
-
-    document.getElementById(
-        "placeOrderButton"
-    ).disabled =
-        false;
-
-
-    updateWhatsApp();
+updateCheckoutTotals();
 
 }
 
 
 function closeCheckout(){
 
-    document
-        .getElementById(
-            "checkoutModal"
-        )
-        .classList.remove("show");
+document.getElementById("checkoutModal")
+.style.display="none";
 
 }
 
 
-/* =========================================================
-   WHATSAPP MESSAGE
-========================================================= */
+function buildWhatsAppMessage(orderId,details){
 
-function buildWhatsAppMessage(
-    name,
-    phone,
-    email,
-    address,
-    cartSnapshot,
-    orderId = null
-){
+let text =
+"GRANDSON ROYALE ORDER\n\n";
 
-    let message =
-        "GRANDSON ROYALE ORDER\n\n";
+text +=
+"Order ID: #" + orderId + "\n";
 
+text +=
+"Customer: " + details.name + "\n";
 
-    if(orderId){
+text +=
+"Phone: " + details.phone + "\n";
 
-        message +=
-            "Order ID: #" +
-            orderId +
-            "\n";
+text +=
+"Email: " + details.email + "\n\n";
 
-    }
+text +=
+"ITEMS:\n";
 
+details.items.forEach(item=>{
 
-    message +=
-        "Customer: " +
-        name +
-        "\n";
+text +=
+item.name +
+" x" +
+item.quantity +
+" — " +
+formatNaira(item.price * item.quantity) +
+"\n";
 
+});
 
-    message +=
-        "Phone: " +
-        phone +
-        "\n";
+text += "\n";
 
+text +=
+"Product Subtotal: " +
+formatNaira(details.subtotal) +
+"\n";
 
-    message +=
-        "Email: " +
-        email +
-        "\n";
+text +=
+"Delivery Fee: " +
+formatNaira(details.deliveryFee) +
+"\n";
 
+text +=
+"GRAND TOTAL: " +
+formatNaira(details.total) +
+"\n\n";
 
-    message +=
-        "Address: " +
-        address +
-        "\n\n";
+text +=
+"DELIVERY:\n";
 
+text +=
+"State: " +
+details.state +
+"\n";
 
-    message +=
-        "ORDER:\n";
+text +=
+"City: " +
+details.city +
+"\n";
 
+text +=
+"Area: " +
+details.area +
+"\n";
 
-    cartSnapshot.forEach(
-        item=>{
+text +=
+"Method: " +
+details.methodName +
+"\n";
 
-            message +=
-                item.name +
-                " x" +
-                item.quantity +
-                " = ₦" +
-                (
-                    item.price *
-                    item.quantity
-                ).toLocaleString() +
-                "\n";
+text +=
+"Courier: " +
+details.courierLocation +
+"\n";
 
-        }
-    );
+text +=
+"Address: " +
+details.address +
+"\n\n";
 
+text +=
+"Payment: OPay\n";
 
-    const total =
-        cartSnapshot.reduce(
-            (sum,item)=>
-                sum +
-                item.price *
-                item.quantity,
-            0
-        );
+text +=
+"Account Name: Asogwo Victor\n";
 
+text +=
+"OPay Account Number: 8108521685";
 
-    message +=
-        "\nTOTAL: ₦" +
-        total.toLocaleString();
-
-
-    message +=
-        "\n\nPayment method: OPay";
-
-
-    return message;
-
-}
-
-
-/* =========================================================
-   UPDATE WHATSAPP LINK
-========================================================= */
-
-function updateWhatsApp(){
-
-    const name =
-        document.getElementById(
-            "customerName"
-        ).value.trim();
-
-
-    const phone =
-        document.getElementById(
-            "customerPhone"
-        ).value.trim();
-
-
-    const email =
-        document.getElementById(
-            "customerEmail"
-        ).value.trim();
-
-
-    const address =
-        document.getElementById(
-            "deliveryAddress"
-        ).value.trim();
-
-
-    const phoneNumber =
-        "2348108521685";
-
-
-    const message =
-        buildWhatsAppMessage(
-            name,
-            phone,
-            email,
-            address,
-            cart
-        );
-
-
-    document.getElementById(
-        "whatsappOrder"
-    ).href =
-        "https://wa.me/" +
-        phoneNumber +
-        "?text=" +
-        encodeURIComponent(message);
+return encodeURIComponent(text);
 
 }
 
-
-/* =========================================================
-   PLACE ORDER
-========================================================= */
 
 async function placeOrder(){
 
-    if(isPlacingOrder){
+if(isPlacingOrder)
+return;
 
-        return;
+if(!currentUser){
 
-    }
+alert("Please login first.");
 
+return;
 
-    if(cart.length === 0){
+}
 
-        alert(
-            "Your cart is empty."
-        );
+if(!cart.length){
 
-        return;
+alert("Your cart is empty.");
 
-    }
-
-
-    const user =
-        await getCurrentUser();
-
-
-    if(!user){
-
-        alert(
-            "Please log in before placing an order."
-        );
-
-        return;
-
-    }
-
-
-    const name =
-        document.getElementById(
-            "customerName"
-        ).value.trim();
-
-
-    const phone =
-        document.getElementById(
-            "customerPhone"
-        ).value.trim();
-
-
-    const email =
-        document.getElementById(
-            "customerEmail"
-        ).value.trim();
-
-
-    const address =
-        document.getElementById(
-            "deliveryAddress"
-        ).value.trim();
-
-
-    if(!name){
-
-        alert(
-            "Please enter your full name."
-        );
-
-        return;
-
-    }
-
-
-    if(!phone){
-
-        alert(
-            "Please enter your phone number."
-        );
-
-        return;
-
-    }
-
-
-    if(!email){
-
-        alert(
-            "Please enter your email."
-        );
-
-        return;
-
-    }
-
-
-    if(!address){
-
-        alert(
-            "Please enter your delivery address."
-        );
-
-        return;
-
-    }
-
-
-    isPlacingOrder =
-        true;
-
-
-    const placeButton =
-        document.getElementById(
-            "placeOrderButton"
-        );
-
-
-    placeButton.disabled =
-        true;
-
-
-    placeButton.textContent =
-        "SAVING ORDER...";
-
-
-    try{
-
-        const cartSnapshot =
-            JSON.parse(
-                JSON.stringify(cart)
-            );
-
-
-        const itemsText =
-            cartSnapshot
-                .map(
-                    item =>
-                        item.name +
-                        " x" +
-                        item.quantity
-                )
-                .join(", ");
-
-
-        const total =
-            cartSnapshot.reduce(
-                (sum,item) =>
-                    sum +
-                    item.price *
-                    item.quantity,
-                0
-            );
-
-
-        /*
-         IMPORTANT:
-
-         The database trigger now forces every
-         new order to start as:
-
-         payment_status = pending
-         order_status = pending
-
-         Even if someone modifies the browser request.
-        */
-
-
-        const {
-            data,
-            error
-        } =
-            await supabaseClient
-                .from("orders")
-                .insert({
-
-                    user_id:
-                        user.id,
-
-                    customer_name:
-                        name,
-
-                    phone:
-                        phone,
-
-                    email:
-                        email,
-
-                    delivery_address:
-                        address,
-
-                    items:
-                        itemsText,
-
-                    total_amount:
-                        total,
-
-                    payment_status:
-                        "pending",
-
-                    order_status:
-                        "pending"
-
-                })
-                .select("id")
-                .single();
-
-
-        if(error){
-
-            console.error(error);
-
-
-            alert(
-                "Order could not be saved: " +
-                error.message
-            );
-
-
-            return;
-
-        }
-
-
-        const orderId =
-            data?.id ||
-            null;
-
-
-        const message =
-            buildWhatsAppMessage(
-                name,
-                phone,
-                email,
-                address,
-                cartSnapshot,
-                orderId
-            );
-
-
-        const phoneNumber =
-            "2348108521685";
-
-
-        const whatsappUrl =
-            "https://wa.me/" +
-            phoneNumber +
-            "?text=" +
-            encodeURIComponent(
-                message
-            );
-
-
-        const whatsappButton =
-            document.getElementById(
-                "whatsappOrder"
-            );
-
-
-        whatsappButton.href =
-            whatsappUrl;
-
-
-        whatsappButton.style.display =
-            "block";
-
-
-        whatsappButton.textContent =
-            "📱 SEND ORDER ON WHATSAPP";
-
-
-        document.getElementById(
-            "checkoutSuccess"
-        ).style.display =
-            "block";
-
-
-        alert(
-            "Your order has been saved successfully!"
-        );
-
-
-        cart = [];
-
-
-        updateCart();
-
-
-        closeCart();
-
-
-        await loadMyOrders();
-
-
-    }catch(error){
-
-        console.error(error);
-
-
-        alert(
-            "Something went wrong while placing your order."
-        );
-
-
-    }finally{
-
-        isPlacingOrder =
-            false;
-
-
-        placeButton.disabled =
-            false;
-
-
-        placeButton.textContent =
-            "PLACE ORDER";
-
-    }
+return;
 
 }
 
 
-/* =========================================================
-   ADMIN ORDERS
-========================================================= */
+const name =
+document.getElementById("customerName")
+.value.trim();
 
-async function openAdminOrders(){
+const phone =
+document.getElementById("customerPhone")
+.value.trim();
 
-    const user =
-        await getCurrentUser();
+const email =
+document.getElementById("customerEmail")
+.value.trim();
 
+const state =
+document.getElementById("deliveryState")
+.value;
 
-    if(!user){
+const city =
+document.getElementById("deliveryCity")
+.value;
 
-        alert(
-            "Please log in."
-        );
+const area =
+document.getElementById("deliveryArea")
+.value.trim();
 
-        return;
+const method =
+document.getElementById("deliveryMethod")
+.value;
 
-    }
-
-
-    if(!isAdmin(user)){
-
-        alert(
-            "You do not have permission to access admin orders."
-        );
-
-        return;
-
-    }
-
-
-    document
-        .getElementById(
-            "adminModal"
-        )
-        .classList.add("show");
+const address =
+document.getElementById("deliveryAddress")
+.value.trim();
 
 
-    await loadAdminOrders();
+if(!name ||
+!phone ||
+!email ||
+!state ||
+!city ||
+!area ||
+!method ||
+!address){
 
-}
+document.getElementById("checkoutNotice")
+.innerHTML =
+'<div class="notice">Please complete all customer and delivery fields.</div>';
 
-
-function closeAdminOrders(){
-
-    document
-        .getElementById(
-            "adminModal"
-        )
-        .classList.remove("show");
+return;
 
 }
 
 
-/* =========================================================
-   LOAD ADMIN ORDERS
-========================================================= */
+const deliveryFee =
+getDeliveryFee();
 
-async function loadAdminOrders(){
+const subtotal =
+getSubtotal();
 
-    const user =
-        await getCurrentUser();
+const total =
+subtotal + deliveryFee;
 
+const methodName =
+method==="pickup"
+? "Courier Office Pickup"
+: "Door Delivery";
 
-    if(
-        !user ||
-        !isAdmin(user)
-    ){
+const courierLocation =
+getCourierLocation();
 
-        alert(
-            "Admin access required."
-        );
 
-        return;
+const deliveryInfo =
 
-    }
+"State: " + state +
+"\nCity: " + city +
+"\nArea: " + area +
+"\nMethod: " + methodName +
+"\nCourier: " + courierLocation +
+"\nAddress: " + address;
 
 
-    const container =
-        document.getElementById(
-            "adminOrdersList"
-        );
+const itemsText =
+cart.map(item=>
+item.name +
+" x" +
+item.quantity +
+" — " +
+formatNaira(item.price * item.quantity)
+).join("\n") +
 
+"\n\nDELIVERY FEE: " +
+formatNaira(deliveryFee);
 
-    container.innerHTML =
-        "Loading orders...";
 
+isPlacingOrder=true;
 
-    const {
-        data,
-        error
-    } =
-        await supabaseClient
-            .from("orders")
-            .select("*")
-            .order(
-                "created_at",
-                {
-                    ascending:false
-                }
-            );
+const button =
+document.getElementById("placeOrderBtn");
 
+button.disabled=true;
 
-    if(error){
+button.textContent="SAVING ORDER...";
 
-        console.error(error);
 
+try{
 
-        container.innerHTML =
-            `
+/*
+We deliberately do NOT send payment_status
+or order_status from the browser.
 
-            <div class="admin-empty">
+Your Supabase trigger/security setup forces
+new orders to pending.
+*/
 
-                Unable to load orders.
+const {
+data,
+error
+} =
+await supabaseClient
+.from("orders")
+.insert({
 
-                <br><br>
+user_id:currentUser.id,
 
-                ${escapeHtml(
-                    error.message
-                )}
+customer_name:name,
 
-            </div>
+phone:phone,
 
-            `;
+email:email,
 
+delivery_address:deliveryInfo,
 
-        return;
+items:itemsText,
 
-    }
+total_amount:total
 
+})
+.select("id")
+.single();
 
-    const orders =
-        data || [];
 
+if(error)
+throw error;
 
-    updateAdminSummary(
-        orders
-    );
 
+const orderId =
+data.id;
 
-    if(orders.length === 0){
 
-        container.innerHTML =
-            `
+document.getElementById("checkoutNotice")
+.innerHTML =
+'<div class="notice">Your order has been saved successfully! Order #'+
+escapeHtml(orderId)+
+'</div>';
 
-            <div class="admin-empty">
 
-                No orders have been placed yet.
+const details={
 
-            </div>
+name,
+phone,
+email,
 
-            `;
+items:[...cart],
 
+subtotal,
 
-        return;
+deliveryFee,
 
-    }
+total,
 
+state,
 
-    let html = "";
+city,
 
+area,
 
-    orders.forEach(
-        order=>{
+methodName,
 
-            const created =
-                order.created_at
-                    ? new Date(
-                        order.created_at
-                    ).toLocaleString()
-                    : "";
+courierLocation,
 
+address
 
-            html += `
+};
 
-                <div class="admin-order">
 
-                    <div class="admin-order-top">
+const whatsappURL =
+"https://wa.me/2348108521685?text="+
+buildWhatsAppMessage(orderId,details);
 
-                        <div>
 
-                            <h3>
+const whatsappButton =
+document.getElementById("whatsappOrderBtn");
 
-                                Order #${escapeHtml(
-                                    String(order.id)
-                                )}
+whatsappButton.href=whatsappURL;
 
-                            </h3>
+whatsappButton.classList.remove("hidden");
 
-                            <p
-                                style="color:#777;margin-top:5px;"
-                            >
-                                ${escapeHtml(
-                                    created
-                                )}
-                            </p>
 
-                        </div>
-
-                    </div>
-
-
-                    <div class="admin-order-details">
-
-                        <strong>
-                            Customer:
-                        </strong>
-
-                        ${escapeHtml(
-                            order.customer_name || ""
-                        )}
-
-                        <br>
-
-
-                        <strong>
-                            Phone:
-                        </strong>
-
-                        ${escapeHtml(
-                            order.phone || ""
-                        )}
-
-                        <br>
-
-
-                        <strong>
-                            Email:
-                        </strong>
-
-                        ${escapeHtml(
-                            order.email || ""
-                        )}
-
-                        <br>
-
-
-                        <strong>
-                            Address:
-                        </strong>
-
-                        ${escapeHtml(
-                            order.delivery_address || ""
-                        )}
-
-                        <br>
-
-
-                        <strong>
-                            Items:
-                        </strong>
-
-                        ${escapeHtml(
-                            order.items || ""
-                        )}
-
-                        <br>
-
-
-                        <strong>
-                            Total:
-                        </strong>
-
-                        ₦${Number(
-                            order.total_amount || 0
-                        ).toLocaleString()}
-
-                    </div>
-
-
-                    <div class="admin-controls">
-
-
-                        <div class="admin-control">
-
-                            <label>
-                                PAYMENT STATUS
-                            </label>
-
-                            <select
-                                id="payment-${order.id}"
-                            >
-
-                                <option
-                                    value="pending"
-                                    ${
-                                        order.payment_status === "pending"
-                                            ? "selected"
-                                            : ""
-                                    }
-                                >
-                                    Pending
-                                </option>
-
-                                <option
-                                    value="paid"
-                                    ${
-                                        order.payment_status === "paid"
-                                            ? "selected"
-                                            : ""
-                                    }
-                                >
-                                    Paid
-                                </option>
-
-                            </select>
-
-                        </div>
-
-
-                        <div class="admin-control">
-
-                            <label>
-                                ORDER STATUS
-                            </label>
-
-                            <select
-                                id="status-${order.id}"
-                            >
-
-                                <option
-                                    value="pending"
-                                    ${
-                                        order.order_status === "pending"
-                                            ? "selected"
-                                            : ""
-                                    }
-                                >
-                                    Pending
-                                </option>
-
-                                <option
-                                    value="confirmed"
-                                    ${
-                                        order.order_status === "confirmed"
-                                            ? "selected"
-                                            : ""
-                                    }
-                                >
-                                    Confirmed
-                                </option>
-
-                                <option
-                                    value="processing"
-                                    ${
-                                        order.order_status === "processing"
-                                            ? "selected"
-                                            : ""
-                                    }
-                                >
-                                    Processing
-                                </option>
-
-                                <option
-                                    value="completed"
-                                    ${
-                                        order.order_status === "completed"
-                                            ? "selected"
-                                            : ""
-                                    }
-                                >
-                                    Completed
-                                </option>
-
-                            </select>
-
-                        </div>
-
-                    </div>
-
-
-                    <button
-                        class="update-order-btn"
-                        onclick="updateAdminOrder(${order.id})"
-                    >
-                        SAVE ORDER UPDATE
-                    </button>
-
-                </div>
-
-            `;
-
-        }
-    );
-
-
-    container.innerHTML =
-        html;
-
-}
-
-
-/* =========================================================
-   ADMIN SUMMARY
-========================================================= */
-
-function updateAdminSummary(
-    orders
-){
-
-    const total =
-        orders.length;
-
-
-    const pendingPayments =
-        orders.filter(
-            order =>
-                order.payment_status ===
-                "pending"
-        ).length;
-
-
-    const activeOrders =
-        orders.filter(
-            order =>
-                order.order_status !==
-                "completed"
-        ).length;
-
-
-    const completedOrders =
-        orders.filter(
-            order =>
-                order.order_status ===
-                "completed"
-        ).length;
-
-
-    document.getElementById(
-        "adminTotalOrders"
-    ).textContent =
-        total;
-
-
-    document.getElementById(
-        "adminPendingPayments"
-    ).textContent =
-        pendingPayments;
-
-
-    document.getElementById(
-        "adminActiveOrders"
-    ).textContent =
-        activeOrders;
-
-
-    document.getElementById(
-        "adminCompletedOrders"
-    ).textContent =
-        completedOrders;
-
-}
-
-
-/* =========================================================
-   UPDATE ADMIN ORDER
-========================================================= */
-
-async function updateAdminOrder(
-    orderId
-){
-
-    const user =
-        await getCurrentUser();
-
-
-    if(
-        !user ||
-        !isAdmin(user)
-    ){
-
-        alert(
-            "Admin access required."
-        );
-
-        return;
-
-    }
-
-
-    const paymentStatus =
-        document.getElementById(
-            "payment-" +
-            orderId
-        ).value;
-
-
-    const orderStatus =
-        document.getElementById(
-            "status-" +
-            orderId
-        ).value;
-
-
-    const {
-        error
-    } =
-        await supabaseClient
-            .from("orders")
-            .update({
-
-                payment_status:
-                    paymentStatus,
-
-                order_status:
-                    orderStatus
-
-            })
-            .eq(
-                "id",
-                orderId
-            );
-
-
-    if(error){
-
-        console.error(error);
-
-
-        alert(
-            "Order update failed: " +
-            error.message
-        );
-
-
-        return;
-
-    }
-
-
-    alert(
-        "Order #" +
-        orderId +
-        " has been updated successfully."
-    );
-
-
-    await loadAdminOrders();
-
-}
-
-
-/* =========================================================
-   STATUS DISPLAY
-========================================================= */
-
-function formatStatus(
-    status
-){
-
-    if(!status){
-
-        return "Pending";
-
-    }
-
-
-    return status
-        .charAt(0)
-        .toUpperCase() +
-        status
-            .slice(1)
-            .toLowerCase();
-
-}
-
-
-/* =========================================================
-   SECURITY / HTML ESCAPE
-========================================================= */
-
-function escapeHtml(
-    value
-){
-
-    return String(
-        value ?? ""
-    )
-    .replace(
-        /&/g,
-        "&amp;"
-    )
-    .replace(
-        /</g,
-        "&lt;"
-    )
-    .replace(
-        />/g,
-        "&gt;"
-    )
-    .replace(
-        /"/g,
-        "&quot;"
-    )
-    .replace(
-        /'/g,
-        "&#039;"
-    );
-
-}
-
-
-/* =========================================================
-   AUTH STATE
-========================================================= */
-
-supabaseClient.auth.onAuthStateChange(
-    async (
-        event,
-        session
-    )=>{
-
-        console.log(
-            "Auth event:",
-            event
-        );
-
-    }
-);
-
-
-/* =========================================================
-   INITIAL LOAD
-========================================================= */
+cart=[];
 
 updateCart();
 
-
-/* =========================================================
-   PWA INSTALL
-========================================================= */
-
-let deferredInstallPrompt = null;
+await renderAuth();
 
 
-window.addEventListener(
-    "beforeinstallprompt",
-    event=>{
+}catch(error){
 
-        event.preventDefault();
+console.error(error);
 
-        deferredInstallPrompt =
-            event;
+document.getElementById("checkoutNotice")
+.innerHTML =
+'<div class="notice">Unable to save order: '+
+escapeHtml(error.message)+
+'</div>';
+
+}finally{
+
+isPlacingOrder=false;
+
+button.disabled=false;
+
+button.textContent="PLACE ORDER";
+
+}
+
+}
 
 
-        const installBox =
-            document.getElementById(
-                "installBox"
-            );
+/* =========================
+   ADMIN
+========================= */
+
+async function openAdmin(){
+
+if(!isAdmin(currentUser)){
+
+alert("Admin access only.");
+
+return;
+
+}
+
+document.getElementById("adminModal")
+.style.display="block";
+
+await loadAdminOrders();
+
+}
 
 
-        installBox.style.display =
-            "block";
+function closeAdmin(){
 
-    }
-);
+document.getElementById("adminModal")
+.style.display="none";
+
+}
 
 
+async function loadAdminOrders(){
+
+const container =
+document.getElementById("adminOrders");
+
+container.innerHTML =
+'<div class="empty">Loading orders...</div>';
+
+
+const {
+data,
+error
+} =
+await supabaseClient
+.from("orders")
+.select("*")
+.order("created_at",{ascending:false});
+
+
+if(error){
+
+container.innerHTML =
+'<div class="notice">'+
+escapeHtml(error.message)+
+'</div>';
+
+return;
+
+}
+
+
+if(!data.length){
+
+container.innerHTML =
+'<div class="empty">No orders yet.</div>';
+
+return;
+
+}
+
+
+container.innerHTML =
+data.map(order=>`
+
+<div class="admin-order">
+
+<h3>
+Order #${escapeHtml(order.id)}
+</h3>
+
+<p>
+<strong>Customer:</strong>
+${escapeHtml(order.customer_name)}
+</p>
+
+<p>
+<strong>Phone:</strong>
+${escapeHtml(order.phone)}
+</p>
+
+<p>
+<strong>Email:</strong>
+${escapeHtml(order.email)}
+</p>
+
+<p>
+<strong>Items:</strong><br>
+${escapeHtml(order.items)}
+</p>
+
+<p>
+<strong>Total:</strong>
+${formatNaira(order.total_amount)}
+</p>
+
+<p>
+<strong>Delivery:</strong><br>
+${escapeHtml(order.delivery_address)}
+</p>
+
+<div class="form-group">
+
+<label>Payment Status</label>
+
+<select id="payment-${order.id}">
+
+<option value="pending"
+${order.payment_status==="pending"?"selected":""}>
+Pending
+</option>
+
+<option value="paid"
+${order.payment_status==="paid"?"selected":""}>
+Paid
+</option>
+
+</select>
+
+</div>
+
+
+<div class="form-group">
+
+<label>Order Status</label>
+
+<select id="status-${order.id}">
+
+<option value="pending"
+${order.order_status==="pending"?"selected":""}>
+Pending
+</option>
+
+<option value="confirmed"
+${order.order_status==="confirmed"?"selected":""}>
+Confirmed
+</option>
+
+<option value="processing"
+${order.order_status==="processing"?"selected":""}>
+Processing
+</option>
+
+<option value="completed"
+${order.order_status==="completed"?"selected":""}>
+Completed
+</option>
+
+</select>
+
+</div>
+
+
+<button
+class="btn"
+onclick="saveOrderUpdate(${order.id})">
+
+SAVE ORDER UPDATE
+
+</button>
+
+</div>
+
+`).join("");
+
+}
+
+
+async function saveOrderUpdate(orderId){
+
+if(!isAdmin(currentUser)){
+
+alert("Admin access only.");
+
+return;
+
+}
+
+const paymentStatus =
 document.getElementById(
-    "installButton"
-).addEventListener(
-    "click",
-    async ()=>{
+"payment-"+orderId
+).value;
 
-        if(!deferredInstallPrompt){
-
-            alert(
-                "On iPhone, use Safari → Share → Add to Home Screen."
-            );
-
-            return;
-
-        }
+const orderStatus =
+document.getElementById(
+"status-"+orderId
+).value;
 
 
-        deferredInstallPrompt.prompt();
+const {
+error
+} =
+await supabaseClient
+.from("orders")
+.update({
+
+payment_status:paymentStatus,
+
+order_status:orderStatus
+
+})
+.eq("id",orderId);
 
 
-        const result =
-            await deferredInstallPrompt
-                .userChoice;
+if(error){
+
+alert(error.message);
+
+return;
+
+}
+
+alert("Order updated successfully.");
+
+await loadAdminOrders();
+
+}
 
 
-        console.log(
-            "Install result:",
-            result.outcome
-        );
+/* =========================
+   AUTH STATE
+========================= */
+
+supabaseClient.auth
+.getUser()
+.then(({data})=>{
+
+currentUser=data.user;
+
+updateCart();
+
+});
 
 
-        deferredInstallPrompt =
-            null;
+supabaseClient.auth
+.onAuthStateChange(
+(_event,session)=>{
 
-
-        document.getElementById(
-            "installBox"
-        ).style.display =
-            "none";
-
-    }
-);
-
-
-window.addEventListener(
-    "appinstalled",
-    ()=>{
-
-        console.log(
-            "GRANDSON ROYALE installed."
-        );
-
-
-        deferredInstallPrompt =
-            null;
-
-
-        document.getElementById(
-            "installBox"
-        ).style.display =
-            "none";
-
-    }
-);
-
-
-/* =========================================================
-   SERVICE WORKER
-========================================================= */
+currentUser =
+session?.user || null;
 
 if(
-    "serviceWorker" in navigator
+document.getElementById(
+"accountModal"
+).style.display==="block"
 ){
 
-    window.addEventListener(
-        "load",
-        ()=>{
+renderAuth();
 
-            navigator.serviceWorker
-                .register(
-                    "./service-worker.js"
-                )
-                .then(
-                    registration=>{
+}
 
-                        console.log(
-                            "GRANDSON ROYALE service worker registered:",
-                            registration.scope
-                        );
+}
+);
 
-                    }
-                )
-                .catch(
-                    error=>{
 
-                        console.log(
-                            "Service worker registration failed:",
-                            error
-                        );
+/* =========================
+   SERVICE WORKER
+========================= */
 
-                    }
-                );
+if("serviceWorker" in navigator){
 
-        }
-    );
+window.addEventListener(
+"load",
+()=>{
+
+navigator.serviceWorker
+.register("./service-worker.js")
+.then(
+registration=>{
+
+console.log(
+"GRANDSON ROYALE service worker registered:",
+registration.scope
+);
+
+}
+)
+.catch(
+error=>{
+
+console.log(
+"Service worker registration failed:",
+error
+);
+
+}
+);
+
+}
+);
 
 }
 
